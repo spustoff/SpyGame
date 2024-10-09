@@ -26,44 +26,38 @@ struct NamesFavorites: View {
                 
                 Text(viewModel.currentStep.text)
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .bold))
+                    .font(.system(size: 19, weight: .bold))
                 
                 HStack {
+                    if !dataManager.saved_users.isEmpty {
+                        
+                        if isEditing {
+                            Button(action: {
+                                
+                                isEditing.toggle()
+                                
+                            }, label: {
+                                
+                                Icon(image: "pencil")
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.7))
+                        }
+                    }
+                    
+                    Spacer()
                     
                     Button(action: {
                         
                         viewModel.currentStep = .names
                         
                     }, label: {
-                        
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
+                        Image("xmark")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.second)
                     })
-                    
-                    Spacer()
-                    
-                    if !dataManager.saved_users.isEmpty {
-                        
-                        Button(action: {
-                            
-                            isEditing.toggle()
-                            
-                        }, label: {
-                            
-                            Image(systemName: isEditing ? "checkmark" : "pencil")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: isEditing ? 15 : 17, weight: .semibold))
-                                .background (
-                                
-                                    Circle()
-                                        .fill(Color("bgGray"))
-                                        .frame(width: 30, height: 30)
-                                        .opacity(isEditing ? 1 : 0)
-                                )
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.7))
-                    }
                 }
                 .padding(.horizontal)
             }
@@ -74,22 +68,23 @@ struct NamesFavorites: View {
             
             if data.isEmpty {
                 
-                VStack(alignment: .center, spacing: 10, content: {
+                VStack(alignment: .center, spacing: 0, content: {
                     
                     Image(systemName: "star.fill")
-                        .foregroundColor(.gray.opacity(0.5))
-                        .font(.system(size: 40, weight: .regular))
+                        .foregroundColor(.textWhite40)
+                        .font(.system(size: 48, weight: .regular))
+                        .frame(width: 80, height: 80)
                     
                     VStack(alignment: .center, spacing: 5, content: {
                         
                         Text("Favorites list is empty")
                             .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .medium))
+                            .font(.system(size: 19, weight: .bold))
                             .multilineTextAlignment(.center)
                         
                         Text("Create a new one or click on the star in the list of players")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.textWhite60)
+                            .font(.system(size: 17, weight: .regular))
                             .multilineTextAlignment(.center)
                     })
                 })
@@ -117,23 +112,29 @@ struct NamesFavorites: View {
                             }, label: {
                                 
                                 HStack {
-                                    
-                                    Image(dataManager.saved_users[index].playerPhoto)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 35, height: 35)
+                                    Icon(image: "person.circle")
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.bgCell)
+                                        .embedInCornRadius(cornradius: 100)
+                                        .overlay(
+                                            Image(dataManager.saved_users[index].playerPhoto)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 40, height: 40)
+                                                .embedInCornRadius(cornradius: 100)
+                                                .opacity(dataManager.saved_users[index].playerPhoto.isEmpty ? 0 : 1)
+                                        )
                                         .overlay (
                                         
                                             Image(systemName: "camera.fill")
-                                                .foregroundColor(Color("bezhev"))
-                                                .font(.system(size: 8, weight: .regular))
-                                                .padding(6)
-                                                .background(
-                                                    
-                                                    Circle()
-                                                        .fill(Color("bg"))
-                                                        .opacity(dataManager.saved_users[index].playerPhoto == "avatar_name" ? 0 : 1)
-                                                )
+                                                .resizable()
+                                                .renderingMode(.template)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 15, height: 15)
+                                                .foregroundColor(Color.second)
+                                                .frame(width: 19, height: 19)
+                                                .background(Color.bg)
+                                                .embedInCornRadius(cornradius: 100)
                                                 .offset(x: 10, y: 10)
                                         )
                                         .onTapGesture {
@@ -163,7 +164,7 @@ struct NamesFavorites: View {
                                         
                                         Text(dataManager.saved_users[index].playerName)
                                             .foregroundColor(.white)
-                                            .font(.system(size: 14, weight: .regular))
+                                            .font(.system(size: 17, weight: .medium))
                                             .onTapGesture {
                                                 
                                                 self.isKeyboard = true
@@ -184,33 +185,20 @@ struct NamesFavorites: View {
                                             }
                                             
                                         }, label: {
-                                            
-                                            Image(systemName: "xmark")
-                                                .foregroundColor(Color("primary"))
-                                                .font(.system(size: 19, weight: .medium))
+                                            Icon(image: "xmark")
                                         })
                                         
                                     } else {
-                                        
-                                        Circle()
-                                            .stroke(selectedFavorite == dataManager.saved_users[index] ? Color("primary") : .gray.opacity(0.5), lineWidth: 1.5)
-                                            .frame(width: 18, height: 18)
-                                            .overlay (
-                                            
-                                                Circle()
-                                                    .fill(Color("primary"))
-                                                    .frame(width: 14, height: 14)
-                                                    .opacity(selectedFavorite == dataManager.saved_users[index] ? 1 : 0)
-                                            )
+                                        Icon(image: selectedFavorite == dataManager.saved_users[index] ? "button.programmable" : "circle")
                                     }
                                 }
-                                .padding(.horizontal)
-                                .frame(height: 50)
-                                .background(RoundedRectangle(cornerRadius: 13).fill(Color("bgGray")))
+                                .padding(.horizontal, 12)
+                                .frame(height: 60)
+                                .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                 .overlay (
                                 
-                                    RoundedRectangle(cornerRadius: 13)
-                                        .stroke(Color("primary"), lineWidth: 1.2)
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.prime, lineWidth: 2)
                                         .opacity(selectedFavorite == dataManager.saved_users[index] ? 1 : 0)
                                 )
                             })
@@ -224,59 +212,79 @@ struct NamesFavorites: View {
             
             HStack {
                 
-                Button(action: {
-                    
-                    let newIndex = dataManager.saved_users.count
-                
-                    dataManager.addUser()
-
-                    self.tempName = ""
-                    self.editingIndex = newIndex
-                    self.isKeyboard = true
-                    
-                }, label: {
-                    
-                    HStack {
+                if  !isEditing {
+                    Button(action: {
                         
-                        Image(systemName: "plus")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 16, weight: .medium))
+                        let newIndex = dataManager.saved_users.count
                         
-                        Text("NEW")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 16, weight: .medium))
-                    }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
-                })
-                .buttonStyle(ScaledButton(scaling: 0.9))
-                
-                Button(action: {
-                    
-                    viewModel.playerNames[viewModel.selectedNameForFavorite] = selectedFavorite ?? PlayersModel(id: 1, playerName: "", playerPhoto: "", playerRole: "")
-                    
-                    viewModel.currentStep = .names
-                    
-                    selectedFavorite = nil
-                    
-                }, label: {
-                    
-                    Text("SELECT")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
+                        dataManager.addUser()
+                        
+                        self.tempName = ""
+                        self.editingIndex = newIndex
+                        self.isKeyboard = true
+                        
+                    }, label: {
+                        
+                        HStack(spacing: 2) {
+                            
+                            Image("plus")
+                                .resizable()
+                                .renderingMode(.template)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(.prime)
+                            
+                            Text("NEW")
+                                .foregroundColor(Color("primary"))
+                                .font(.system(size: 17, weight: .bold))
+                        }
+                        .font(.body.bold())
+                        .foregroundColor(.prime)
+                        .frame(height: 60)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                        .background(Color.bgButton)
+                        .embedInCornRadius(cornradius: 16)
+                    })
+                    .buttonStyle(ScaledButton(scaling: 0.9))
+                }
+                
+                let isDisSave = selectedFavorite == nil
+                Button(action: {
+                    if isEditing {
+                        isEditing.toggle()
+                    } else {
+                        viewModel.playerNames[viewModel.selectedNameForFavorite] = selectedFavorite ?? PlayersModel(id: 1, playerName: "", playerPhoto: "", playerRole: "")
+                        
+                        viewModel.currentStep = .names
+                        
+                        selectedFavorite = nil
+                    }
+                }, label: {
+                    
+                    Text(isEditing ? "DONE" : "SELECT")
+                        .font(.body.bold())
+                        .foregroundColor(isDisSave ? .textWhite40 : .textWhite)
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            LinearGradient(colors: [isDisSave ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
+                                                    isDisSave ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
+                                           startPoint: .topTrailing,
+                                           endPoint: .bottomLeading)
+                        )
+                        .embedInCornRadius(cornradius: 16)
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
-                .opacity(selectedFavorite == nil ? 0.5 : 1)
-                .disabled(selectedFavorite == nil ? true : false)
+                .opacity(isDisSave ? 0.5 : 1)
+                .disabled(isDisSave ? true : false)
             }
         }
     }
 }
 
 #Preview {
-    NamesFavorites(viewModel: MainViewModel(), dataManager: DataManager())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        NamesFavorites(viewModel: MainViewModel(), dataManager: DataManager())
+    }
 }

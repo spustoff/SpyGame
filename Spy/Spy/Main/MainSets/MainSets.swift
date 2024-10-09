@@ -30,10 +30,7 @@ struct MainSets: View {
                         viewModel.currentStep = .main
                         
                     }, label: {
-                        
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
+                        Icon(image: "chevron.left")
                     })
                     
                     Spacer()
@@ -54,150 +51,161 @@ struct MainSets: View {
                         
                         Text("Empty")
                             .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .semibold))
+                            .font(.system(size: 17, weight: .semibold))
                     })
                     .frame(height: UIScreen.main.bounds.height / 2)
                     
                 } else {
                     
-                    ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
                         
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                        HStack {
                             
-                            ForEach(setsModel.sets, id: \.self) { index in
+                            Icon(image: "rectangle.stack")
                             
-                                Button(action: {
+                            Text(NSLocalizedString("Use random set(s)", comment: ""))
+                                .foregroundColor(.white)
+                                .font(.system(size: 17, weight: .regular))
+                            
+                            Spacer()
+                            
+                            Toggle(isOn: $viewModel.isRandomSet, label: {})
+                                .toggleStyle(SwitchToggleStyle(tint: Color.prime))
+                        }
+                        .padding(.horizontal, 12)
+                        .frame(height: 60)
+                        .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+                        .onChange(of: viewModel.isRandomSet) { value in
+                            
+                            if value == true {
+                                
+                                viewModel.getRandomSets(sets: setsModel.sets)
+                            }
+                        }
+                        
+                        ScrollView(.vertical, showsIndicators: false) {
+                            
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                                
+                                ForEach(setsModel.sets, id: \.self) { index in
                                     
-                                    viewModel.setSelectedFor = .main
-                                    
-                                    viewModel.isRandomSet = false
-                                    
-                                    if viewModel.selectedSet.contains(index) {
+                                    Button(action: {
                                         
-                                        viewModel.selectedSet.removeAll(where: {($0.title ?? "") == index.title})
+                                        viewModel.setSelectedFor = .main
                                         
-                                    } else {
+                                        viewModel.isRandomSet = false
                                         
-                                        Amplitude.instance().logEvent("selectSet-\(index.title ?? "nil")")
-                                        
-                                        viewModel.selectedSet.append(index)
-                                    }
-                                    
-                                }, label: {
-                                    
-                                    VStack(alignment: .center, spacing: 5, content: {
-                                        
-                                        if index.coreDataImage == nil {
+                                        if viewModel.selectedSet.contains(index) {
                                             
-                                            Image(systemName: "camera")
-                                                .foregroundColor(.gray)
-                                                .font(.system(size: 14, weight: .regular))
-                                                .frame(height: 100)
-                                                .frame(maxWidth: .infinity)
-                                                .background(Rectangle().fill(Color.gray.opacity(0.2)).cornerRadius(radius: 7, corners: [.topLeft, .topRight]))
+                                            viewModel.selectedSet.removeAll(where: {($0.title ?? "") == index.title})
                                             
                                         } else {
                                             
-                                            if let coreImage = index.coreDataImage {
-                                                
-                                                Image(uiImage: coreImage)
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 120, height: 120)
-                                                    .cornerRadius(radius: 10, corners: [.topRight, .topLeft])
-                                                
-                                            } else {
-                                                
-//                                                if let image = index.image {
-//                                                    
-//                                                    WebPic(urlString: image, width: .infinity, height: 100, cornerRadius: 0, isPlaceholder: true)
-//                                                    
-//                                                } else {
-//                                                    
-//                                                    Image(systemName: "camera")
-//                                                        .foregroundColor(.gray)
-//                                                        .font(.system(size: 14, weight: .regular))
-//                                                        .padding(13)
-//                                                }
-                                            }
+                                            Amplitude.instance().logEvent("selectSet-\(index.title ?? "nil")")
+                                            
+                                            viewModel.selectedSet.append(index)
                                         }
                                         
-                                        VStack(alignment: .center, spacing: 2, content: {
+                                    }, label: {
+                                        
+                                        VStack(alignment: .center, spacing: 6, content: {
                                             
-                                            Text(index.title ?? "nil")
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 14, weight: .medium))
-                                                .multilineTextAlignment(.center)
-                                            
-                                            Text("\(index.totalLocations ?? 0) \(NSLocalizedString("Cards", comment: ""))")
-                                                .foregroundColor(.gray)
-                                                .font(.system(size: 12, weight: .regular))
-                                        })
-                                        .padding(13)
-                                    })
-                                    .frame(maxWidth: .infinity)
-                                    .frame(maxHeight: 230)
-                                    .background(RoundedRectangle(cornerRadius: 7).fill(Color("bgGray")))
-                                    .overlay (
-                                    
-                                        HStack {
-                                            
-                                            if index.image == "" {
+                                            if index.coreDataImage == nil {
                                                 
-                                                Button(action: {
+                                                Icon(image: "photo")
+                                                    .frame(height: 106)
+                                                    .frame(maxWidth: .infinity)
+                                            } else {
+                                                
+                                                if let coreImage = index.coreDataImage {
                                                     
-                                                    viewModel.setSelectedFor = .edit
-                                                    viewModel.currentStep = .newSet
+                                                    Image(uiImage: coreImage)
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(height: 106)
+                                                        .cornerRadius(radius: 6, corners: [.topRight, .topLeft])
                                                     
-                                                    setsModel.selectedSetForEdit = index
-                                                    setsModel.setupEditScreenForEdit()
+                                                } else {
                                                     
-                                                }, label: {
-                                                    
-                                                    Image(systemName: "square.and.pencil")
-                                                        .foregroundColor(.white)
-                                                        .font(.system(size: 13, weight: .regular))
-                                                        .frame(width: 25, height: 25)
-                                                        .background(Circle().fill(.black.opacity(0.3)))
-                                                })
+                                                    //                                                if let image = index.image {
+                                                    //
+                                                    //                                                    WebPic(urlString: image, width: .infinity, height: 100, cornerRadius: 0, isPlaceholder: true)
+                                                    //
+                                                    //                                                } else {
+                                                    //
+                                                    //                                                    Image(systemName: "camera")
+                                                    //                                                        .foregroundColor(.gray)
+                                                    //                                                        .font(.system(size: 14, weight: .regular))
+                                                    //                                                        .padding(13)
+                                                    //                                                }
+                                                }
                                             }
                                             
-                                            Spacer()
-                                            
-                                            Circle()
-                                                .fill(viewModel.selectedSet.contains(index) ? Color("primary") : .gray.opacity(0.4))
-                                                .frame(width: 16, height: 16)
-                                                .overlay (
+                                            VStack(alignment: .center, spacing: 4, content: {
                                                 
-                                                    ZStack {
+                                                Text(index.title ?? "nil")
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 17, weight: .medium))
+                                                    .multilineTextAlignment(.center)
+                                                
+                                                Text("\(index.totalLocations ?? 0) \(NSLocalizedString("Cards", comment: ""))")
+                                                    .foregroundColor(.textWhite60)
+                                                    .font(.system(size: 13, weight: .medium))
+                                            })
+                                            .padding(.horizontal, 6)
+                                            .padding(.bottom, 12)
+                                        })
+                                        .frame(maxWidth: .infinity)
+                                        .frame(maxHeight: 165)
+                                        .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
+                                        .overlay (
+                                            
+                                            HStack {
+                                                
+                                                if index.image == "" {
+                                                    
+                                                    Button(action: {
                                                         
-                                                        Circle()
-                                                            .stroke(viewModel.selectedSet.contains(index) ? .white : .gray.opacity(0.8), lineWidth: 1)
-                                                            .frame(width: 16, height: 16)
+                                                        viewModel.setSelectedFor = .edit
+                                                        viewModel.currentStep = .newSet
                                                         
-                                                        Image(systemName: "checkmark")
-                                                            .foregroundColor(.white)
-                                                            .font(.system(size: 8, weight: .bold))
-                                                            .opacity(viewModel.selectedSet.contains(index) ? 1 : 0)
-                                                    }
-                                                )
-                                        }
-                                            .padding(9)
-                                            .frame(maxHeight: .infinity, alignment: .top)
-                                    )
-                                    .overlay (
-                                    
-                                        RoundedRectangle(cornerRadius: 7)
-                                            .stroke(Color("primary"), lineWidth: 1.5)
-                                            .opacity(viewModel.selectedSet.contains(index) ? 1 : 0)
-                                    )
-                                })
-                                .buttonStyle(ScaledButton(scaling: 0.9))
+                                                        setsModel.selectedSetForEdit = index
+                                                        setsModel.setupEditScreenForEdit()
+                                                        
+                                                    }, label: {
+                                                        
+                                                        Icon(image: "edit circle")
+                                                    })
+                                                }
+                                                
+                                                Spacer()
+                                                
+                                                Icon(image: viewModel.selectedSet.contains(index) ? "check on" : "check off")
+                                            }
+                                                .padding(4)
+                                                .frame(maxHeight: .infinity, alignment: .top)
+                                        )
+                                        .overlay (
+                                            
+                                            RoundedRectangle(cornerRadius: 6)
+                                                .stroke(Color.prime, lineWidth: 2)
+                                                .opacity(viewModel.selectedSet.contains(index) ? 1 : 0)
+                                        )
+                                    })
+                                    .buttonStyle(ScaledButton(scaling: 0.9))
+                                }
                             }
+                            .padding(1)
+                            
+                            .padding(.top, 8)
                         }
-                        .padding(1)
+                        .frame(height: UIScreen.main.bounds.height / 2)
+                        
+                        .disabled(viewModel.isRandomSet)
+                        .overlay(
+                            Color.black.opacity(viewModel.isRandomSet ? 0.4 : 0)
+                        )
                     }
-                    .frame(height: UIScreen.main.bounds.height / 2)
                 }
             }
             
@@ -209,43 +217,59 @@ struct MainSets: View {
                     
                 }, label: {
                     
-                    HStack {
-                        
-                        Image(systemName: "plus")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 16, weight: .medium))
+                    HStack(spacing: 2) {
+                        Image("plus")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(Color.prime)
                         
                         Text("NEW")
-                            .foregroundColor(Color("primary"))
+                            .foregroundColor(Color.prime)
                             .font(.system(size: 16, weight: .medium))
                     }
+                    .font(.body.bold())
+                    .foregroundColor(viewModel.selectedSet.isEmpty ? .textWhite40 : .textWhite)
+                    .frame(height: 60)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
+                    .background(Color.bgButton)
+                    .embedInCornRadius(cornradius: 16)
                 })
-                .buttonStyle(ScaledButton(scaling: 0.9))
                 
                 Button(action: {
                     
-                    viewModel.currentStep = .main
+                    viewModel.currentStep = .names
                     
                 }, label: {
                     
-                    Text("SELECT")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
+                    Text("NEXT")
+                        .font(.body.bold())
+                        .foregroundColor(viewModel.selectedSet.isEmpty ? .textWhite40 : .textWhite)
+                        .frame(height: 60)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                        .background(
+                            LinearGradient(colors: [viewModel.selectedSet.isEmpty ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
+                                                    viewModel.selectedSet.isEmpty ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
+                                           startPoint: .topTrailing,
+                                           endPoint: .bottomLeading)
+                        )
+                        .embedInCornRadius(cornradius: 16)
                 })
-                .buttonStyle(ScaledButton(scaling: 0.9))
                 .opacity(viewModel.selectedSet.isEmpty ? 0.5 : 1)
                 .disabled(viewModel.selectedSet.isEmpty ? true : false)
             }
+        }
+        .onAppear {
+            
+            setsModel.fetchSets()
         }
     }
 }
 
 #Preview {
-    MainSets(viewModel: MainViewModel(), setsModel: MainSetsViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        MainSets(viewModel: MainViewModel(), setsModel: MainSetsViewModel())
+    }
 }

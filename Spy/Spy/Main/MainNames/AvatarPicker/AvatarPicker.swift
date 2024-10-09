@@ -19,9 +19,11 @@ struct AvatarPicker: View {
                 
                 Text(viewModel.currentStep.text)
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .bold))
+                    .font(.system(size: 19, weight: .bold))
                 
                 HStack {
+                    
+                    Spacer()
                     
                     Button(action: {
                         
@@ -29,12 +31,13 @@ struct AvatarPicker: View {
                         
                     }, label: {
                         
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
+                        Image("xmark")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.second)
                     })
-                    
-                    Spacer()
                 }
                 .padding(.horizontal)
             }
@@ -68,7 +71,7 @@ struct AvatarPicker: View {
                             Image(avatar)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 80, height: 80)
+                                .frame(width: 83, height: 83)
                         })
                         .buttonStyle(ScaledButton(scaling: 0.9))
                     }
@@ -81,5 +84,8 @@ struct AvatarPicker: View {
 }
 
 #Preview {
-    AvatarPicker(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        AvatarPicker(viewModel: MainViewModel())
+    }
 }

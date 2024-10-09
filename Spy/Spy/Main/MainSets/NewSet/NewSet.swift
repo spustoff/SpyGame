@@ -20,24 +20,9 @@ struct NewSet: View {
                 
                 Text(viewModel.currentStep.text)
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .bold))
+                    .font(.system(size: 19, weight: .bold))
                 
                 HStack {
-                    
-                    Button(action: {
-                        
-                        setsModel.clearData()
-                        viewModel.currentStep = .sets
-                        
-                    }, label: {
-                        
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
-                    })
-                    
-                    Spacer()
-                    
                     if !(setsModel.selectedSetForEdit == nil) {
                         
                         Button(action: {
@@ -54,11 +39,25 @@ struct NewSet: View {
                             
                         }, label: {
                             
-                            Image(systemName: "trash.fill")
-                                .foregroundColor(.red)
-                                .font(.system(size: 17, weight: .semibold))
+                            Icon(image: "trash.fill")
                         })
                     }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                        setsModel.clearData()
+                        viewModel.currentStep = .sets
+                        
+                    }, label: {
+                        Image("xmark")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.second)
+                    })
                 }
                 .padding(.horizontal)
             }
@@ -72,8 +71,8 @@ struct NewSet: View {
                         Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(height: 170)
-                            .cornerRadius(radius: 15, corners: .allCorners)
+                            .frame(height: 190)
+                            .cornerRadius(radius: 12, corners: .allCorners)
                             .overlay (
                             
                                 VStack(alignment: .trailing, content: {
@@ -84,11 +83,7 @@ struct NewSet: View {
                                         
                                     }, label: {
                                         
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(Color("primary"))
-                                            .font(.system(size: 13, weight: .regular))
-                                            .padding(7)
-                                            .background(Circle().fill(Color("bg")))
+                                        Icon(image: "close circle")
                                     })
                                     
                                     Spacer()
@@ -98,12 +93,7 @@ struct NewSet: View {
                                         setsModel.isAddPhoto = true
                                         
                                     }, label: {
-                                        
-                                        Image(systemName: "pencil")
-                                            .foregroundColor(Color.white)
-                                            .font(.system(size: 13, weight: .regular))
-                                            .padding(7)
-                                            .background(Circle().fill(Color("bg")))
+                                        Icon(image: "edit circle")
                                     })
                                 })
                                 .padding(8)
@@ -120,18 +110,16 @@ struct NewSet: View {
                             
                             VStack(alignment: .center, spacing: 7, content: {
                                 
-                                Image(systemName: "camera")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: 18, weight: .regular))
+                                Icon(image: "camera")
                                 
                                 Text("ADD PHOTO")
                                     .foregroundColor(Color("primary"))
-                                    .font(.system(size: 14, weight: .medium))
+                                    .font(.system(size: 14, weight: .bold))
                             })
                             .frame(maxWidth: .infinity)
-                            .frame(height: 170)
+                            .frame(height: 190)
                             .padding()
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
+                            .background(RoundedRectangle(cornerRadius: 15).fill(Color.bgCell))
                             .overlay(
                                 
                                 RoundedRectangle(cornerRadius: 15)
@@ -146,28 +134,26 @@ struct NewSet: View {
                         
                         Text("Name of the set...")
                             .foregroundColor(.gray)
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.system(size: 17, weight: .medium))
                             .opacity(setsModel.nameSet.isEmpty ? 1 : 0)
                         
                         TextField("", text: $setsModel.nameSet)
                             .foregroundColor(.white)
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.system(size: 17, weight: .medium))
                     })
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 14)
+                    .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                     
-                    VStack(alignment: .leading, spacing: 15, content: {
+                    VStack(alignment: .leading, spacing: 8, content: {
                         
                         HStack(spacing: 10, content: {
                             
-                            Image("roles.icon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 21, height: 21)
+                            Icon(image: "person.crop.circle.badge.questionmark")
                             
                             Text("Roles")
                                 .foregroundColor(.white)
-                                .font(.system(size: 17, weight: .medium))
+                                .font(.system(size: 19, weight: .bold))
                             
                             Spacer()
                             
@@ -176,10 +162,12 @@ struct NewSet: View {
                                 setsModel.roles.append(RoleItem(name: ""))
                                 
                             }, label: {
-                                
-                                Image(systemName: "plus")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: 18, weight: .regular))
+                                Image("plus")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.prime)
                             })
                         })
                         
@@ -191,12 +179,12 @@ struct NewSet: View {
                                     
                                     Text("Enter the role...")
                                         .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                         .opacity(index.name.isEmpty ? 1 : 0)
                                     
                                     TextField("", text: $index.name)
                                         .foregroundColor(.white)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                 }
                                 
                                 Spacer()
@@ -212,29 +200,30 @@ struct NewSet: View {
                                         
                                     }, label: {
                                         
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 15, weight: .regular))
+                                        Image("xmark")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 32, height: 32)
+                                            .foregroundColor(.textWhite40)
                                     })
                                 }
                             }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 14)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         }
                     })
                     
-                    VStack(alignment: .leading, spacing: 15, content: {
+                    VStack(alignment: .leading, spacing: 8, content: {
                         
                         HStack(spacing: 10, content: {
                             
-                            Image("locations.icon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 21, height: 21)
+                            Icon(image: "globe.americas.fill")
                             
                             Text("Cards")
                                 .foregroundColor(.white)
-                                .font(.system(size: 17, weight: .medium))
+                                .font(.system(size: 19, weight: .bold))
                             
                             Spacer()
                             
@@ -244,9 +233,12 @@ struct NewSet: View {
                                 
                             }, label: {
                                 
-                                Image(systemName: "plus")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: 18, weight: .regular))
+                                Image("plus")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.prime)
                             })
                         })
                         
@@ -258,12 +250,12 @@ struct NewSet: View {
                                     
                                     Text("Location name...")
                                         .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                         .opacity(index.name.isEmpty ? 1 : 0)
                                     
                                     TextField("", text: $index.name)
                                         .foregroundColor(.white)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                 }
                                 
                                 Spacer()
@@ -279,29 +271,30 @@ struct NewSet: View {
                                         
                                     }, label: {
                                         
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 15, weight: .regular))
+                                        Image("xmark")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 32, height: 32)
+                                            .foregroundColor(.textWhite40)
                                     })
                                 }
                             }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 14)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         }
                     })
                     
-                    VStack(alignment: .leading, spacing: 15, content: {
+                    VStack(alignment: .leading, spacing: 8, content: {
                         
                         HStack(spacing: 6, content: {
                             
-                            Image("hints.icon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 25, height: 25)
+                            Icon(image: "info.circle")
                             
                             Text("Hints")
                                 .foregroundColor(.white)
-                                .font(.system(size: 17, weight: .medium))
+                                .font(.system(size: 19, weight: .bold))
                             
                             Spacer()
                             
@@ -311,9 +304,12 @@ struct NewSet: View {
                                 
                             }, label: {
                                 
-                                Image(systemName: "plus")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: 18, weight: .regular))
+                                Image("plus")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.prime)
                             })
                         })
                         
@@ -325,12 +321,12 @@ struct NewSet: View {
                                     
                                     Text("Enter a hint...")
                                         .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                         .opacity(index.name.isEmpty ? 1 : 0)
                                     
                                     TextField("", text: $index.name)
                                         .foregroundColor(.white)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                 }
                                 
                                 Spacer()
@@ -346,14 +342,18 @@ struct NewSet: View {
                                         
                                     }, label: {
                                         
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 15, weight: .regular))
+                                        Image("plus")
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 32, height: 32)
+                                            .foregroundColor(.textWhite40)
                                     })
                                 }
                             }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 14)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         }
                     })
                 }
@@ -362,22 +362,27 @@ struct NewSet: View {
             
             HStack {
                 
-                Button(action: {
-                    
-                    setsModel.clearData()
-                    viewModel.currentStep = .sets
-                    
-                }, label: {
-                    
-                    Text("CANCEL")
-                        .foregroundColor(Color("primary"))
-                        .font(.system(size: 16, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
-                })
-                .buttonStyle(ScaledButton(scaling: 0.9))
+                if !(setsModel.selectedSetForEdit == nil) {
+                    Button(action: {
+                        
+                        setsModel.clearData()
+                        viewModel.currentStep = .sets
+                        
+                    }, label: {
+                        
+                        Text("CANCEL")
+                            .font(.body.bold())
+                            .foregroundColor(.prime)
+                            .frame(height: 60)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.bgButton)
+                            .embedInCornRadius(cornradius: 16)
+                    })
+                    .buttonStyle(ScaledButton(scaling: 0.9))
+                }
                 
+                let isDisSave = setsModel.nameSet.isEmpty || !setsModel.roles.allSatisfy { !$0.name.isEmpty } || !setsModel.locations.allSatisfy { !$0.name.isEmpty }
+                    
                 Button(action: {
                     
                     if setsModel.selectedSetForEdit == nil {
@@ -406,15 +411,21 @@ struct NewSet: View {
                 }, label: {
                     
                     Text("SAVE")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.body.bold())
+                        .foregroundColor(isDisSave ? .textWhite40 : .textWhite)
+                        .frame(height: 60)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                        .background(
+                            LinearGradient(colors: [isDisSave ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
+                                                    isDisSave ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
+                                           startPoint: .topTrailing,
+                                           endPoint: .bottomLeading)
+                        )
+                        .embedInCornRadius(cornradius: 16)
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
-                .opacity(setsModel.nameSet.isEmpty || !setsModel.roles.allSatisfy { !$0.name.isEmpty } || !setsModel.locations.allSatisfy { !$0.name.isEmpty } ? 0.5 : 1)
-                .disabled(setsModel.nameSet.isEmpty || !setsModel.roles.allSatisfy { !$0.name.isEmpty } || !setsModel.locations.allSatisfy { !$0.name.isEmpty } ? true : false)
+                .opacity(isDisSave ? 0.5 : 1)
+                .disabled(isDisSave ? true : false)
             }
         }
         .sheet(isPresented: $setsModel.isAddPhoto) {
@@ -426,5 +437,8 @@ struct NewSet: View {
 }
 
 #Preview {
-    NewSet(viewModel: MainViewModel(), setsModel: MainSetsViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        NewSet(viewModel: MainViewModel(), setsModel: MainSetsViewModel())
+    }
 }

@@ -15,11 +15,9 @@ struct MainView: View {
         
         ZStack {
             
-            Color("darkBlue")
-                .ignoresSafeArea()
+            Color.bgSecond.ignoresSafeArea()
             
-            VStack(alignment: .center, spacing: 0, content: {
-                
+            VStack(alignment: .center, spacing: 0) {
                 HStack {
                     
                     NavigationLink(destination: {
@@ -28,11 +26,7 @@ struct MainView: View {
                             .navigationBarBackButtonHidden()
                         
                     }, label: {
-                        
-                        Image("gear.icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 35, height: 35)
+                        Icon(image: "line.3.horizontal")
                     })
                     
                     Spacer()
@@ -43,11 +37,7 @@ struct MainView: View {
                             .navigationBarBackButtonHidden()
                         
                     }, label: {
-                        
-                        Image("rules.icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 35, height: 35)
+                        Icon(image: "info.bubble")
                     })
                     
                     NavigationLink(destination: {
@@ -56,40 +46,36 @@ struct MainView: View {
                             .navigationBarBackButtonHidden()
                         
                     }, label: {
-                        
-                        Image("rounds.icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 35, height: 35)
+                        Icon(image: "clock.arrow.circlepath")
                     })
                 }
                 
-                Image("logo_big")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 220, height: 220)
+                .padding(.horizontal)
+                .padding(.top, 20)
+                .font(.system(size: 21))
+                .foregroundColor(.second)
                 
                 Spacer()
-            })
-            .padding()
+            }
             
             VStack {
-                
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(.gray.opacity(0.4))
-                    .frame(width: 50, height: 5)
-                
-                viewModel.manageViews()
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Rectangle().fill(Color("bg")).cornerRadius(radius: 25, corners: [.topLeft, .topRight]).ignoresSafeArea())
-            .frame(maxHeight: .infinity, alignment: .bottom)
-            .animation(.spring(), value: viewModel.currentStep)
-            .if(viewModel.currentStep == .pickAvatar) { view in
-                
-                view
-                    .ignoresSafeArea(.all, edges: .bottom)
+                Image("spy")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 208, height: 208)
+                VStack {
+                    viewModel.manageViews()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Rectangle().fill(Color.bgPrime).cornerRadius(radius: 16, corners: [.topLeft, .topRight]).ignoresSafeArea())
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .animation(.spring(), value: viewModel.currentStep)
+                .if(viewModel.currentStep == .pickAvatar) { view in
+                    
+                    view
+                        .ignoresSafeArea(.all, edges: .bottom)
+                }
             }
         }
         .fullScreenCover(isPresented: $viewModel.isGame, content: {

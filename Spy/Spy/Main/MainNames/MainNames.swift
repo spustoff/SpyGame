@@ -20,7 +20,7 @@ struct MainNames: View {
                 
                 Text(viewModel.currentStep.text)
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .bold))
+                    .font(.system(size: 19, weight: .bold))
                 
                 HStack {
                     
@@ -29,10 +29,7 @@ struct MainNames: View {
                         viewModel.viewSwitcher(.minus)
                         
                     }, label: {
-                        
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
+                        Icon(image: "chevron.left")
                     })
                     
                     Spacer()
@@ -52,22 +49,29 @@ struct MainNames: View {
                             
                             HStack {
                                 
-                                Image(player.playerPhoto)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 35, height: 35)
+                                Icon(image: "person.circle")
+                                    .frame(width: 40, height: 40)
+                                    .background(Color.bgCell)
+                                    .embedInCornRadius(cornradius: 100)
+                                    .overlay(
+                                        Image(player.playerPhoto)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 40, height: 40)
+                                            .embedInCornRadius(cornradius: 100)
+                                            .opacity(player.playerPhoto.isEmpty ? 0 : 1)
+                                    )
                                     .overlay (
                                     
                                         Image(systemName: "camera.fill")
-                                            .foregroundColor(Color("bezhev"))
-                                            .font(.system(size: 8, weight: .regular))
-                                            .padding(6)
-                                            .background(
-                                                
-                                                Circle()
-                                                    .fill(Color("bg"))
-                                                    .opacity(player.playerPhoto == "avatar_name" ? 0 : 1)
-                                            )
+                                            .resizable()
+                                            .renderingMode(.template)
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 15, height: 15)
+                                            .foregroundColor(Color.second)
+                                            .frame(width: 19, height: 19)
+                                            .background(Color.bg)
+                                            .embedInCornRadius(cornradius: 100)
                                             .offset(x: 10, y: 10)
                                     )
                                     .onTapGesture {
@@ -84,7 +88,7 @@ struct MainNames: View {
                                     
                                     Text("Name...")
                                         .foregroundColor(.gray)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.system(size: 17, weight: .medium))
                                         .opacity(player.playerName.isEmpty ? 1 : 0)
                                     
                                     TextField("", text: Binding<String>(
@@ -96,7 +100,7 @@ struct MainNames: View {
                                         }
                                     ))
                                         .foregroundColor(.white)
-                                        .font(.system(size: 14, weight: .medium))
+                                        .font(.system(size: 17, weight: .medium))
                                 })
                                 
                                 Spacer()
@@ -108,10 +112,7 @@ struct MainNames: View {
                                         dataManager.savePlayer(player: player)
                                         
                                     }, label: {
-                                        
-                                        Image(systemName: dataManager.isSavedPlayer(player) ? "star.fill" : "star")
-                                            .foregroundColor(dataManager.isSavedPlayer(player) ? Color("bezhev") : .gray)
-                                            .font(.system(size: 19, weight: .regular))
+                                        Icon(image: dataManager.isSavedPlayer(player) ? "star.fill" : "star")
                                     })
                                 }
                                 
@@ -121,19 +122,19 @@ struct MainNames: View {
                                     viewModel.currentStep = .nameFavorites
                                     
                                 }, label: {
-                                    
-                                    Image("favorites_reorder.icon")
+                                    Icon(image: "text.badge.star")
                                 })
                             }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 13).fill(Color("bgGray")))
+                            .padding(.horizontal, 12)
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         }
                     }
                 }
             }
             .frame(height: UIScreen.main.bounds.height / 2.5)
             
+            let isDisSave = viewModel.playerNames.allSatisfy { !$0.playerName.isEmpty }
             Button(action: {
                 
                 viewModel.setupPlayers()
@@ -141,19 +142,28 @@ struct MainNames: View {
             }, label: {
                 
                 Text("PLAY!")
-                    .foregroundColor(.white)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.body.bold())
+                    .foregroundColor(!isDisSave ? .textWhite40 : .textWhite)
+                    .frame(height: 60)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                    .background(
+                        LinearGradient(colors: [!isDisSave ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
+                                                !isDisSave ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
+                                       startPoint: .topTrailing,
+                                       endPoint: .bottomLeading)
+                    )
+                    .embedInCornRadius(cornradius: 16)
             })
             .buttonStyle(ScaledButton(scaling: 0.9))
-            .opacity(viewModel.playerNames.allSatisfy { !$0.playerName.isEmpty } ? 1 : 0.5)
-            .disabled(viewModel.playerNames.allSatisfy { !$0.playerName.isEmpty } ? false : true)
+            .opacity(isDisSave ? 1 : 0.5)
+            .disabled(isDisSave ? false : true)
         }
     }
 }
 
 #Preview {
-    MainNames(viewModel: MainViewModel(), dataManager: DataManager())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        MainNames(viewModel: MainViewModel(), dataManager: DataManager())
+    }
 }
