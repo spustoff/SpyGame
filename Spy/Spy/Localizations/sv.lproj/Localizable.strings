@@ -1,0 +1,202 @@
+/* 
+  Localizable.strings
+  Spy
+
+  Created by Вячеслав on 12/17/23.
+  
+*/
+
+"DISABLE ADS" = "INAKTIVERA ANNONSER";
+"Party Game" = "Partyspel";
+"Swipe and pass to the next" = "Svep och gå vidare till nästa";
+"Roles" = "Roller";
+"asks first" = "frågar först";
+"catch" = "fånga";
+"months" = "månader";
+"Result" = "Resultat";
+"Get Premium" = "Få Premium";
+"Rate our app" = "Betygsätt vår app";
+"Spy won" = "Spionen vann";
+"Reset Default Sets" = "Återställ standarduppsättningar";
+"Losers" = "Förlorare";
+"The Peacefuls won" = "De Fredliga vann";
+"Use your logical and analytical skills to win this game" = "Använd dina logiska och analytiska färdigheter för att vinna detta spel";
+"CARDS" = "KORT";
+"SAVE" = "SPARA";
+"Your card" = "Ditt kort";
+"NEW" = "NYTT";
+"ADD PHOTO" = "LÄGG TILL FOTO";
+"Favorites list is empty" = "Favoritlistan är tom";
+"Create a new one or click on the star in the list of players" = "Skapa en ny eller klicka på stjärnan i spelarlistan";
+"Rules of the Spy Game" = "Regler för spion-spelet";
+"Interesting sets" = "Intressanta uppsättningar";
+"Settings" = "Inställningar";
+"Share with friends" = "Dela med vänner";
+"No locations data found" = "Inga platser hittades";
+"History" = "Historia";
+"SURRENDER" = "GE UPP";
+"Hints" = "Tips";
+"Reset" = "Återställ";
+"Game" = "Spel";
+"Location" = "Plats";
+"Intrigues and Secrets" = "Intriger och Hemligheter";
+"Random Set" = "Slumpmässig uppsättning";
+"CANCEL" = "AVBRYT";
+"History is empty" = "Historiken är tom";
+"CONTINUE PLAYING" = "FORTSÄTT SPELA";
+"The Peacefuls lost" = "De Fredliga förlorade";
+"Locations await you" = "Platser väntar på dig";
+"Eduardo" = "Eduardo";
+"Players" = "Spelare";
+"Spies" = "Spioner";
+"VOTE" = "RÖSTA";
+"Preparation" = "Förberedelse";
+"Please" = "Var snäll";
+"View Roles" = "Visa Roller";
+"No" = "Nej";
+"SHOW HINT" = "VISA TIPS";
+"Favorites" = "Favoriter";
+"years" = "år";
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Rösta turvis för personen du tror är en spion och ta reda på resultatet av ditt val";
+"Additional rules" = "Ytterligare regler";
+"Language" = "Språk";
+"Voting Result" = "Röstningsresultat";
+"Rounds" = "Omgångar";
+"End of Game" = "Spelens slut";
+"Pick an Avatar" = "Välj en Avatar";
+"New Set" = "Ny Uppsättning";
+"Show Rules" = "Visa Regler";
+"Rate us in the AppStore" = "Betygsätt oss i AppStore";
+"Time" = "Tid";
+"Game progress" = "Spelframsteg";
+"You are a" = "Du är en";
+"This is a fascinating game where everyone can become a master of deception" = "Det här är ett fascinerande spel där alla kan bli mästare på bedrägeri";
+"is supposedly a spy" = "är förmodligen en spion";
+"Vibration" = "Vibration";
+"Yes" = "Ja";
+"Privacy Policy" = "Integritetspolicy";
+"Usage Policy" = "Användningspolicy";
+"days" = "dagar";
+"Lots of game options" = "Massor av spelalternativ";
+"Cancel anytime" = "Avbryt när som helst";
+"Ad" = "Annons";
+"Handing Out" = "Utdelning";
+"SELECT" = "VÄLJ";
+"persons" = "personer";
+"Question time" = "Frågetid";
+"PlayersCoreModel" = "SpelarCoreModell";
+"About Game" = "Om spelet";
+"Regular content updates" = "Regelbundna innehållsuppdateringar";
+"NEXT" = "NÄSTA";
+"SKIP" = "HOPPA ÖVER";
+"Creating your own sets" = "Skapa dina egna uppsättningar";
+"Term of Use" = "Användarvillkor";
+"Choose your plan" = "Välj din plan";
+"None" = "Ingen";
+"day" = "dag";
+"Full access to all content" = "Full tillgång till allt innehåll";
+"Choose a set that suits you and play the game in a new way" = "Välj en uppsättning som passar dig och spela spelet på ett nytt sätt";
+"Sets" = "Uppsättningar";
+"RESTORE" = "ÅTERSTÄLL";
+"Popular" = "Populärt";
+"Cards" = "Kort";
+"PLAY" = "SPELA";
+"PREVIOUS" = "FÖREGÅENDE";
+"month" = "månad";
+"Names" = "Namn";
+"START THE GAME" = "STARTA SPELET";
+"Winners" = "Vinnare";
+"Game Options" = "Spelalternativ";
+"TRY IT" = "PROVA DET";
+"Rules" = "Regler";
+"year" = "år";
+"Empty" = "Tomt";
+"weeks" = "veckor";
+"week" = "vecka";
+"Help make our game even better" = "Hjälp oss göra vårt spel ännu bättre";
+"Role" = "Roll";
+"Spy" = "Spion";
+"Premium Full Access" = "Premium Full Tillgång";
+"spies" = "spioner";
+"Perfect for friends" = "Perfekt för vänner";
+"NEW GAME" = "NYTT SPEL";
+"Tap on it" = "Tryck på det";
+"Voting" = "Röstning";
+"Restore Purchases" = "Återställ Köp";
+
+"Remove Ads" = "Ta bort annonser";
+"IT'S ALL CLEAR!" = "ALLT ÄR KLART!";
+
+"The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more." = "Spelet 'Spion' är ett intellektuellt spel där deltagarna måste gissa ett ord utan att avslöja sin roll som spion. Spelet involverar 3 personer eller fler.";
+"The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others." = "Utdelningen av kort börjar. En eller flera spelare tilldelas slumpmässigt rollen som spion. Varje spelare tittar på sitt kort, men visar det inte för de andra.";
+"The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc." = "Spelet börjar när timern startar. En spelare ställer en fråga till en annan spelare. Frågan bör vara utformad för att hjälpa till att avgöra om den spelaren är en spion. Efter att den spelaren har svarat ställer den spelaren en fråga till nästa spelare, osv.";
+"The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins." = "Spelet avslutas när spionen gissar platsen, när spionen avslöjas eller när spelets timer går ut. Om tiden går ut och spionen inte avslöjas vinner spionen.";
+"A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win." = "En spion kan försöka gissa en plats när som helst i spelet. Om spionen gissar platsen vinner han spelet. Om spionen har fel avslutas spelet och de andra spelarna vinner.";
+"Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues." = "Spelarna kan pausa och rösta för att anklaga någon för att vara spion. Om en majoritet är överens måste den spelaren avslöja sitt kort. Om det är en spion är han ute ur spelet. Om det inte är en spion fortsätter spelet.";
+"If there is more than one spy in the game, the civilians must detect all spies to win." = "Om det finns fler än en spion i spelet måste civila detektera alla spioner för att vinna.";
+
+"PLAY!" = "SPELA!";
+
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Turas om att rösta på personen du tror är en spion och ta reda på resultatet av ditt val";
+"Who's a spy?" = "Vem är en spion?";
+"Vote" = "Rösta";
+"Who do you think is a spy?" = "Vem tror du är en spion?";
+"You have a chance to prove you're not a spy, pick a location that has players in it" = "Du har chansen att bevisa att du inte är en spion, välj en plats där det finns spelare";
+"What location are we in?" = "Vilken plats är vi på?";
+
+
+"The spy won!" = "Spionen vann!";
+"The spies won!" = "Spionerna vann!";
+"The Peacefuls have won!" = "De Fredliga har vunnit!";
+"The Peacefuls lost" = "De Fredliga förlorade";
+"The spy lost!" = "Spionen förlorade!";
+"The spies lost!" = "Spionerna förlorade!";
+
+
+"You haven't played a game yet, start playing!" = "Du har inte spelat något spel ännu, börja spela!";
+"Name of the set..." = "Namn på uppsättningen...";
+"Enter the role..." = "Ange rollen...";
+"Location name..." = "Platsens namn...";
+"Enter a hint..." = "Ange en ledtråd...";
+"Name..." = "Namn...";
+"Timer (min)" = "Timer (min)";
+
+"Remove ads from game" = "Ta bort annonser från spelet";
+
+
+"1. Before the game starts" = "1. Innan spelet börjar";
+"About the game" = "Om spelet";
+"Tasks of the players" = "Spelarnas uppgifter";
+"Preparation" = "Förberedelse";
+"Optional" = "Valfritt";
+
+"2. Beginning of the game" = "2. Spelets början";
+"Gameplay" = "Spelprocess";
+"Example of a game round" = "Exempel på en spelrunda";
+
+"3. Ending the game" = "3. Avslutande av spelet";
+"When the timer expires" = "När timern löper ut";
+"After the vote" = "Efter omröstningen";
+"At the will of the spy" = "Enligt spionens vilja";
+"And more rules" = "Och fler regler";
+
+"Write to us" = "Skriv till oss";
+"E-Mail" = "E-post";
+"Your e-mail" = "Din e-post";
+"Subject" = "Ämne";
+"Your subject" = "Ditt ämne";
+"Message" = "Meddelande";
+"Write your question or problem here" = "Skriv din fråga eller ditt problem här";
+"SEND" = "SKICKA";
+
+"Reset the default sets?" = "Återställ standarduppsättningar?";
+"Only your sets will be reset, our sets will be saved. You'll have to re-enter the game" = "Endast dina uppsättningar kommer att återställas, våra uppsättningar kommer att sparas. Du måste ange spelet igen";
+"Your opinion" = "Din åsikt";
+"Thanks for your feedback!" = "Tack för din feedback!";
+"We'll work on it" = "Vi kommer att arbeta med det";
+"Do you like the app?" = "Tycker du om appen?";
+"You can also help us by rating in the AppStore" = "Du kan också hjälpa oss genom att betygsätta i AppStore";
+"Write more details to our mail what you would like to improve or fix" = "Skriv fler detaljer till vår e-post om vad du vill förbättra eller fixa";
+"Your feedback is very important to improve the app and make it better for you" = "Din feedback är mycket viktig för att förbättra appen och göra den bättre för dig";
+"WRITE REVIEW" = "SKRIV RECENSION";
+"WRITE AN E-MAIL" = "SKRIV ETT E-POST";

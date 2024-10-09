@@ -1,0 +1,205 @@
+/* 
+  Localizable.strings
+  Spy
+
+  Created by Вячеслав on 12/17/23.
+  
+*/
+
+"DISABLE ADS" = "ОТКЛЮЧИТЬ РЕКЛАМУ";
+"Party Game" = "Вечеринка";
+"Swipe and pass to the next" = "Проведите и перейдите к следующему";
+"Roles" = "Роли";
+"asks first" = "спрашивает первым";
+"catch" = "поймать";
+"months" = "месяцев";
+"Result" = "Результат";
+"Get Premium" = "Получить Премиум";
+"Rate our app" = "Оцените наше приложение";
+"Spy won" = "Шпион победил";
+"Reset Default Sets" = "Сбросить комплекты";
+"Losers" = "Проигравшие";
+"The Peacefuls won" = "Миролюбивые выиграли";
+"Use your logical and analytical skills to win this game" = "Используйте свои логические и аналитические навыки, чтобы выиграть эту игру";
+"CARDS" = "КАРТОЧКИ";
+"SAVE" = "СОХРАНИТЬ";
+"Your card" = "Ваша карта";
+"NEW" = "НОВЫЙ";
+"ADD PHOTO" = "ДОБАВИТЬ ФОТО";
+"Favorites list is empty" = "Список избранных пуст";
+"Create a new one or click on the star in the list of players" = "Создайте новый или нажмите на звезду в списке игроков";
+"Rules of the Spy Game" = "Правила игры Шпион";
+"Interesting sets" = "Интересные наборы";
+"Settings" = "Настройки";
+"Share with friends" = "Поделиться с друзьями";
+"No locations data found" = "Данные о местоположении не найдены";
+"History" = "История";
+"SURRENDER" = "СДАТЬСЯ";
+"Hints" = "Подсказки";
+"Reset" = "Сброс";
+"Game" = "Игра";
+"Location" = "Местоположение";
+"Intrigues and Secrets" = "Интриги и Секреты";
+"Random Set" = "Случайный набор";
+"CANCEL" = "ОТМЕНА";
+"History is empty" = "История пуста";
+"CONTINUE PLAYING" = "ПРОДОЛЖИТЬ ИГРУ";
+"The Peacefuls lost" = "Миролюбивые проиграли";
+"Locations await you" = "Места ждут вас";
+"Eduardo" = "Эдуардо";
+"Players" = "Игроки";
+"Spies" = "Шпионы";
+"VOTE" = "ГОЛОСОВАТЬ";
+"Preparation" = "Подготовка";
+"Please" = "Пожалуйста";
+"View Roles" = "Посмотреть роли";
+"No" = "Нет";
+"SHOW HINT" = "ПОКАЗАТЬ ПОДСКАЗКУ";
+"Favorites" = "Избранное";
+"years" = "годов";
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Поочередно голосуйте за человека, которого считаете шпионом, и узнайте результат вашего выбора";
+"Additional rules" = "Дополнительные правила";
+"Language" = "Язык";
+"Voting Result" = "Результат голосования";
+"Rounds" = "Раунды";
+"End of Game" = "Конец игры";
+"Pick an Avatar" = "Выберите аватар";
+"New Set" = "Новый набор";
+"Show Rules" = "Показывать правила";
+"Rate us in the AppStore" = "Оцените нас в AppStore";
+"Time" = "Время";
+"Game progress" = "Прогресс игры";
+"You are a" = "Вы -";
+"This is a fascinating game where everyone can become a master of deception" = "Это увлекательная игра, в которой каждый может стать мастером обмана";
+"is supposedly a spy" = "предположительно шпион";
+"Vibration" = "Вибрация";
+"Yes" = "Да";
+"Privacy Policy" = "Политика конфиденциальности";
+"Usage Policy" = "Политика использования";
+"days" = "дни";
+"Lots of game options" = "Много вариантов игры";
+"Cancel anytime" = "Отмена в любое время";
+"Ad" = "Реклама";
+"Handing Out" = "Раздача";
+"SELECT" = "ВЫБРАТЬ";
+"persons" = "лица";
+"Question time" = "Время вопросов";
+"PlayersCoreModel" = "Модель игроков";
+"About Game" = "О игре";
+"Regular content updates" = "Регулярные обновления контента";
+"NEXT" = "ДАЛЕЕ";
+"SKIP" = "ПРОПУСТИТЬ";
+"Creating your own sets" = "Создание собственных наборов";
+"Term of Use" = "Условия использования";
+"Choose your plan" = "Выберите свой план";
+"None" = "Ничего";
+"day" = "день";
+"Full access to all content" = "Полный доступ ко всему контенту";
+"Choose a set that suits you and play the game in a new way" = "Выберите набор, который вам подходит, и играйте в игру новым способом";
+"Sets" = "Наборы";
+"RESTORE" = "ВОССТАНОВИТЬ ПОКУПКИ";
+"Popular" = "Популярный";
+"Cards" = "Карточки";
+"PLAY" = "ИГРАТЬ";
+"PREVIOUS" = "ПРЕДЫДУЩИЙ";
+"month" = "месяц";
+"Names" = "Имена";
+"START THE GAME" = "НАЧАТЬ ИГРУ";
+"Winners" = "Победители";
+"Game Options" = "Настройки игры";
+"TRY IT" = "ПОПРОБУЙТЕ";
+"Rules" = "Правила";
+"year" = "год";
+"Empty" = "Пусто";
+"weeks" = "недели";
+"week" = "неделя";
+"Help make our game even better" = "Помогите сделать нашу игру еще лучше";
+"Role" = "Роль";
+"Spy" = "Шпион";
+"Premium Full Access" = "Премиум-полный доступ";
+"spies" = "шпионы";
+"Perfect for friends" = "Идеально для друзей";
+"NEW GAME" = "НОВАЯ ИГРА";
+"Tap on it" = "Нажмите на карточку";
+"Voting" = "Голосование";
+"Restore Purchases" = "Восстановить покупки";
+
+"Remove Ads" = "Убрать рекламу";
+"IT'S ALL CLEAR!" = "Всё ясно!";
+
+"The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more." = "Игра 'Шпион' - это интеллектуальная игра, в которой участники должны угадать слово, не раскрывая свою роль шпиона. В игре участвует 3 человека или более.";
+"The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others." = "Начинается раздача карт. Один или несколько игроков случайным образом назначаются шпионами. Каждый игрок смотрит на свою карту, но не показывает её другим.";
+"The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc." = "Игра начинается, когда запускается таймер. Один игрок задает другому игроку вопрос. Вопрос должен быть таким, чтобы помочь определить, является ли этот игрок шпионом. После того как этот игрок ответит, он задает вопрос следующему игроку и так далее.";
+"The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins." = "Игра заканчивается, когда шпион угадывает местоположение, когда шпион раскрывается или когда истекает время игры. Если время истекает, и шпион не раскрывается, шпион побеждает.";
+"A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win." = "Шпион может попытаться угадать место в любой момент игры. Если шпион угадывает место, он выигрывает игру. Если шпион ошибается, игра заканчивается, и другие игроки выигрывают.";
+"Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues." = "Игроки могут приостановить игру и проголосовать, обвинив кого-то в том, что он шпион. Если большинство соглашается, этот игрок должен раскрыть свою карту. Если это шпион, его исключают из игры. Если это не шпион, игра продолжается.";
+"If there is more than one spy in the game, the civilians must detect all spies to win." = "Если в игре более одного шпиона, гражданские должны обнаружить всех шпионов, чтобы победить.";
+
+"PLAY!" = "ИГРАТЬ!";
+
+"Press play when all players are ready to start the timer" = "Нажмите 'начать', когда все игроки будут готовы играть";
+"Press pause at any time to arrange a vote or for a spy to choose a location" = "Нажмите 'паузу' в любое время, чтобы провести голосование или чтобы шпион выбрал местоположение";
+
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Поочередно голосуйте за того, кого вы считаете шпионом, и узнайте результат вашего выбора";
+"Who's a spy?" = "Кто шпион?";
+"Vote" = "Голосовать";
+"Who do you think is a spy?" = "Кого вы считаете шпионом?";
+"You have a chance to prove you're not a spy, pick a location that has players in it" = "У вас есть шанс доказать, что вы не шпион, выберите местоположение с игроками";
+"What location are we in?" = "В каком местоположении?";
+
+"The spy won!" = "Шпион победил!";
+"The spies won!" = "Шпионы победили!";
+"The Peacefuls have won!" = "Мирные выиграли!";
+"The Peacefuls lost" = "Мирные проиграли";
+"The spy lost!" = "Шпион проиграл!";
+"The spies lost!" = "Шпионы проиграли!";
+
+
+"You haven't started the game yet, start playing!" = "Вы еще не начинали игру, начните игру!";
+"Name of the set..." = "Имя набора...";
+"Enter the role..." = "Введите роль...";
+"Location name..." = "Имя местоположения...";
+"Enter a hint..." = "Введите подсказку...";
+"Name..." = "Имя...";
+"Timer (min)" = "Таймер (мин)";
+
+"Terms of Use" = "Политика использования";
+
+"Remove ads from game" = "Удалить рекламу из игры";
+
+"1. Before the game starts" = "1. Перед началом игры";
+"About the game" = "О игре";
+"Tasks of the players" = "Задачи игроков";
+"Preparation" = "Подготовка";
+"Optional" = "Дополнительно";
+
+"2. Beginning of the game" = "2. Начало игры";
+"Gameplay" = "Игровой процесс";
+"Example of a game round" = "Пример раунда игры";
+
+"3. Ending the game" = "3. Завершение игры";
+"When the timer expires" = "Когда истекает таймер";
+"After the vote" = "После голосования";
+"At the will of the spy" = "По желанию шпиона";
+"And more rules" = "И другие правила";
+
+"Write to us" = "Напишите нам";
+"E-Mail" = "E-Mail";
+"Your e-mail" = "Ваш e-mail";
+"Subject" = "Тема";
+"Your subject" = "Ваша тема";
+"Message" = "Сообщение";
+"Write your question or problem here" = "Опишите ваш вопрос или проблему здесь";
+"SEND" = "ОТПРАВИТЬ";
+
+"Reset the default sets?" = "Сбросить стандартные настройки?";
+"Only your sets will be reset, our sets will be saved. You'll have to re-enter the game" = "Будут сброшены только ваши настройки, наши настройки останутся неизменными. Вам придется заново войти в игру";
+"Your opinion" = "Ваше мнение";
+"Thanks for your feedback!" = "Спасибо за ваш отзыв!";
+"We'll work on it" = "Мы поработаем над этим";
+"Do you like the app?" = "Вам нравится приложение?";
+"You can also help us by rating in the AppStore" = "Вы также можете помочь нам, оценив приложение в AppStore";
+"Write more details to our mail what you would like to improve or fix" = "Напишите больше деталей в нашу почту о том, что вы хотели бы улучшить или исправить";
+"Your feedback is very important to improve the app and make it better for you" = "Ваш отзыв очень важен для улучшения приложения и сделать его лучше для вас";
+"WRITE REVIEW" = "НАПИСАТЬ ОТЗЫВ";
+"WRITE AN E-MAIL" = "НАПИСАТЬ ПИСЬМО";

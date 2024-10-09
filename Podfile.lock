@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (5.8.1)
+  - Amplitude (8.17.2):
+    - AnalyticsConnector (~> 1.0.0)
+  - AnalyticsConnector (1.0.3)
+  - ApphudSDK (3.1.4)
+  - Kingfisher (7.10.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Amplitude
+  - ApphudSDK
+  - Kingfisher
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Amplitude
+    - AnalyticsConnector
+    - ApphudSDK
+    - Kingfisher
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  Amplitude: 0485db1968c10d13dc40b7980fb9f83c4e3036ab
+  AnalyticsConnector: a53214d38ae22734c6266106c0492b37832633a9
+  ApphudSDK: 5e5a30f21b8b44b864e5f16f2b2a122d2b906781
+  Kingfisher: bc5abe80a8e0144537ef1dd5a0b2621b04f7f439
+
+PODFILE CHECKSUM: f3a2fa84d7824c01ccc2d2774edc71fef6000b77
+
+COCOAPODS: 1.12.1

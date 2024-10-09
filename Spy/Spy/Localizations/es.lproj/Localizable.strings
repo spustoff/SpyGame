@@ -1,0 +1,202 @@
+/* 
+  Localizable.strings
+  Spy
+
+  Created by Вячеслав on 12/17/23.
+  
+*/
+
+"DISABLE ADS" = "DESACTIVAR ANUNCIOS";
+"Party Game" = "Juego de fiesta";
+"Swipe and pass to the next" = "Desliza y pasa al siguiente";
+"Roles" = "Roles";
+"asks first" = "pregunta primero";
+"catch" = "atrapar";
+"months" = "meses";
+"Result" = "Resultado";
+"Get Premium" = "Obtener Premium";
+"Rate our app" = "Califica nuestra aplicación";
+"Spy won" = "El espía ganó";
+"Reset Default Sets" = "Restablecer conjuntos predeterminados";
+"Losers" = "Perdedores";
+"The Peacefuls won" = "Los Pacíficos ganaron";
+"Use your logical and analytical skills to win this game" = "Utiliza tus habilidades lógicas y analíticas para ganar este juego";
+"CARDS" = "TARJETAS";
+"SAVE" = "GUARDAR";
+"Your card" = "Tu tarjeta";
+"NEW" = "NUEVO";
+"ADD PHOTO" = "AGREGAR FOTO";
+"Favorites list is empty" = "La lista de favoritos está vacía";
+"Create a new one or click on the star in the list of players" = "Crea uno nuevo o haz clic en la estrella en la lista de jugadores";
+"Rules of the Spy Game" = "Reglas del Juego del Espía";
+"Interesting sets" = "Conjuntos interesantes";
+"Settings" = "Ajustes";
+"Share with friends" = "Compartir con amigos";
+"No locations data found" = "No se encontraron datos de ubicaciones";
+"History" = "Historial";
+"SURRENDER" = "SURRENDER";
+"Hints" = "Pistas";
+"Reset" = "Restablecer";
+"Game" = "Juego";
+"Location" = "Ubicación";
+"Intrigues and Secrets" = "Intrigas y Secretos";
+"Random Set" = "Conjunto Aleatorio";
+"CANCEL" = "CANCELAR";
+"History is empty" = "El historial está vacío";
+"CONTINUE PLAYING" = "CONTINUAR JUGANDO";
+"The Peacefuls lost" = "Los Pacíficos perdieron";
+"Locations await you" = "Las ubicaciones te esperan";
+"Eduardo" = "Eduardo";
+"Players" = "Jugadores";
+"Spies" = "Espías";
+"VOTE" = "VOTAR";
+"Preparation" = "Preparación";
+"Please" = "Por favor";
+"View Roles" = "Ver Roles";
+"No" = "No";
+"SHOW HINT" = "MOSTRAR PISTA";
+"Favorites" = "Favoritos";
+"years" = "años";
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Turnarse para votar por la persona que crees que es un espía y descubrir el resultado de tu elección";
+"Additional rules" = "Reglas adicionales";
+"Language" = "Idioma";
+"Voting Result" = "Resultado de la Votación";
+"Rounds" = "Rondas";
+"End of Game" = "Fin del Juego";
+"Pick an Avatar" = "Elige un Avatar";
+"New Set" = "Nuevo Conjunto";
+"Show Rules" = "Mostrar Reglas";
+"Rate us in the AppStore" = "Califícanos en la AppStore";
+"Time" = "Tiempo";
+"Game progress" = "Progreso del Juego";
+"You are a" = "Eres un";
+"This is a fascinating game where everyone can become a master of deception" = "Este es un juego fascinante donde todos pueden convertirse en maestros del engaño";
+"is supposedly a spy" = "supuestamente es un espía";
+"Vibration" = "Vibración";
+"Yes" = "Sí";
+"Privacy Policy" = "Política de Privacidad";
+"Usage Policy" = "Política de Uso";
+"days" = "días";
+"Lots of game options" = "Muchas opciones de juego";
+"Cancel anytime" = "Cancelar en cualquier momento";
+"Ad" = "Anuncio";
+"Handing Out" = "Repartiendo";
+"SELECT" = "SELECCIONAR";
+"persons" = "personas";
+"Question time" = "Hora de Preguntas";
+"PlayersCoreModel" = "Modelo de Núcleo de Jugadores";
+"About Game" = "Acerca del Juego";
+"Regular content updates" = "Actualizaciones regulares de contenido";
+"NEXT" = "SIGUIENTE";
+"SKIP" = "OMITIR";
+"Creating your own sets" = "Creando tus propios conjuntos";
+"Term of Use" = "Términos de Uso";
+"Choose your plan" = "Elige tu plan";
+"None" = "Ninguno";
+"day" = "día";
+"Full access to all content" = "Acceso completo a todo el contenido";
+"Choose a set that suits you and play the game in a new way" = "Elige un conjunto que te convenga y juega el juego de una nueva manera";
+"Sets" = "Conjuntos";
+"RESTORE" = "RESTAURAR";
+"Popular" = "Popular";
+"Cards" = "tarjetas";
+"PLAY" = "JUGAR";
+"PREVIOUS" = "ANTERIOR";
+"month" = "mes";
+"Names" = "Nombres";
+"START THE GAME" = "INICIAR EL JUEGO";
+"Winners" = "Ganadores";
+"Game Options" = "Opciones del Juego";
+"TRY IT" = "PRUÉBALO";
+"Rules" = "Reglas";
+"year" = "año";
+"Empty" = "Vacío";
+"weeks" = "semanas";
+"week" = "semana";
+"Help make our game even better" = "Ayuda a mejorar nuestro juego aún más";
+"Role" = "Rol";
+"Spy" = "Espía";
+"Premium Full Access" = "Acceso Premium Completo";
+"spies" = "espías";
+"Perfect for friends" = "Perfecto para amigos";
+"NEW GAME" = "NUEVO JUEGO";
+"Tap on it" = "Toca en ello";
+"Voting" = "Votación";
+"Restore Purchases" = "Restaurar Compras";
+
+"Remove Ads" = "Eliminar anuncios";
+"IT'S ALL CLEAR!" = "¡Todo está claro!";
+
+"The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more." = "El juego 'Spy' es un juego intelectual en el que los participantes deben adivinar una palabra sin revelar su papel de espía. El juego involucra a 3 personas o más.";
+"The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others." = "Comienza la distribución de cartas. Uno o más jugadores son asignados al azar como espías. Cada jugador mira su carta, pero no la muestra a los demás.";
+"The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc." = "El juego comienza cuando el temporizador se inicia. Un jugador hace una pregunta a otro jugador. La pregunta debe ser tal como para ayudar a determinar si ese jugador es un espía. Después de que ese jugador responde, ese jugador hace una pregunta al siguiente jugador, etc.";
+"The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins." = "El juego termina cuando el espía adivina la ubicación, cuando el espía es revelado o cuando expira el temporizador del juego. Si el tiempo expira y el espía no es revelado, el espía gana.";
+"A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win." = "Un espía puede intentar adivinar un lugar en cualquier momento del juego. Si el espía adivina el lugar, gana el juego. Si el espía se equivoca, el juego termina y los otros jugadores ganan.";
+"Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues." = "Los jugadores pueden pausar y votar para acusar a alguien de ser un espía. Si la mayoría está de acuerdo, ese jugador debe revelar su carta. Si es un espía, queda fuera del juego. Si no es un espía, el juego continúa.";
+"If there is more than one spy in the game, the civilians must detect all spies to win." = "Si hay más de un espía en el juego, los civiles deben detectar a todos los espías para ganar.";
+
+"PLAY!" = "JUGAR!";
+
+"Press play when all players are ready to start the timer" = "Presiona jugar cuando todos los jugadores estén listos para iniciar el temporizador";
+"Press pause at any time to arrange a vote or for a spy to choose a location" = "Presiona pausa en cualquier momento para organizar una votación o para que un espía elija una ubicación";
+
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Turnaos para votar a la persona que creéis que es un espía y descubrid el resultado de vuestra elección";
+"Who's a spy?" = "¿Quién es un espía?";
+"Vote" = "Votar";
+"Who do you think is a spy?" = "¿Quién crees que es un espía?";
+"You have a chance to prove you're not a spy, pick a location that has players in it" = "Tienes la oportunidad de demostrar que no eres un espía, elige un lugar que tenga jugadores en él";
+"What location are we in?" = "¿En qué lugar estamos?";
+
+"The spy won!" = "¡El espía ganó!";
+"The spies won!" = "Los espías ganaron!";
+"The Peacefuls have won!" = "¡Los Pacificos han ganado!";
+"The Peacefuls lost" = "Los Pacificos perdieron";
+"The spy lost!" = "¡El espía perdió!";
+"The spies lost!" = "Los espías perdieron!";
+
+"You haven't played a game yet, start playing!" = "¡Aún no has jugado, empieza a jugar!";
+"Name of the set..." = "Nombre del conjunto...";
+"Enter the role..." = "Introduce el rol...";
+"Location name..." = "Nombre de la ubicación...";
+"Enter a hint..." = "Introduce una pista...";
+"Name..." = "Nombre...";
+"Timer (min)" = "Temporizador (min)";
+
+"Remove ads from game" = "Eliminar los anuncios del juego";
+
+"1. Before the game starts" = "1. Antes de que comience el juego";
+"About the game" = "Acerca del juego";
+"Tasks of the players" = "Tareas de los jugadores";
+"Preparation" = "Preparación";
+"Optional" = "Opcional";
+
+"2. Beginning of the game" = "2. Comienzo del juego";
+"Gameplay" = "Jugabilidad";
+"Example of a game round" = "Ejemplo de una ronda de juego";
+
+"3. Ending the game" = "3. Finalización del juego";
+"When the timer expires" = "Cuando el temporizador se agota";
+"After the vote" = "Después de la votación";
+"At the will of the spy" = "A discreción del espía";
+"And more rules" = "Y más reglas";
+
+"Write to us" = "Escríbanos";
+"E-Mail" = "Correo electrónico";
+"Your e-mail" = "Su correo electrónico";
+"Subject" = "Asunto";
+"Your subject" = "Su asunto";
+"Message" = "Mensaje";
+"Write your question or problem here" = "Escriba su pregunta o problema aquí";
+"SEND" = "ENVIAR";
+
+"Reset the default sets?" = "¿Restablecer los conjuntos predeterminados?";
+"Only your sets will be reset, our sets will be saved. You'll have to re-enter the game" = "Solo se restablecerán tus ajustes, nuestros ajustes se guardarán. Tendrás que volver a ingresar al juego";
+"Your opinion" = "Tu opinión";
+"Thanks for your feedback!" = "¡Gracias por tu retroalimentación!";
+"We'll work on it" = "Trabajaremos en ello";
+"Do you like the app?" = "¿Te gusta la aplicación?";
+"You can also help us by rating in the AppStore" = "También puedes ayudarnos calificando en la AppStore";
+"Write more details to our mail what you would like to improve or fix" = "Escribe más detalles en nuestro correo sobre lo que te gustaría mejorar o solucionar";
+"Your feedback is very important to improve the app and make it better for you" = "Tu retroalimentación es muy importante para mejorar la aplicación y hacerla mejor para ti";
+"WRITE REVIEW" = "ESCRIBIR UNA RESEÑA";
+"WRITE AN E-MAIL" = "ESCRIBIR UN CORREO ELECTRÓNICO";

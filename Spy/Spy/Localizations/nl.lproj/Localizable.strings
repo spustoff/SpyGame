@@ -1,0 +1,201 @@
+/* 
+  Localizable.strings
+  Spy
+
+  Created by Вячеслав on 12/17/23.
+  
+*/
+
+
+"DISABLE ADS" = "SCHAKEL ADVERTENTIES UIT";
+"Party Game" = "Feestspel";
+"Swipe and pass to the next" = "Veeg en ga naar de volgende";
+"Roles" = "Rollen";
+"asks first" = "vraagt eerst";
+"catch" = "vang";
+"months" = "maanden";
+"Result" = "Resultaat";
+"Get Premium" = "Premium verkrijgen";
+"Rate our app" = "Beoordeel onze app";
+"Spy won" = "Spion heeft gewonnen";
+"Reset Default Sets" = "Standaardinstellingen herstellen";
+"Losers" = "Verliezers";
+"The Peacefuls won" = "De Vredigen hebben gewonnen";
+"Use your logical and analytical skills to win this game" = "Gebruik je logische en analytische vaardigheden om dit spel te winnen";
+"CARDS" = "KAARTEN";
+"SAVE" = "OPSLAAN";
+"Your card" = "Jouw kaart";
+"NEW" = "NIEUW";
+"ADD PHOTO" = "FOTO TOEVOEGEN";
+"Favorites list is empty" = "Favorietenlijst is leeg";
+"Create a new one or click on the star in the list of players" = "Maak een nieuwe of klik op de ster in de lijst van spelers";
+"Rules of the Spy Game" = "Regels van het spionagespel";
+"Interesting sets" = "Interessante sets";
+"Settings" = "Instellingen";
+"Share with friends" = "Delen met vrienden";
+"No locations data found" = "Geen locatiegegevens gevonden";
+"History" = "Geschiedenis";
+"SURRENDER" = "OVERGAVE";
+"Hints" = "Hints";
+"Reset" = "Resetten";
+"Game" = "Spel";
+"Location" = "Locatie";
+"Intrigues and Secrets" = "Intriges en Geheimen";
+"Random Set" = "Willekeurige set";
+"CANCEL" = "ANNULEREN";
+"History is empty" = "Geschiedenis is leeg";
+"CONTINUE PLAYING" = "BLIJF SPELEN";
+"The Peacefuls lost" = "De Vredigen hebben verloren";
+"Locations await you" = "Locaties wachten op jou";
+"Eduardo" = "Eduardo";
+"Players" = "Spelers";
+"Spies" = "Spionnen";
+"VOTE" = "STEM";
+"Preparation" = "Voorbereiding";
+"Please" = "Alstublieft";
+"View Roles" = "Bekijk rollen";
+"No" = "Nee";
+"SHOW HINT" = "HINT TONEN";
+"Favorites" = "Favorieten";
+"years" = "jaren";
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Neem om de beurt stemmen voor de persoon waarvan je denkt dat het een spion is en ontdek het resultaat van je keuze";
+"Additional rules" = "Extra regels";
+"Language" = "Taal";
+"Voting Result" = "Stemresultaat";
+"Rounds" = "Rondes";
+"End of Game" = "Einde van het spel";
+"Pick an Avatar" = "Kies een avatar";
+"New Set" = "Nieuwe set";
+"Show Rules" = "Regels weergeven";
+"Rate us in the AppStore" = "Beoordeel ons in de AppStore";
+"Time" = "Tijd";
+"Game progress" = "Spelvoortgang";
+"You are a" = "Je bent een";
+"This is a fascinating game where everyone can become a master of deception" = "Dit is een fascinerend spel waar iedereen een meester van bedrog kan worden";
+"is supposedly a spy" = "is vermoedelijk een spion";
+"Vibration" = "Trilling";
+"Yes" = "Ja";
+"Privacy Policy" = "Privacybeleid";
+"Usage Policy" = "Gebruiksbeleid";
+"days" = "dagen";
+"Lots of game options" = "Veel spelopties";
+"Cancel anytime" = "Altijd annuleren";
+"Ad" = "Advertentie";
+"Handing Out" = "Uitdelen";
+"SELECT" = "SELECTEER";
+"persons" = "personen";
+"Question time" = "Vraagtijd";
+"PlayersCoreModel" = "SpelersCoreModel";
+"About Game" = "Over het spel";
+"Regular content updates" = "Regelmatige inhoudsupdates";
+"NEXT" = "VOLGENDE";
+"SKIP" = "OVERSLAAN";
+"Creating your own sets" = "Je eigen sets maken";
+"Term of Use" = "Gebruiksvoorwaarden";
+"Choose your plan" = "Kies je plan";
+"None" = "Geen";
+"day" = "dag";
+"Full access to all content" = "Volledige toegang tot alle inhoud";
+"Choose a set that suits you and play the game in a new way" = "Kies een set die bij je past en speel het spel op een nieuwe manier";
+"Sets" = "Sets";
+"RESTORE" = "HERSTELLEN";
+"Popular" = "Populair";
+"Locations" = "Kaarten";
+"PLAY" = "SPELEN";
+"PREVIOUS" = "VORIGE";
+"month" = "maand";
+"Names" = "Namen";
+"START THE GAME" = "START HET SPEL";
+"Winners" = "Winnaars";
+"Game Options" = "Spelopties";
+"TRY IT" = "PROBEER HET";
+"Rules" = "Regels";
+"year" = "jaar";
+"Empty" = "Leeg";
+"weeks" = "weken";
+"week" = "week";
+"Help make our game even better" = "Help ons spel nog beter te maken";
+"Role" = "Rol";
+"Spy" = "Spion";
+"Premium Full Access" = "Premium Volledige Toegang";
+"spies" = "spionnen";
+"Perfect for friends" = "Perfect voor vrienden";
+"NEW GAME" = "NIEUW SPEL";
+"Tap on it" = "Tik erop";
+"Voting" = "Stemmen";
+"Restore Purchases" = "Aankopen herstellen";
+
+"Remove Ads" = "Verwijder advertenties";
+"IT'S ALL CLEAR!" = "HET IS ALLEMAAL DUIDELIJK!";
+
+"The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more." = "Het spel 'Spy' is een intellectueel spel waarin deelnemers een woord moeten raden zonder hun rol als spion bekend te maken. Het spel omvat 3 personen of meer.";
+"The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others." = "Het verdelen van kaarten begint. Een of meer spelers krijgen willekeurig de rol van spion toegewezen. Elke speler kijkt naar zijn kaart, maar laat deze niet aan anderen zien.";
+"The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc." = "Het spel begint wanneer de timer begint. Een speler stelt een andere speler een vraag. De vraag moet zo zijn dat deze helpt bepalen of die speler een spion is. Nadat die speler antwoordt, stelt hij de volgende speler een vraag, enzovoort.";
+"The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins." = "Het spel eindigt wanneer de spion de locatie raadt, wanneer de spion wordt onthuld of wanneer de spel timer afloopt. Als de tijd verstrijkt en de spion niet wordt onthuld, wint de spion.";
+"A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win." = "Een spion kan op elk moment in het spel proberen een plaats te raden. Als de spion de plaats raadt, wint hij het spel. Als de spion het mis heeft, eindigt het spel en winnen de andere spelers.";
+"Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues." = "Spelers kunnen pauzeren en stemmen om iemand van spionage te beschuldigen. Als de meerderheid het ermee eens is, moet die speler zijn kaart laten zien. Als het een spion is, is hij uit het spel. Als het geen spion is, gaat het spel verder.";
+"If there is more than one spy in the game, the civilians must detect all spies to win." = "Als er meer dan één spion in het spel is, moeten de burgers alle spionnen detecteren om te winnen.";
+
+"PLAY!" = "SPELEN!";
+
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Om de beurt stemmen voor de persoon waarvan je denkt dat het een spion is en het resultaat van je keuze ontdekken";
+"Who's a spy?" = "Wie is een spion?";
+"Vote" = "Stemmen";
+"Who do you think is a spy?" = "Wie denk je dat een spion is?";
+"You have a chance to prove you're not a spy, pick a location that has players in it" = "Je hebt de kans om te bewijzen dat je geen spion bent, kies een locatie waar spelers zijn";
+"What location are we in?" = "In welke locatie zijn we?";
+
+
+"The spy won!" = "De spion heeft gewonnen!";
+"The spies won!" = "De spionnen hebben gewonnen!";
+"The Peacefuls have won!" = "De Vredelievenden hebben gewonnen!";
+"The Peacefuls lost" = "De Vredelievenden hebben verloren!";
+"The spy lost!" = "De spion heeft verloren!";
+"The spies lost!" = "De spionnen hebben verloren!";
+
+"You haven't played a game yet, start playing!" = "Je hebt nog geen spel gespeeld, begin met spelen!";
+"Name of the set..." = "Naam van de set...";
+"Enter the role..." = "Voer de rol in...";
+"Location name..." = "Naam van de locatie...";
+"Enter a hint..." = "Voer een hint in...";
+"Name..." = "Naam...";
+"Timer (min)" = "Timer (min)";
+
+"Remove ads from game" = "Verwijder advertenties uit het spel";
+
+"1. Before the game starts" = "1. Voordat het spel begint";
+"About the game" = "Over het spel";
+"Tasks of the players" = "Taken van de spelers";
+"Preparation" = "Voorbereiding";
+"Optional" = "Optioneel";
+
+"2. Beginning of the game" = "2. Begin van het spel";
+"Gameplay" = "Spelverloop";
+"Example of a game round" = "Voorbeeld van een spelronde";
+
+"3. Ending the game" = "3. Einde van het spel";
+"When the timer expires" = "Wanneer de timer afloopt";
+"After the vote" = "Na de stemming";
+"At the will of the spy" = "Op wil van de spion";
+"And more rules" = "En meer regels";
+
+"Write to us" = "Schrijf ons";
+"E-Mail" = "E-mail";
+"Your e-mail" = "Jouw e-mail";
+"Subject" = "Onderwerp";
+"Your subject" = "Jouw onderwerp";
+"Message" = "Bericht";
+"Write your question or problem here" = "Schrijf hier je vraag of probleem";
+"SEND" = "VERZENDEN";
+
+"Reset the default sets?" = "Standaardsets resetten?";
+"Only your sets will be reset, our sets will be saved. You'll have to re-enter the game" = "Alleen jouw instellingen worden gereset, onze instellingen worden opgeslagen. Je moet het spel opnieuw invoeren";
+"Your opinion" = "Jouw mening";
+"Thanks for your feedback!" = "Bedankt voor je feedback!";
+"We'll work on it" = "We zullen eraan werken";
+"Do you like the app?" = "Vind je de app leuk?";
+"You can also help us by rating in the AppStore" = "Je kunt ons ook helpen door een beoordeling te geven in de AppStore";
+"Write more details to our mail what you would like to improve or fix" = "Schrijf meer details naar onze mail over wat je zou willen verbeteren of repareren";
+"Your feedback is very important to improve the app and make it better for you" = "Je feedback is erg belangrijk om de app te verbeteren en deze beter voor jou te maken";
+"WRITE REVIEW" = "SCHRIJF EEN RECENSIE";
+"WRITE AN E-MAIL" = "SCHRIJF EEN E-MAIL";

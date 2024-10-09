@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="SetModelCore" representedClassName="SetModelCore" syncable="YES" codeGenerationType="class">
+        <attribute name="hints" optional="YES" attributeType="Transformable"/>
+        <attribute name="imageSet" optional="YES" attributeType="Binary"/>
+        <attribute name="locations" optional="YES" attributeType="Transformable"/>
+        <attribute name="nameSet" optional="YES" attributeType="String"/>
+        <attribute name="roles" optional="YES" attributeType="Transformable"/>
+    </entity>
+</model>

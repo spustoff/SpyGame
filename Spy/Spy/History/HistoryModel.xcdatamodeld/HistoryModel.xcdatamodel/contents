@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="HistoryModel" representedClassName="HistoryModel" syncable="YES" codeGenerationType="class">
+        <attribute name="isHints" optional="YES"/>
+        <attribute name="isSpyWon" optional="YES"/>
+        <attribute name="playersCount" optional="YES"/>
+        <attribute name="roles" optional="YES"/>
+        <attribute name="rounds" optional="YES"/>
+        <attribute name="spyCount" optional="YES"/>
+        <attribute name="time" optional="YES"/>
+    </entity>
+</model>

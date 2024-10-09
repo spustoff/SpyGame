@@ -1,0 +1,203 @@
+/* 
+  Localizable.strings
+  Spy
+
+  Created by Вячеслав on 12/17/23.
+  
+*/
+
+"DISABLE ADS" = "DISABLE ADS";
+"Party Game" = "Party Game";
+"Swipe and pass to the next" = "Swipe and pass to the next";
+"Roles" = "Roles";
+"asks first" = "asks first";
+"catch" = "catch";
+"months" = "months";
+"Result" = "Result";
+"Get Premium" = "Get Premium";
+"Rate our app" = "Rate our app";
+"Spy won" = "Spy won";
+"Reset Default Sets" = "Reset Default Sets";
+"Losers" = "Losers";
+"The Peacefuls won" = "The Peacefuls won";
+"Use your logical and analytical skills to win this game" = "Use your logical and analytical skills to win this game";
+"CARDS" = "CARDS";
+"SAVE" = "SAVE";
+"Your card" = "Your card";
+"NEW" = "NEW";
+"ADD PHOTO" = "ADD PHOTO";
+"Favorites list is empty" = "Favorites list is empty";
+"Create a new one or click on the star in the list of players" = "Create a new one or click on the star in the list of players";
+"Rules of the Spy Game" = "Rules of the Spy Game";
+"Interesting sets" = "Interesting sets";
+"Settings" = "Settings";
+"Share with friends" = "Share with friends";
+"No locations data found" = "No locations data found";
+"History" = "History";
+"SURRENDER" = "SURRENDER";
+"Hints" = "Hints";
+"Reset" = "Reset";
+"Game" = "Game";
+"Location" = "Location";
+"Intrigues and Secrets" = "Intrigues and Secrets";
+"Random Set" = "Random Set";
+"CANCEL" = "CANCEL";
+"History is empty" = "History is empty";
+"CONTINUE PLAYING" = "CONTINUE PLAYING";
+"The Peacefuls lost" = "The Peacefuls lost";
+"Locations await you" = "Locations await you";
+"Eduardo" = "Eduardo";
+"Players" = "Players";
+"Spies" = "Spies";
+"VOTE" = "VOTE";
+"Preparation" = "Preparation";
+"Please" = "Please";
+"View Roles" = "View Roles";
+"No" = "No";
+"SHOW HINT" = "SHOW HINT";
+"Favorites" = "Favorites";
+"years" = "years";
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Take turns voting for the person you think is a spy and find out the result of your choice";
+"Additional rules" = "Additional rules";
+"Language" = "Language";
+"Voting Result" = "Voting Result";
+"Rounds" = "Rounds";
+"End of Game" = "End of Game";
+"Pick an Avatar" = "Pick an Avatar";
+"New Set" = "New Set";
+"Show Rules" = "Show Rules";
+"Rate us in the AppStore" = "Rate us in the AppStore";
+"Time" = "Time";
+"Game progress" = "Game progress";
+"You are a" = "You are a";
+"This is a fascinating game where everyone can become a master of deception" = "This is a fascinating game where everyone can become a master of deception";
+"is supposedly a spy" = "is supposedly a spy";
+"Vibration" = "Vibration";
+"Yes" = "Yes";
+"Privacy Policy" = "Privacy Policy";
+"Usage Policy" = "Usage Policy";
+"days" = "days";
+"Lots of game options" = "Lots of game options";
+"Cancel anytime" = "Cancel anytime";
+"Ad" = "Ad";
+"Handing Out" = "Handing Out";
+"SELECT" = "SELECT";
+"persons" = "persons";
+"Question time" = "Question time";
+"PlayersCoreModel" = "PlayersCoreModel";
+"About Game" = "About Game";
+"Regular content updates" = "Regular content updates";
+"NEXT" = "NEXT";
+"SKIP" = "SKIP";
+"Creating your own sets" = "Creating your own sets";
+"Term of Use" = "Term of Use";
+"Choose your plan" = "Choose your plan";
+"None" = "None";
+"day" = "day";
+"Full access to all content" = "Full access to all content";
+"Choose a set that suits you and play the game in a new way" = "Choose a set that suits you and play the game in a new way";
+"Sets" = "Sets";
+"RESTORE" = "RESTORE";
+"Popular" = "Popular";
+"Cards" = "Cards";
+"PLAY" = "PLAY";
+"PREVIOUS" = "PREVIOUS";
+"month" = "month";
+"Names" = "Names";
+"START THE GAME" = "START THE GAME";
+"Winners" = "Winners";
+"Game Options" = "Game Options";
+"TRY IT" = "TRY IT";
+"Rules" = "Rules";
+"year" = "year";
+"Empty" = "Empty";
+"weeks" = "weeks";
+"week" = "week";
+"Help make our game even better" = "Help make our game even better";
+"Role" = "Role";
+"Spy" = "Spy";
+"Premium Full Access" = "Premium Full Access";
+"spies" = "spies";
+"Perfect for friends" = "Perfect for friends";
+"NEW GAME" = "NEW GAME";
+"Tap on it" = "Tap on it";
+"Voting" = "Voting";
+"Restore Purchases" = "Restore Purchases";
+
+"Remove Ads" = "Remove Ads";
+"IT'S ALL CLEAR!" = "IT'S ALL CLEAR!";
+
+"The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more." = "The game 'Spy' is an intellectual game in which participants must guess a word without revealing their role as a spy. The game involves 3 people or more.";
+"The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others." = "The distribution of cards begins. One or more players are randomly assigned the role of a spy. Each player looks at his card, but does not show it to the others.";
+"The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc." = "The game starts when the timer starts. One player asks another player a question. The question should be such as to help determine if that player is a spy. After that player answers, that player asks the next player a question, etc.";
+"The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins." = "The game ends when the spy guesses the location, when the spy is revealed or when the game timer expires. If time expires and the spy is not revealed, the spy wins.";
+"A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win." = "A spy may try to guess a place at any point in the game. If the spy guesses the place, he wins the game. If the spy is wrong, the game ends and the other players win.";
+"Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues." = "Players may pause and vote to accuse someone of being a spy. If a majority agrees, that player must reveal his card. If it is a spy, he is out of the game. If it is not a spy, the game continues.";
+"If there is more than one spy in the game, the civilians must detect all spies to win." = "If there is more than one spy in the game, the civilians must detect all spies to win.";
+
+"PLAY!" = "PLAY!";
+
+"Take turns voting for the person you think is a spy and find out the result of your choice" = "Take turns voting for the person you think is a spy and find out the result of your choice";
+"Who's a spy?" = "Who's a spy?";
+"Vote" = "Vote";
+"Who do you think is a spy?" = "Who do you think is a spy?";
+"You have a chance to prove you're not a spy, pick a location that has players in it" = "You have a chance to prove you're not a spy, pick a location that has players in it";
+"What location are we in?" = "What location are we in?";
+
+
+"The spy won!" = "The spy won!";
+"The spies won!" = "The spies won!";
+"The Peacefuls have won!" = "The Peacefuls have won!";
+"The Peacefuls lost" = "The Peacefuls lost";
+"The spy lost!" = "The spy lost!";
+"The spies lost!" = "The spies lost!";
+
+
+"You haven't played a game yet, start playing!" = "You haven't played a game yet, start playing!";
+"Name of the set..." = "Name of the set...";
+"Enter the role..." = "Enter the role...";
+"Location name..." = "Location name...";
+"Enter a hint..." = "Enter a hint...";
+"Name..." = "Name...";
+"Timer (min)" = "Timer (min)";
+
+"Remove ads from game" = "Remove ads from game";
+
+
+"1. Before the game starts" = "1. Before the game starts";
+"About the game" = "About the game";
+"Tasks of the players" = "Tasks of the players";
+"Preparation" = "Preparation";
+"Optional" = "Optional";
+
+"2. Beginning of the game" = "2. Beginning of the game";
+"Gameplay" = "Gameplay";
+"Example of a game round" = "Example of a game round";
+
+"3. Ending the game" = "3. Ending the game";
+"When the timer expires" = "When the timer expires";
+"After the vote" = "After the vote";
+"At the will of the spy" = "At the will of the spy";
+"And more rules" = "And more rules";
+
+"Write to us" = "Write to us";
+"E-Mail" = "E-Mail";
+"Your e-mail" = "Your e-mail";
+"Subject" = "Subject";
+"Your subject" = "Your subject";
+"Message" = "Message";
+"Write your question or problem here" = "Write your question or problem here";
+"SEND" = "SEND";
+
+
+"Reset the default sets?" = "Reset the default sets?";
+"Only your sets will be reset, our sets will be saved. You'll have to re-enter the game" = "Only your sets will be reset, our sets will be saved. You'll have to re-enter the game";
+"Your opinion" = "Your opinion";
+"Thanks for your feedback!" = "Thanks for your feedback!";
+"We'll work on it" = "We'll work on it";
+"Do you like the app?" = "Do you like the app?";
+"You can also help us by rating in the AppStore" = "You can also help us by rating in the AppStore";
+"Write more details to our mail what you would like to improve or fix" = "Write more details to our mail what you would like to improve or fix";
+"Your feedback is very important to improve the app and make it better for you" = "Your feedback is very important to improve the app and make it better for you";
+"WRITE REVIEW" = "WRITE REVIEW";
+"WRITE AN E-MAIL" = "WRITE AN E-MAIL";
