@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84EF0F012CB7086C00DC8508 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F002CB7086C00DC8508 /* Alamofire */; };
+		84EF0F062CB7087F00DC8508 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F052CB7087F00DC8508 /* Amplitude */; };
+		84EF0F092CB7088C00DC8508 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F082CB7088C00DC8508 /* ApphudSDK */; };
+		84EF0F0C2CB7089800DC8508 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F0B2CB7089800DC8508 /* Kingfisher */; };
 		F91C548D2B13521F002E28E3 /* Ext+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91C548C2B13521F002E28E3 /* Ext+UserDefaults.swift */; };
 		F91C548F2B135F6F002E28E3 /* Ext+TimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91C548E2B135F6F002E28E3 /* Ext+TimeString.swift */; };
 		F91C54922B13A469002E28E3 /* AvatarPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91C54912B13A469002E28E3 /* AvatarPicker.swift */; };
@@ -34,7 +38,6 @@
 		F928AFBC2AFEB84D004102ED /* MainDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = F928AFBB2AFEB84D004102ED /* MainDesign.swift */; };
 		F928AFBF2AFEBB00004102ED /* MainNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F928AFBE2AFEBB00004102ED /* MainNames.swift */; };
 		F928AFC12AFEBC23004102ED /* Ext+AnimatedScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F928AFC02AFEBC23004102ED /* Ext+AnimatedScale.swift */; };
-		F92F6B392B28ACD1006A60AE /* Pods_Spy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4406552C44B222251E063ACE /* Pods_Spy.framework */; };
 		F9315FB82B45E1C700F7AC6C /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9315FB72B45E1C700F7AC6C /* ReviewView.swift */; };
 		F9315FBB2B45E27F00F7AC6C /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9315FBA2B45E27F00F7AC6C /* ReviewViewModel.swift */; };
 		F941F85C2B021707009EF491 /* MainSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F941F85B2B021707009EF491 /* MainSetsViewModel.swift */; };
@@ -90,8 +93,6 @@
 
 /* Begin PBXFileReference section */
 		4406552C44B222251E063ACE /* Pods_Spy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		53FC76C232958A0E8ED9D0B5 /* Pods-Spy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spy.release.xcconfig"; path = "Target Support Files/Pods-Spy/Pods-Spy.release.xcconfig"; sourceTree = "<group>"; };
-		AAF462DBD01A142E2ECE18C6 /* Pods-Spy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spy.debug.xcconfig"; path = "Target Support Files/Pods-Spy/Pods-Spy.debug.xcconfig"; sourceTree = "<group>"; };
 		F91C548C2B13521F002E28E3 /* Ext+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UserDefaults.swift"; sourceTree = "<group>"; };
 		F91C548E2B135F6F002E28E3 /* Ext+TimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+TimeString.swift"; sourceTree = "<group>"; };
 		F91C54912B13A469002E28E3 /* AvatarPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPicker.swift; sourceTree = "<group>"; };
@@ -184,9 +185,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EF0F062CB7087F00DC8508 /* Amplitude in Frameworks */,
+				84EF0F092CB7088C00DC8508 /* ApphudSDK in Frameworks */,
 				F9E1A94E2B40823C0062F96D /* FirebaseAnalytics in Frameworks */,
+				84EF0F012CB7086C00DC8508 /* Alamofire in Frameworks */,
+				84EF0F0C2CB7089800DC8508 /* Kingfisher in Frameworks */,
 				F9E1A95E2B40823C0062F96D /* FirebaseCrashlytics in Frameworks */,
-				F92F6B392B28ACD1006A60AE /* Pods_Spy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,15 +203,6 @@
 				4406552C44B222251E063ACE /* Pods_Spy.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EFB18A3E667DC39D7FAF64E5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AAF462DBD01A142E2ECE18C6 /* Pods-Spy.debug.xcconfig */,
-				53FC76C232958A0E8ED9D0B5 /* Pods-Spy.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		F91C54902B13A45F002E28E3 /* AvatarPicker */ = {
@@ -248,7 +243,6 @@
 			children = (
 				F928AF8C2AFEA6E0004102ED /* Spy */,
 				F928AF8B2AFEA6E0004102ED /* Products */,
-				EFB18A3E667DC39D7FAF64E5 /* Pods */,
 				39970EBDF8821D9139915555 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -623,11 +617,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F928AF982AFEA6E1004102ED /* Build configuration list for PBXNativeTarget "Spy" */;
 			buildPhases = (
-				407FE1C1EE5C29AEB76E9CD6 /* [CP] Check Pods Manifest.lock */,
 				F928AF862AFEA6E0004102ED /* Sources */,
 				F928AF872AFEA6E0004102ED /* Frameworks */,
 				F928AF882AFEA6E0004102ED /* Resources */,
-				CEC87F94065C7275AEBFE6EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -637,6 +629,10 @@
 			packageProductDependencies = (
 				F9E1A94D2B40823C0062F96D /* FirebaseAnalytics */,
 				F9E1A95D2B40823C0062F96D /* FirebaseCrashlytics */,
+				84EF0F002CB7086C00DC8508 /* Alamofire */,
+				84EF0F052CB7087F00DC8508 /* Amplitude */,
+				84EF0F082CB7088C00DC8508 /* ApphudSDK */,
+				84EF0F0B2CB7089800DC8508 /* Kingfisher */,
 			);
 			productName = Spy;
 			productReference = F928AF8A2AFEA6E0004102ED /* Spy.app */;
@@ -675,6 +671,10 @@
 			mainGroup = F928AF812AFEA6E0004102ED;
 			packageReferences = (
 				F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				84EF0EFF2CB7086C00DC8508 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				84EF0F042CB7087F00DC8508 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
+				84EF0F072CB7088C00DC8508 /* XCRemoteSwiftPackageReference "ApphudSDK" */,
+				84EF0F0A2CB7089800DC8508 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = F928AF8B2AFEA6E0004102ED /* Products */;
 			projectDirPath = "";
@@ -699,48 +699,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		407FE1C1EE5C29AEB76E9CD6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Spy-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CEC87F94065C7275AEBFE6EE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spy/Pods-Spy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Spy/Pods-Spy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spy/Pods-Spy-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F928AF862AFEA6E0004102ED /* Sources */ = {
@@ -964,7 +922,6 @@
 		};
 		F928AF992AFEA6E1004102ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAF462DBD01A142E2ECE18C6 /* Pods-Spy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1001,7 +958,6 @@
 		};
 		F928AF9A2AFEA6E1004102ED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53FC76C232958A0E8ED9D0B5 /* Pods-Spy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1060,6 +1016,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		84EF0EFF2CB7086C00DC8508 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		84EF0F042CB7087F00DC8508 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-iOS.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		84EF0F072CB7088C00DC8508 /* XCRemoteSwiftPackageReference "ApphudSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apphud/ApphudSDK.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.5.0;
+			};
+		};
+		84EF0F0A2CB7089800DC8508 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
 		F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1071,6 +1059,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		84EF0F002CB7086C00DC8508 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84EF0EFF2CB7086C00DC8508 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		84EF0F052CB7087F00DC8508 /* Amplitude */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84EF0F042CB7087F00DC8508 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
+		};
+		84EF0F082CB7088C00DC8508 /* ApphudSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84EF0F072CB7088C00DC8508 /* XCRemoteSwiftPackageReference "ApphudSDK" */;
+			productName = ApphudSDK;
+		};
+		84EF0F0B2CB7089800DC8508 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84EF0F0A2CB7089800DC8508 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F9E1A94D2B40823C0062F96D /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

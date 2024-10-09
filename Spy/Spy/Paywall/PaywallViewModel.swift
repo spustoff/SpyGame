@@ -24,109 +24,111 @@ final class PaywallViewModel: ObservableObject {
         
         isLoading = true
         
-        Apphud.paywallsDidLoadCallback { (paywalls) in
-            
-            guard let paywall = paywalls.first(where: { $0.experimentName != nil }) else {
-                
-                if let convertedPaywalls = paywalls.first(where: {$0.isDefault}).flatMap({$0.products}) {
-                    
-                    self.products = convertedPaywalls
-                    self.selected_product = convertedPaywalls.first(where: {$0.productId == "noads.year"})
-                    
-                    self.isLoading = false
-                }
-                
-                print("no experiments")
-                
-                return
-            }
-            
-            print("yes experiments")
-            
-            self.products = paywall.products
-            self.selected_product = paywall.products.first(where: {$0.productId == "noads.year"})
-            
-            self.isLoading = false
-            
-//            if let targetIsClose = paywall.json?["isClose"] as? Bool {
+//        Apphud.paywallsDidLoadCallback { (paywalls) in
+//            
+//            guard let paywall = paywalls.first(where: { $0.experimentName != nil }) else {
 //                
-//                self.isClose = targetIsClose
+//                if let convertedPaywalls = paywalls.first(where: {$0.isDefault}).flatMap({$0.products}) {
+//                    
+//                    self.products = convertedPaywalls
+//                    self.selected_product = convertedPaywalls.first(where: {$0.productId == "noads.year"})
+//                    
+//                    self.isLoading = false
+//                }
+//                
+//                print("no experiments")
+//                
+//                return
 //            }
-        }
+//            
+//            print("yes experiments")
+//            
+//            self.products = paywall.products
+//            self.selected_product = paywall.products.first(where: {$0.productId == "noads.year"})
+//            
+//            self.isLoading = false
+//            
+////            if let targetIsClose = paywall.json?["isClose"] as? Bool {
+////                
+////                self.isClose = targetIsClose
+////            }
+//        }
     }
     
     public func isSubscribed() -> Bool {
         
-        guard let subscriptions = Apphud.subscriptions() else { return false }
+//        guard let subscriptions = async Apphud.subscriptions() else { return false }
+//
+//        if subscriptions.contains(where: {$0.isActive() == true}) {
+//            
+//            return true
+//            
+//        } else {
+//            
+//            return false
+//        }
         
-        if subscriptions.contains(where: {$0.isActive() == true}) {
-            
-            return true
-            
-        } else {
-            
-            return false
-        }
+        return false
     }
     
     public func purchaseProduct() {
         
         isPurchasing = true
         
-        guard let product = selected_product else { return }
-        
-        Apphud.purchase(product, callback: { result in
-            
-            if result.success == true {
-                
-                withAnimation(.spring()) {
-                    
-                    self.is_paidSubscription = true
-                }
-                
-                self.isPurchasing = false
-                
-            } else if let error = result.error {
-                
-                print(error)
-                
-                self.isPurchasing = false
-            }
-        })
+//        guard let product = selected_product else { return }
+//        
+//        Apphud.purchase(product, callback: { result in
+//            
+//            if result.success == true {
+//                
+//                withAnimation(.spring()) {
+//                    
+//                    self.is_paidSubscription = true
+//                }
+//                
+//                self.isPurchasing = false
+//                
+//            } else if let error = result.error {
+//                
+//                print(error)
+//                
+//                self.isPurchasing = false
+//            }
+//        })
     }
     
     func restorePurchases() {
         
         isPurchasing = true
         
-        Apphud.restorePurchases(callback: { subscriptions, _, error in
-            
-            if let error = error {
-                
-                self.isPurchasing = false
-                
-                print(error)
-                
-            } else {
-                
-                guard let subscriptions = subscriptions else {
-                    
-                    self.isPurchasing = false
-                    
-                    return
-                }
-                
-                if subscriptions.contains(where: {$0.isActive() == true}) {
-                    
-                    self.isPurchasing = false
-                    
-                    withAnimation(.spring()) {
-                        
-                        self.is_paidSubscription = true
-                    }
-                }
-            }
-        })
+//        Apphud.restorePurchases(callback: { subscriptions, _, error in
+//            
+//            if let error = error {
+//                
+//                self.isPurchasing = false
+//                
+//                print(error)
+//                
+//            } else {
+//                
+//                guard let subscriptions = subscriptions else {
+//                    
+//                    self.isPurchasing = false
+//                    
+//                    return
+//                }
+//                
+//                if subscriptions.contains(where: {$0.isActive() == true}) {
+//                    
+//                    self.isPurchasing = false
+//                    
+//                    withAnimation(.spring()) {
+//                        
+//                        self.is_paidSubscription = true
+//                    }
+//                }
+//            }
+//        })
     }
     
     func formattedPrice(for product: SKProduct) -> String {
