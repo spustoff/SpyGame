@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @AppStorage("status") var status: Bool = false
+    @StateObject var viewModel = MainViewModel()
     
     var body: some View {
         
@@ -20,7 +21,8 @@ struct ContentView: View {
             
             if status == true {
                 
-                MainView(viewModel: MainViewModel())
+                MainView()
+                    .environmentObject(viewModel)
                 
             } else if status == false {
                 

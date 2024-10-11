@@ -17,8 +17,7 @@ struct RulesDetail: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
             TabView(selection: $viewModel.current_rule, content: {
                 
@@ -38,6 +37,7 @@ struct RulesDetail: View {
                     }
                 }
             })
+            .edgesIgnoringSafeArea(.bottom)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
             VStack {
@@ -45,86 +45,87 @@ struct RulesDetail: View {
                 ZStack {
                     
                     Text(NSLocalizedString(viewModel.getPoints().first(where: {$0.identifier == viewModel.current_rule})?.title ?? "nil", comment: ""))
-                        .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 19, weight: .bold))
                     
                     HStack {
+                        Spacer()
                         
                         Button(action: {
                             
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "xmark")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Image("xmark")
+                                .resizable()
+                                .renderingMode(.template)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(Color.second)
                         })
-                        
-                        Spacer()
                     }
                 }
                 .padding()
                 .padding(.top)
-                .background(Color("bg").ignoresSafeArea())
+                .background(Color.bgPrime.ignoresSafeArea())
                 
                 Spacer()
                 
-                HStack {
-                    
-                    Button(action: {
-                        
-                        if viewModel.current_rule > 1 {
-                            
-                            viewModel.current_rule -= 1
-                            
-                        } else {
-                            
-                            viewModel.current_rule = viewModel.getPoints().count
-                        }
-                        
-                    }, label: {
-                        
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 19, weight: .semibold))
-                    })
-                    .buttonStyle(ScaledButton(scaling: 0.9))
-                    
-                    HStack {
-                        
-                        ForEach(viewModel.getPoints(), id: \.id) { index in
-                        
-                            Circle()
-                                .fill(viewModel.current_rule == index.identifier ? Color("primary") : Color("bgGray"))
-                                .frame(width: 8, height: 8)
-                                .animation(.easeInOut, value: viewModel.current_rule)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    Button(action: {
-                        
-                        if viewModel.current_rule < viewModel.getPoints().count {
-                            
-                            viewModel.current_rule += 1
-                            
-                        } else {
-                            
-                            viewModel.current_rule = 1
-                        }
-                        
-                    }, label: {
-                        
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 19, weight: .semibold))
-                    })
-                    .buttonStyle(ScaledButton(scaling: 0.9))
-                }
-                .padding()
-                .padding([.horizontal, .bottom])
-                .background(Color("bg").ignoresSafeArea())
+//                HStack {
+//                    
+//                    Button(action: {
+//                        
+//                        if viewModel.current_rule > 1 {
+//                            
+//                            viewModel.current_rule -= 1
+//                            
+//                        } else {
+//                            
+//                            viewModel.current_rule = viewModel.getPoints().count
+//                        }
+//                        
+//                    }, label: {
+//                        
+//                        Image(systemName: "arrow.left")
+//                            .foregroundColor(Color("bezhev"))
+//                            .font(.system(size: 19, weight: .semibold))
+//                    })
+//                    .buttonStyle(ScaledButton(scaling: 0.9))
+//                    
+//                    HStack {
+//                        
+//                        ForEach(viewModel.getPoints(), id: \.id) { index in
+//                        
+//                            Circle()
+//                                .fill(viewModel.current_rule == index.identifier ? Color("primary") : Color("bgGray"))
+//                                .frame(width: 8, height: 8)
+//                                .animation(.easeInOut, value: viewModel.current_rule)
+//                        }
+//                    }
+//                    .frame(maxWidth: .infinity)
+//                    
+//                    Button(action: {
+//                        
+//                        if viewModel.current_rule < viewModel.getPoints().count {
+//                            
+//                            viewModel.current_rule += 1
+//                            
+//                        } else {
+//                            
+//                            viewModel.current_rule = 1
+//                        }
+//                        
+//                    }, label: {
+//                        
+//                        Image(systemName: "arrow.right")
+//                            .foregroundColor(Color("bezhev"))
+//                            .font(.system(size: 19, weight: .semibold))
+//                    })
+//                    .buttonStyle(ScaledButton(scaling: 0.9))
+//                }
+//                .padding()
+//                .padding([.horizontal, .bottom])
+//                .background(Color.bgPrime.ignoresSafeArea())
             }
         }
     }

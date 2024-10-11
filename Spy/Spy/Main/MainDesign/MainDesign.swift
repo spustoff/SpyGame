@@ -10,16 +10,16 @@ import Amplitude
 
 struct MainDesign: View {
     
-    @StateObject var viewModel: MainViewModel
-    @StateObject var setsModel: MainSetsViewModel
+    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var setsModel: MainSetsViewModel
     
     var body: some View {
         
         VStack {
             
-            Text(viewModel.currentStep.text)
+            Text(NSLocalizedString("Game Options", comment: ""))
                 .foregroundColor(.white)
-                .font(.system(size: 21, weight: .bold))
+                .font(.system(size: 19, weight: .bold))
             
             ScrollView(.vertical, showsIndicators: false) {
                 
@@ -36,15 +36,33 @@ struct MainDesign: View {
                     hintDesign()
                 }
             }
-            .frame(height: UIScreen.main.bounds.height / 2)
+//            .frame(height: UIScreen.main.bounds.height / 2)
             
-            Button(action: {
-                viewModel.currentStep = .sets
-//                viewModel.viewSwitcher(.plus)
-                
+            NavigationLink(destination: {
+                MainSets()
+                    .environmentObject(viewModel)
+                    .environmentObject(viewModel.setsModel)
+                    .modifier(AnimatedScale())
+                    .navigationBarBackButtonHidden()
+//                    .onAppear {
+//                        viewModel.currentStep = .sets
+//                    }
+//                MainNames(viewModel: viewModel, dataManager: viewModel.dataManager)
+//                    .modifier(AnimatedScale())
+//                    .navigationBarBackButtonHidden()
+//                    .onAppear {
+//                        viewModel.currentStep = .names
+//                    }
             }, label: {
                 PrimeButton(text: NSLocalizedString("NEXT", comment: ""))
             })
+//            Button(action: {
+//                viewModel.currentStep = .sets
+////                viewModel.viewSwitcher(.plus)
+//                
+//            }, label: {
+//                PrimeButton(text: NSLocalizedString("NEXT", comment: ""))
+//            })
 //            .opacity(viewModel.selectedSet.isEmpty ? 0.5 : 1)
 //            .disabled(viewModel.selectedSet.isEmpty ? true : false)
         }
@@ -410,5 +428,7 @@ struct MainDesign: View {
 }
 
 #Preview {
-    MainDesign(viewModel: MainViewModel(), setsModel: MainSetsViewModel())
+    MainDesign()
+        .environmentObject(MainViewModel())
+        .environmentObject(MainSetsViewModel())
 }

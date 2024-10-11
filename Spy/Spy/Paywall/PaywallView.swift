@@ -17,10 +17,9 @@ struct PaywallView: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
-            Image("paywall_bg")
+            Image("paywallBG")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -35,10 +34,7 @@ struct PaywallView: View {
                         router.wrappedValue.dismiss()
                         
                     }, label: {
-                        
-                        Image(systemName: "xmark")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 21, weight: .semibold))
+                        Icon(image: "xmark")
                     })
                     
                     Spacer()
@@ -51,40 +47,42 @@ struct PaywallView: View {
                         
                         Text("RESTORE")
                             .foregroundColor(.white)
-                            .font(.system(size: 17, weight: .medium))
+                            .font(.system(size: 14, weight: .bold))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     .disabled(viewModel.isPurchasing || viewModel.isLoading ? true : false)
                 }
-                .padding()
-                .padding(.top)
-                
-                Image("logo_big")
+                .padding(.horizontal)
+                .padding(.top, 8)
+                Spacer()
+            }
+            
+            VStack {
+                Image("paywallSpy")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 233, height: 233)
-                    .padding(.bottom)
+//                    .frame(maxWidth: 232, height: 232)
+                    .padding(.horizontal, 67)
+                    .padding(.top, 18)
                 
                 VStack(alignment: .center, spacing: 15, content: {
                     
                     Text("Premium Full Access")
-                        .foregroundColor(.white)
-                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 24, weight: .bold))
                         .multilineTextAlignment(.center)
                     
                     VStack(alignment: .leading, spacing: 10, content: {
                         
-                        ForEach(["Full access to all content", "Regular content updates"], id: \.self) { index in
+                        ForEach(["Full access to all content", "Regular content updates", NSLocalizedString("Creating your own sets", comment: "")], id: \.self) { index in
                             
                             HStack(alignment: .center, spacing: 6, content: {
                                 
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(Color("primary"))
-                                    .font(.system(size: 18, weight: .regular))
+                                Icon(image: "checkmark")
                                 
                                 Text(NSLocalizedString(index, comment: ""))
-                                    .foregroundColor(.white.opacity(0.7))
-                                    .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.textWhite80)
+                                    .font(.system(size: 17, weight: .regular))
                             })
                         }
                     })
@@ -112,51 +110,53 @@ struct PaywallView: View {
                                 
                             }, label: {
                                 
-                                VStack(spacing: 30) {
+                                ZStack {
                                     
                                     if let skProduct = index.skProduct {
                                         
                                         Text(viewModel.formattedSubscriptionPeriod(for: skProduct))
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 14, weight: .regular))
+                                            .foregroundColor(.textWhite)
+                                            .font(.system(size: 13, weight: .medium))
                                             .multilineTextAlignment(.center)
+                                            .frame(maxHeight: .infinity, alignment: .top)
                                         
-                                        VStack(alignment: .center, spacing: 3, content: {
-                                            
+                                        VStack(alignment: .center, spacing: 4) {
                                             Text(viewModel.formattedPrice(for: skProduct))
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 19, weight: .semibold))
+                                                .foregroundColor(.textWhite)
+                                                .font(.system(size: 17, weight: .medium))
                                                 .multilineTextAlignment(.center)
                                             
                                             Text("\(viewModel.formattedPrice(for: index.skProduct!))/\(viewModel.formattedSubscriptionPeriod(for: skProduct))")
-                                                .foregroundColor(.white.opacity(0.5))
+                                                .foregroundColor(.textWhite60)
                                                 .font(.system(size: 11, weight: .regular))
                                                 .multilineTextAlignment(.center)
-                                        })
+                                        }
                                         
                                     } else {
                                         
-                                        VStack(alignment: .center, spacing: 2, content: {
+                                        VStack(alignment: .center, spacing: 4, content: {
                                             
                                             Text("$0.00")
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 19, weight: .semibold))
+                                                .foregroundColor(.textWhite)
+                                                .font(.system(size: 17, weight: .medium))
                                                 .multilineTextAlignment(.center)
                                             
                                             Text("$0.00/week")
-                                                .foregroundColor(.white.opacity(0.5))
+                                                .foregroundColor(.textWhite60)
                                                 .font(.system(size: 11, weight: .regular))
                                                 .multilineTextAlignment(.center)
                                         })
                                     }
                                 }
-                                .padding()
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 16)
+                                .frame(height: 135)
                                 .frame(maxWidth: .infinity)
-                                .background(RoundedRectangle(cornerRadius: 15).fill(.gray.opacity(0.2)))
+                                .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                 .overlay(
                                 
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .stroke(Color("primary"), lineWidth: 2)
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.prime, lineWidth: 2)
                                         .opacity(viewModel.selected_product == index ? 1 : 0)
                                 )
                                 .overlay(
@@ -164,11 +164,12 @@ struct PaywallView: View {
                                     HStack {
                                         
                                         Text("Popular")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.textWhite)
                                             .font(.system(size: 11, weight: .regular))
                                     }
-                                        .padding(5)
-                                        .background(RoundedRectangle(cornerRadius: 10).fill(Color("primary")))
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(RoundedRectangle(cornerRadius: 6).fill(Color.prime))
                                         .frame(maxHeight: .infinity, alignment: .top)
                                         .offset(y: -12)
                                         .opacity((index.skProduct?.productIdentifier ?? "").contains("year") ? 1 : 0)
@@ -196,20 +197,21 @@ struct PaywallView: View {
                                 Loader(width: 15, height: 15, color: .white)
                                 
                             } else {
-                                
-                                Text("TRY IT")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 16, weight: .medium))
+                                PrimeButton(text: NSLocalizedString("CONTINUE", comment: ""))
+//                                Text("TRY IT")
+//                                    .foregroundColor(.white)
+//                                    .font(.system(size: 16, weight: .medium))
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
-                        .padding(.horizontal)
+//                        .frame(maxWidth: .infinity)
+//                        .frame(height: 50)
+//                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+//                        .padding(.horizontal)
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     .opacity(viewModel.selected_product == nil ? 0.5 : 1)
                     .disabled(viewModel.selected_product == nil || viewModel.isPurchasing ? true : false)
+                    .padding(.horizontal)
                     
                     HStack {
                         
@@ -222,17 +224,21 @@ struct PaywallView: View {
                         }, label: {
                             
                             Text("Privacy Policy")
-                                .foregroundColor(.gray)
+                                .foregroundColor(.textWhite60)
                                 .font(.system(size: 11, weight: .regular))
                                 .multilineTextAlignment(.leading)
+                                .minimumScaleFactor(0.8)
+                                .lineLimit(2)
+                                .frame(maxWidth: .infinity)
                         })
                         .buttonStyle(ScaledButton(scaling: 0.9))
                         
                         HStack {
-                            
-
+                            Image(systemName: "lock")
+                            Text(NSLocalizedString("Cancel anytime", comment: ""))
                         }
-                        .opacity(0.001)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(.textWhite60)
                         .frame(maxWidth: .infinity, alignment: .center)
                         
                         Button(action: {
@@ -244,9 +250,10 @@ struct PaywallView: View {
                         }, label: {
                             
                             Text("Term of Use")
-                                .foregroundColor(.gray)
+                                .foregroundColor(.textWhite60)
                                 .font(.system(size: 11, weight: .regular))
                                 .multilineTextAlignment(.trailing)
+                                .frame(maxWidth: .infinity)
                         })
                         .buttonStyle(ScaledButton(scaling: 0.9))
                     }

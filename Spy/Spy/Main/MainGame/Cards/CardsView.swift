@@ -24,23 +24,25 @@ struct CardsView: View {
                 
                 ForEach(viewModel.playerNames, id: \.id) { index in
                     
-                    VStack(alignment: .center, spacing: 15, content: {
+                    VStack(alignment: .center, spacing: 16, content: {
                         
-                        HStack {
+                        VStack(spacing: 8) {
+                            HStack(spacing: 16) {
+                                
+                                Image(index.playerPhoto)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 48, height: 48)
+                                
+                                Text(index.playerName)
+                                    .foregroundColor(Color.second)
+                                    .font(.system(size: 34, weight: .semibold))
+                            }
                             
-                            Image(index.playerPhoto)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 45, height: 45)
-                            
-                            Text(index.playerName)
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 28, weight: .semibold))
+                            Text("Your card")
+                                .foregroundColor(.textWhite)
+                                .font(.system(size: 17, weight: .medium))
                         }
-                        
-                        Text("Your card")
-                            .foregroundColor(.white)
-                            .font(.system(size: 15, weight: .medium))
                         
                         if viewModel.isShowCard && viewModel.currentCard == index.id {
                             
@@ -110,13 +112,14 @@ struct CardsView: View {
                     
                 }, label: {
                     
-                    Text("START THE GAME")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
-                        .padding()
+                    PrimeButton(text: NSLocalizedString("START THE GAME", comment: ""))
+//                    Text("START THE GAME")
+//                        .foregroundColor(.white)
+//                        .font(.system(size: 16, weight: .medium))
+//                        .frame(maxWidth: .infinity)
+//                        .frame(height: 50)
+//                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+//                        .padding()
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
                 
@@ -129,10 +132,12 @@ struct CardsView: View {
                         viewModel.manageControlGame(buttonType: .minus)
                         
                     }, label: {
-                        
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(viewModel.currentCard == 1 ? .gray.opacity(0.5) : Color("bezhev"))
-                            .font(.system(size: 22, weight: .semibold))
+                        Image("arrow.left")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(viewModel.currentCard == 1 ? Color.second.opacity(0.4) : Color.second)
                     })
                     .disabled(viewModel.currentCard == 1 ? true : false)
                     
@@ -150,22 +155,22 @@ struct CardsView: View {
                                         
                                     }, label: {
                                         
-                                        VStack(alignment: .center, spacing: 5, content: {
+                                        VStack(alignment: .center, spacing: 0, content: {
                                             
                                             Text(index.playerName)
-                                                .foregroundColor(Color("bezhev"))
+                                                .foregroundColor(Color.second)
                                                 .font(.system(size: 15, weight: .regular))
                                             
                                             Text("Player \(index.id) / \(viewModel.playerNames.count)")
-                                                .foregroundColor(.gray)
-                                                .font(.system(size: 12, weight: .regular))
+                                                .foregroundColor(.textWhite60)
+                                                .font(.system(size: 11, weight: .regular))
                                         })
-                                        .padding(10)
-                                        .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                                        .padding(8)
+                                        .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                         .overlay (
                                         
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color("primary"), lineWidth: 2)
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.prime, lineWidth: 2)
                                                 .opacity(viewModel.currentCard == index.id ? 1 : 0)
                                         )
                                         .onChange(of: viewModel.currentCard) { target in
@@ -191,9 +196,12 @@ struct CardsView: View {
                         
                     }, label: {
                         
-                        Image(systemName: "arrow.right")
-                            .foregroundColor(viewModel.currentCard == viewModel.playerNames.count ? .gray.opacity(0.5) : Color("bezhev"))
-                            .font(.system(size: 22, weight: .semibold))
+                        Image("arrow.forward")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(viewModel.currentCard == viewModel.playerNames.count ? Color.second.opacity(0.4) : Color.second)
                     })
                     .disabled(viewModel.currentCard == viewModel.playerNames.count ? true : false)
                 }
@@ -208,5 +216,8 @@ struct CardsView: View {
 }
 
 #Preview {
-    CardsView(isPlayButton: true, viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        CardsView(isPlayButton: true, viewModel: MainViewModel())
+    }
 }

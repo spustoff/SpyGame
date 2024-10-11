@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var viewModel = MainViewModel()
+    @EnvironmentObject var viewModel: MainViewModel
+    
+    @State private var isActive = false
     
     var body: some View {
         
@@ -40,14 +42,11 @@ struct MainView: View {
                         Icon(image: "info.bubble")
                     })
                     
-                    NavigationLink(destination: {
-                        
-                        HistoryView()
-                            .navigationBarBackButtonHidden()
-                        
-                    }, label: {
-                        Icon(image: "clock.arrow.circlepath")
-                    })
+                    NavigationLink(destination: HistoryView(isActive: $isActive)
+                        .environmentObject(viewModel)
+                        .navigationBarBackButtonHidden(), isActive: $isActive) {
+                            Icon(image: "clock.arrow.circlepath")
+                        }
                 }
                 
                 .padding(.horizontal)
@@ -59,25 +58,29 @@ struct MainView: View {
             }
             
             VStack {
-                Image("spy")
+                Image("spy img")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 208, height: 208)
                 VStack {
-                    viewModel.manageViews()
+//                    viewModel.manageViews()
+                    MainDesign()
+                        .environmentObject(viewModel)
+                        .environmentObject(viewModel.setsModel)
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(Rectangle().fill(Color.bgPrime).cornerRadius(radius: 16, corners: [.topLeft, .topRight]).ignoresSafeArea())
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .animation(.spring(), value: viewModel.currentStep)
-                .if(viewModel.currentStep == .pickAvatar) { view in
-                    
-                    view
-                        .ignoresSafeArea(.all, edges: .bottom)
-                }
+//                .if(viewModel.currentStep == .pickAvatar) { view in
+//                    
+//                    view
+//                        .ignoresSafeArea(.all, edges: .bottom)
+//                }
             }
         }
+        .preferredColorScheme(.dark)
         .fullScreenCover(isPresented: $viewModel.isGame, content: {
             
             MainGame(viewModel: viewModel)
@@ -94,7 +97,8 @@ struct MainView: View {
             
             if let item = viewModel.gameFinishedHistoryModel {
                 
-                HistoryDetail(item: item)
+                HistoryDetail(isActive: $isActive, item: item)
+                    .environmentObject(viewModel)
             }
         })
     }
@@ -102,4 +106,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(MainViewModel())
 }

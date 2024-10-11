@@ -15,34 +15,31 @@ struct DefaultCard: View {
             
             ZStack {
                 
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(Color.white.opacity(0.2), lineWidth: 5)
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.textWhite20, lineWidth: 6)
                 
                 VStack(spacing: 50) {
                     
-                    Image("spy")
+                    Image("spyMonoImg")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                     
-                    HStack {
-                        
-                        Image(systemName: "hand.tap.fill")
-                            .foregroundColor(.white.opacity(0.3))
-                            .font(.system(size: 23, weight: .regular))
+                    HStack(spacing: 4) {
+                        Icon(image: "hand.tap.fill")
                         
                         Text("Tap on it")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.textWhite40)
+                            .font(.system(size: 13, weight: .medium))
                     }
                 }
             }
-            .padding(30)
+            .padding(24)
             .frame(maxWidth: .infinity)
-            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
+            .background(RoundedRectangle(cornerRadius: 16).fill(Color.bgCell))
             .overlay (
                 
-                RoundedRectangle(cornerRadius: 15)
-                    .stroke(.gray.opacity(0.3))
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.textWhite20)
             )
         }
         .padding()
@@ -50,5 +47,8 @@ struct DefaultCard: View {
 }
 
 #Preview {
-    DefaultCard()
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        DefaultCard()
+    }
 }

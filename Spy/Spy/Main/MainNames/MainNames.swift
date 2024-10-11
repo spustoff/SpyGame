@@ -8,162 +8,192 @@
 import SwiftUI
 
 struct MainNames: View {
+    @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var viewModel: MainViewModel
-    @StateObject var dataManager: DataManager
+    @EnvironmentObject var viewModel: MainViewModel
+    @EnvironmentObject var dataManager: DataManager
+    
+    @State private var pickAvatar: Bool = false
+    @State private var favourites: Bool = false
     
     var body: some View {
-        
-        VStack {
+        ZStack(alignment: .bottom) {
+            Color.bgPrime.ignoresSafeArea()
             
-            ZStack {
+            VStack {
                 
-                Text(viewModel.currentStep.text)
-                    .foregroundColor(.white)
-                    .font(.system(size: 19, weight: .bold))
-                
-                HStack {
+                ZStack {
                     
-                    Button(action: {
-                        
-                        viewModel.viewSwitcher(.minus)
-                        
-                    }, label: {
-                        Icon(image: "chevron.left")
-                    })
+                    Text(NSLocalizedString("Names", comment: ""))
+                        .foregroundColor(.white)
+                        .font(.system(size: 19, weight: .bold))
                     
-                    Spacer()
+                    HStack {
+                        
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                            viewModel.viewSwitcher(.minus)
+                            
+                        }, label: {
+                            Icon(image: "chevron.left")
+                        })
+                        
+                        Spacer()
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-            }
-            
-            ScrollView(.vertical, showsIndicators: false) {
                 
-                VStack {
+                ScrollView(.vertical, showsIndicators: false) {
                     
-                    ForEach(0..<viewModel.playersCount, id: \.self) { index in
+                    VStack {
                         
-                        if index < viewModel.playerNames.count {
+                        ForEach(0..<viewModel.playersCount, id: \.self) { index in
                             
-                            let player = viewModel.playerNames[index]
-                            
-                            HStack {
+                            if index < viewModel.playerNames.count {
                                 
-                                Icon(image: "person.circle")
-                                    .frame(width: 40, height: 40)
-                                    .background(Color.bgCell)
-                                    .embedInCornRadius(cornradius: 100)
-                                    .overlay(
-                                        Image(player.playerPhoto)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 40, height: 40)
-                                            .embedInCornRadius(cornradius: 100)
-                                            .opacity(player.playerPhoto.isEmpty ? 0 : 1)
-                                    )
-                                    .overlay (
+                                let player = viewModel.playerNames[index]
+                                
+                                HStack {
                                     
-                                        Image(systemName: "camera.fill")
-                                            .resizable()
-                                            .renderingMode(.template)
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 15, height: 15)
-                                            .foregroundColor(Color.second)
-                                            .frame(width: 19, height: 19)
-                                            .background(Color.bg)
-                                            .embedInCornRadius(cornradius: 100)
-                                            .offset(x: 10, y: 10)
-                                    )
-                                    .onTapGesture {
-                                        
-                                        if !player.playerName.isEmpty {
+                                    Icon(image: "person.circle")
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.bgCell)
+                                        .embedInCornRadius(cornradius: 100)
+                                        .overlay(
+                                            Image(player.playerPhoto)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 40, height: 40)
+                                                .embedInCornRadius(cornradius: 100)
+                                                .opacity(player.playerPhoto.isEmpty ? 0 : 1)
+                                        )
+                                        .overlay (
                                             
-                                            viewModel.selectedPlayerForPicker = viewModel.playerNames[index]
-                                            viewModel.toPickerFromScreen = .names
-                                            viewModel.currentStep = .pickAvatar
+                                            Image(systemName: "camera.fill")
+                                                .resizable()
+                                                .renderingMode(.template)
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 15, height: 15)
+                                                .foregroundColor(Color.second)
+                                                .frame(width: 19, height: 19)
+                                                .background(Color.bg)
+                                                .embedInCornRadius(cornradius: 100)
+                                                .offset(x: 10, y: 10)
+                                                .opacity(player.playerPhoto.isEmpty ? 1 : 0)
+                                        )
+                                        .onTapGesture {
+                                            
+//                                            if !player.playerName.isEmpty {
+                                                
+                                                viewModel.selectedPlayerForPicker = viewModel.playerNames[index]
+                                                viewModel.toPickerFromScreen = .names
+//                                                viewModel.currentStep = .pickAvatar
+                                                
+                                                pickAvatar.toggle()
+//                                            }
                                         }
-                                    }
-                                
-                                ZStack(alignment: .leading, content: {
                                     
-                                    Text("Name...")
-                                        .foregroundColor(.gray)
-                                        .font(.system(size: 17, weight: .medium))
-                                        .opacity(player.playerName.isEmpty ? 1 : 0)
-                                    
-                                    TextField("", text: Binding<String>(
-                                        get: { self.viewModel.playerNames[index].playerName },
-                                        set: { newName in
-                                            var updatedPlayer = self.viewModel.playerNames[index]
-                                            updatedPlayer.playerName = newName
-                                            self.viewModel.updatePlayer(at: index, with: updatedPlayer)
-                                        }
-                                    ))
+                                    ZStack(alignment: .leading, content: {
+                                        
+                                        Text("Name...")
+                                            .foregroundColor(.gray)
+                                            .font(.system(size: 17, weight: .medium))
+                                            .opacity(player.playerName.isEmpty ? 1 : 0)
+                                        
+                                        TextField("", text: Binding<String>(
+                                            get: { self.viewModel.playerNames[index].playerName },
+                                            set: { newName in
+                                                var updatedPlayer = self.viewModel.playerNames[index]
+                                                updatedPlayer.playerName = newName
+                                                self.viewModel.updatePlayer(at: index, with: updatedPlayer)
+                                            }
+                                        ))
                                         .foregroundColor(.white)
                                         .font(.system(size: 17, weight: .medium))
-                                })
-                                
-                                Spacer()
-                                
-                                if !player.playerName.isEmpty {
+                                    })
+                                    
+                                    Spacer()
+                                    
+                                    if !player.playerName.isEmpty {
+                                        
+                                        Button(action: {
+                                            
+                                            dataManager.savePlayer(player: player)
+                                            
+                                        }, label: {
+                                            Icon(image: dataManager.isSavedPlayer(player) ? "star.fill" : "star")
+                                        })
+                                    }
                                     
                                     Button(action: {
                                         
-                                        dataManager.savePlayer(player: player)
+                                        viewModel.selectedNameForFavorite = index
+//                                        viewModel.currentStep = .nameFavorites
+                                        favourites.toggle()
                                         
                                     }, label: {
-                                        Icon(image: dataManager.isSavedPlayer(player) ? "star.fill" : "star")
+                                        Icon(image: "text.badge.star")
                                     })
                                 }
-                                
-                                Button(action: {
-                                    
-                                    viewModel.selectedNameForFavorite = index
-                                    viewModel.currentStep = .nameFavorites
-                                    
-                                }, label: {
-                                    Icon(image: "text.badge.star")
-                                })
+                                .padding(.horizontal, 12)
+                                .frame(height: 60)
+                                .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                             }
-                            .padding(.horizontal, 12)
-                            .frame(height: 60)
-                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         }
                     }
+                    .padding(.horizontal)
                 }
+                .frame(maxHeight: UIScreen.main.bounds.height - 205)
+                
+                let isDisSave = viewModel.playerNames.allSatisfy { !$0.playerName.isEmpty }
+                Button(action: {
+                    
+                    viewModel.setupPlayers()
+                    
+                }, label: {
+                    
+                    Text("PLAY!")
+                        .font(.body.bold())
+                        .foregroundColor(!isDisSave ? .textWhite40 : .textWhite)
+                        .frame(height: 60)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            LinearGradient(colors: [!isDisSave ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
+                                                    !isDisSave ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
+                                           startPoint: .topTrailing,
+                                           endPoint: .bottomLeading)
+                        )
+                        .embedInCornRadius(cornradius: 16)
+                })
+                .buttonStyle(ScaledButton(scaling: 0.9))
+                .opacity(isDisSave ? 1 : 0.5)
+                .disabled(isDisSave ? false : true)
+                .padding(.horizontal)
+                .padding(.bottom, 32)
             }
-            .frame(height: UIScreen.main.bounds.height / 2.5)
-            
-            let isDisSave = viewModel.playerNames.allSatisfy { !$0.playerName.isEmpty }
-            Button(action: {
-                
-                viewModel.setupPlayers()
-                
-            }, label: {
-                
-                Text("PLAY!")
-                    .font(.body.bold())
-                    .foregroundColor(!isDisSave ? .textWhite40 : .textWhite)
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
-                    .background(
-                        LinearGradient(colors: [!isDisSave ? Color.bgButtonDisabled : Color.primeTopTrailGrad,
-                                                !isDisSave ? Color.bgButtonDisabled : Color.primeBotLeadGrad],
-                                       startPoint: .topTrailing,
-                                       endPoint: .bottomLeading)
-                    )
-                    .embedInCornRadius(cornradius: 16)
-            })
-            .buttonStyle(ScaledButton(scaling: 0.9))
-            .opacity(isDisSave ? 1 : 0.5)
-            .disabled(isDisSave ? false : true)
+        }
+        
+        .sheet(isPresented: $pickAvatar) {
+//            AvatarPicker(viewModel: viewModel)
+            AvatarPicker()
+                .environmentObject(viewModel)
+            .modifier(AnimatedScale())
+        }
+        .sheet(isPresented: $favourites) {
+//            NamesFavorites(viewModel: viewModel, dataManager: viewModel.dataManager)
+            NamesFavorites()
+                .environmentObject(viewModel)
+                .environmentObject(viewModel.dataManager)
+                .modifier(AnimatedScale())
         }
     }
 }
 
 #Preview {
     ZStack {
-        Color.bgPrime.ignoresSafeArea()
-        MainNames(viewModel: MainViewModel(), dataManager: DataManager())
+//        Color.bgPrime.ignoresSafeArea()
+        MainNames()
+            .environmentObject(MainViewModel())
+            .environmentObject(DataManager())
     }
 }

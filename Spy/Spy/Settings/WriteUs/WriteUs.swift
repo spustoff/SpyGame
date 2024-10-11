@@ -19,16 +19,15 @@ struct WriteUs: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
             VStack {
                 
                 ZStack {
                     
                     Text("Write to us")
-                        .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 19, weight: .bold))
                     
                     HStack {
                         
@@ -37,10 +36,7 @@ struct WriteUs: View {
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "chevron.left")
                         })
                         
                         Spacer()
@@ -52,68 +48,75 @@ struct WriteUs: View {
                     view
                         .padding(.top)
                 })
+                .padding(.bottom, 9)
+                
+//                Text(NSLocalizedString("Share your opinion, what you would like to improve, it is very important for us", comment: ""))
+//                    .font(.system(size: 17))
+//                    .foregroundColor(.textWhite80)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.horizontal)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
-                    LazyVStack(spacing: 30) {
+                    LazyVStack(spacing: 24) {
                         
-                        VStack(alignment: .leading, spacing: 10, content: {
+                        VStack(alignment: .leading, spacing: 8, content: {
                             
                             Text("E-Mail")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.textWhite)
+                                .font(.system(size: 19, weight: .bold))
                             
                             ZStack(alignment: .leading, content: {
                                 
                                 Text("Your e-mail")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(.textWhite40)
+                                    .font(.system(size: 17, weight: .medium))
                                     .underline(false)
                                     .opacity(viewModel.email.isEmpty ? 1 : 0)
                                 
                                 TextField("", text: $viewModel.email)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(.textWhite)
+                                    .font(.system(size: 17, weight: .medium))
                             })
-                            .padding()
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                            .padding(.horizontal, 12)
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         })
                         
-                        VStack(alignment: .leading, spacing: 10, content: {
-                            
-                            Text("Subject")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .semibold))
-                            
-                            ZStack(alignment: .leading, content: {
-                                
-                                Text("Your subject")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14, weight: .regular))
-                                    .underline(false)
-                                    .opacity(viewModel.subject.isEmpty ? 1 : 0)
-                                
-                                TextField("", text: $viewModel.subject)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 14, weight: .regular))
-                            })
-                            .padding()
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
-                        })
+//                        VStack(alignment: .leading, spacing: 8, content: {
+//                            
+//                            Text("Subject")
+//                                .foregroundColor(.textWhite)
+//                                .font(.system(size: 19, weight: .bold))
+//                            
+//                            ZStack(alignment: .leading, content: {
+//                                
+//                                Text("Your subject")
+//                                    .foregroundColor(.textWhite40)
+//                                    .font(.system(size: 17, weight: .medium))
+//                                    .underline(false)
+//                                    .opacity(viewModel.subject.isEmpty ? 1 : 0)
+//                                
+//                                TextField("", text: $viewModel.subject)
+//                                    .foregroundColor(.textWhite)
+//                                    .font(.system(size: 17, weight: .medium))
+//                            })
+//                            .padding(.horizontal, 12)
+//                            .frame(height: 60)
+//                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+//                        })
                         
-                        VStack(alignment: .leading, spacing: 10, content: {
+                        VStack(alignment: .leading, spacing: 8, content: {
                             
                             Text("Message")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.textWhite)
+                                .font(.system(size: 19, weight: .bold))
                             
-                            ZStack(alignment: .leading, content: {
+                            ZStack(alignment: .topLeading, content: {
                                 
                                 Text("Write your question or problem here")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(.textWhite40)
+                                    .font(.system(size: 17, weight: .medium))
                                     .padding(.horizontal, 3)
                                     .opacity(viewModel.message.isEmpty ? 1 : 0)
                                 
@@ -121,7 +124,7 @@ struct WriteUs: View {
                                     .frame(height: viewModel.textViewHeight < 340 ? viewModel.textViewHeight : 340)
                             })
                             .padding()
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                         })
                     }
                     .padding()
@@ -129,6 +132,7 @@ struct WriteUs: View {
                 
                 Spacer()
                 
+                let isDis = !viewModel.email.contains("@") || viewModel.subject.isEmpty || viewModel.message.isEmpty
                 Button(action: {
                     
                     viewModel.sendEmail {
@@ -145,20 +149,23 @@ struct WriteUs: View {
                             Loader(width: 15, height: 15, color: .white)
                             
                         } else {
-                            
+//                            PrimeButton(text: NSLocalizedString("SEND", comment: ""))
                             Text("SEND")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.system(size: 17, weight: .bold))
+                                .foregroundColor(isDis ? .textWhite40 : .textWhite)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 60)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(LinearGradient(colors: [isDis ? .bgButtonDisabled : .primeTopTrailGrad , isDis ? .bgButtonDisabled : .primeBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading))
+                                )
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
                     .padding()
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
-                .opacity(!viewModel.email.contains("@") || viewModel.subject.isEmpty || viewModel.message.isEmpty ? 0.5 : 1)
-                .disabled(!viewModel.email.contains("@") || viewModel.subject.isEmpty || viewModel.message.isEmpty ? true : false)
+                .opacity(isDis ? 0.5 : 1)
+                .disabled(isDis ? true : false)
             }
         }
     }

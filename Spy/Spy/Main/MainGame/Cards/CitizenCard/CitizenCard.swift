@@ -18,64 +18,72 @@ struct CitizenCard: View {
         
         ZStack {
             
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(Color.white.opacity(0.2), lineWidth: 5)
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.textWhite20, lineWidth: 6)
             
-            VStack(spacing: 50) {
-                
-                VStack(alignment: .center, spacing: 15, content: {
+                VStack(alignment: .center, spacing: 16, content: {
                     
-                    VStack(alignment: .center, spacing: 5, content: {
+                    VStack(alignment: .center, spacing: 0, content: {
                         
                         Text("Location")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.textWhite60)
+                            .font(.system(size: 15, weight: .regular))
                         
                         Text(location.location ?? "None")
-                            .foregroundColor(.white)
-                            .font(.system(size: 32, weight: .semibold))
+                            .foregroundColor(.textWhite)
+                            .font(.system(size: 34, weight: .semibold))
                             .multilineTextAlignment(.center)
                     })
                     
-                    VStack(alignment: .center, spacing: 5, content: {
+                    VStack(alignment: .center, spacing: 0, content: {
                         
                         Text("Role")
-                            .foregroundColor(.white.opacity(0.5))
-                            .font(.system(size: 16, weight: .regular))
+                            .foregroundColor(.textWhite60)
+                            .font(.system(size: 15, weight: .regular))
                         
                         Text(player.playerRole)
-                            .foregroundColor(.white)
-                            .font(.system(size: 32, weight: .semibold))
+                            .foregroundColor(.textWhite)
+                            .font(.system(size: 34, weight: .semibold))
                             .multilineTextAlignment(.center)
                     })
                 })
-                .padding(.horizontal)
-                
-                VStack(spacing: 4) {
-                    
-                    Image(systemName: "hand.draw.fill")
-                        .foregroundColor(.white.opacity(0.3))
-                        .font(.system(size: 23, weight: .regular))
+                .padding(.horizontal, 10)
+            
+            VStack {
+                Spacer()
+                HStack(spacing: 4) {
+                    Icon(image: "hand.draw.fill")
+//                    Image("hand.draw.fill")
+//                        .resizable()
+//                        .renderingMode(.template)
+//                        .aspectRatio(contentMode: .fit)
+//                        .frame(width: 32, height: 32)
+//                        .foregroundColor(.textWhite40)
                     
                     Text("Swipe and pass to the next")
-                        .foregroundColor(.white.opacity(0.5))
-                        .font(.system(size: 14, weight: .regular))
-                        .multilineTextAlignment(.center)
+                        .foregroundColor(.textWhite40)
+                        .font(.system(size: 13, weight: .medium))
+                        .multilineTextAlignment(.leading)
                 }
             }
+            .padding(.horizontal, 60)
+            .padding(.bottom, 18)
         }
-        .padding(30)
+        .padding(24)
         .frame(maxWidth: .infinity)
-        .background(RoundedRectangle(cornerRadius: 15).fill(LinearGradient(colors: [Color("blue"), Color("darkBlueGrad"), Color("darkBlueGrad")], startPoint: .topTrailing, endPoint: .bottomLeading)))
+        .background(RoundedRectangle(cornerRadius: 16).fill(LinearGradient(colors: [Color.bgCardTopTrailGrad, Color.bgCardBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading)))
         .overlay (
             
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(.gray.opacity(0.3))
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(.textWhite20)
         )
         .padding()
     }
 }
 
 #Preview {
-    CitizenCard(viewModel: MainViewModel(), location: Location(id: 0, location: "asd", hints: []), player: PlayersModel(id: 1, playerName: "d[pas", playerPhoto: "d[sapk", playerRole: "Citizen2"))
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        CitizenCard(viewModel: MainViewModel(), location: Location(id: 0, location: "asd", hints: []), player: PlayersModel(id: 1, playerName: "d[pas", playerPhoto: "d[sapk", playerRole: "Citizen2"))
+    }
 }

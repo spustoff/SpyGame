@@ -9,7 +9,10 @@ import SwiftUI
 
 struct HistoryView: View {
     
+    @EnvironmentObject var mainVM: MainViewModel
     @StateObject var viewModel = HistoryViewModel()
+    
+    @Binding var isActive: Bool
     
     @Environment(\.presentationMode) var router
     
@@ -17,16 +20,15 @@ struct HistoryView: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
             VStack {
                 
                 ZStack {
                     
                     Text("History")
-                        .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 19, weight: .semibold))
                     
                     HStack {
                         
@@ -35,10 +37,7 @@ struct HistoryView: View {
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "chevron.left")
                         })
                         
                         Spacer()
@@ -48,48 +47,72 @@ struct HistoryView: View {
                 
                 if viewModel.history.isEmpty {
                     
-                    VStack(alignment: .center, spacing: 15, content: {
+                    VStack(alignment: .center, spacing: 0, content: {
                         
-                        Image(systemName: "arrow.counterclockwise")
-                            .foregroundColor(Color("bg"))
-                            .font(.system(size: 18, weight: .medium))
-                            .frame(width: 45, height: 45)
-                            .background(Circle().fill(Color.gray.opacity(0.8)))
+                        Image("clock.arrow.circlepath")
+                            .resizable()
+                            .renderingMode(.template)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.textWhite40)
                         
                         VStack(alignment: .center, spacing: 2, content: {
                             
                             Text("History is empty")
-                                .foregroundColor(.white)
-                                .font(.system(size: 17, weight: .medium))
+                                .foregroundColor(.textWhite80)
+                                .font(.system(size: 19, weight: .bold))
                                 .multilineTextAlignment(.center)
                             
                             Text("You haven't played a game yet, start playing!")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.textWhite60)
+                                .font(.system(size: 17, weight: .regular))
                                 .multilineTextAlignment(.center)
                         })
                     })
                     .padding()
                     .frame(maxHeight: .infinity, alignment: .center)
+                    .offset(y: -50)
                     
                 } else {
+                    
+                    let groupedGames = groupAndSortGamesByMonth(games: viewModel.history)
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         
                         LazyVStack {
-                            
-                            ForEach(viewModel.history, id: \.self) { index in
-                            
-                                NavigationLink(destination: {
-                                    
-                                    HistoryDetail(item: index)
-                                        .navigationBarBackButtonHidden()
-                                    
-                                }, label: {
-                                    
-                                    HistoryRow(item: index)
-                                })
+//                            
+                            ForEach(groupedGames.keys.sorted(by: >), id: \.self) { month in
+                                Section(header: Text(month)
+                                    .font(.system(size: 19, weight: .bold))
+                                    .foregroundColor(.textWhite)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal)
+                                ) {
+                                    ForEach(groupedGames[month] ?? [], id: \.self) { game in
+                                        NavigationLink {
+                                            HistoryDetail(isActive: $isActive, item: game)
+                                                .environmentObject(mainVM)
+                                                .navigationBarBackButtonHidden()
+                                        } label: {
+                                            HistoryRow(item: game)
+                                        }
+                                    }
+                                }
                             }
+
+                            
+//                            ForEach(viewModel.history, id: \.self) { index in
+//                            
+//                                NavigationLink(destination: {
+//                                    
+//                                    HistoryDetail(item: index)
+//                                        .navigationBarBackButtonHidden()
+//                                    
+//                                }, label: {
+//                                    
+//                                    HistoryRow(item: index)
+//                                })
+//                            }
                         }
                     }
                 }
@@ -100,8 +123,33 @@ struct HistoryView: View {
             viewModel.fetchHistory()
         }
     }
+    
+    func groupAndSortGamesByMonth(games: [HistoryModel]) -> [String: [HistoryModel]] {
+         var groupedGames = [String: [HistoryModel]]()
+
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "MMMM yyyy" // Формат для отображения месяца и года
+
+         for game in games {
+             let month = dateFormatter.string(from: game.gameDate ?? Date())
+             if groupedGames[month] != nil {
+                 groupedGames[month]?.append(game)
+             } else {
+                 groupedGames[month] = [game]
+             }
+         }
+
+         // Сортируем массивы по уменьшению даты
+         for (month, games) in groupedGames {
+             groupedGames[month] = games.sorted(by: { $0.gameDate ?? Date() > $1.gameDate ?? Date() })
+         }
+
+         return groupedGames
+     }
+
 }
 
 #Preview {
-    HistoryView()
+    HistoryView(isActive: .constant(true))
+        .environmentObject(MainViewModel())
 }
