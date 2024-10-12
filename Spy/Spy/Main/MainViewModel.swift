@@ -629,7 +629,7 @@ final class MainViewModel: ObservableObject {
         
         let gamesPlayed = KCManager.loadNumber(forKey: "subscriptionAvailableGames2")
         
-        if is_paidSubscription {
+        if !is_paidSubscription {
             
             guard gamesPlayed < KCManager.availableGames else {
                 
@@ -835,15 +835,15 @@ final class MainViewModel: ObservableObject {
         
         let gamesPlayed = KCManager.loadNumber(forKey: "subscriptionAvailableGames2")
         
-        if is_paidSubscription {
-            
-            guard gamesPlayed < KCManager.availableGames else {
-                
-                isPaywall = true
-                
-                return
-            }
-        }
+//        if is_paidSubscription {
+//            
+//            guard gamesPlayed < KCManager.availableGames else {
+//                
+//                isPaywall = true
+//                
+//                return
+//            }
+//        }
         
         let intForSave = (gamesPlayed + 1)
         

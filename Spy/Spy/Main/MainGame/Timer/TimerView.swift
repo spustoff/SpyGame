@@ -59,6 +59,7 @@ struct TimerView: View {
                             .padding(.horizontal)
                     }
                     .padding(.top, 20)
+                    .padding(.horizontal)
                     
                     ZStack {
                         

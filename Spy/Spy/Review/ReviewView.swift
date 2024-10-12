@@ -63,7 +63,7 @@ struct ReviewView: View {
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             
-                            let appID = "6474504507"
+                            let appID = "6736861551"
                             guard let url = URL(string: "https://itunes.apple.com/app/id\(appID)?action=write-review") else { return }
                             
                             UIApplication.shared.open(url)

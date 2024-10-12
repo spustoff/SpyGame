@@ -16,6 +16,8 @@ struct MainSets: View {
     
     @State private var newSet = false
     
+    @State private var counterVibro: Int = 0
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -101,6 +103,7 @@ struct MainSets: View {
                                         ForEach(setsModel.sets, id: \.self) { index in
                                             
                                             Button(action: {
+                                                counterVibro += 1
                                                 
                                                 viewModel.setSelectedFor = .main
                                                 
@@ -219,11 +222,13 @@ struct MainSets: View {
                                 .overlay(
                                     Color.black.opacity(viewModel.isRandomSet ? 0.4 : 0)
                                 )
+                                
                             }
                         }
                     }
                 }
                 .frame(height: UIScreen.main.bounds.height - 205)
+                .sensoryFeedbackMod(trigger: $counterVibro)
                 
                 HStack {
                     

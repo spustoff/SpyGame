@@ -9,6 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct SettingsView: View {
+    @Environment(\.presentationMode) var presentationMode
     
     @StateObject var viewModel = SettingsViewModel()
     @StateObject var paywallModel = PaywallViewModel()
@@ -106,7 +107,13 @@ struct SettingsView: View {
                                 
                                 Button(action: {
                                     
-                                    paywallModel.restorePurchases()
+                                    Task {
+                                        await paywallModel.restorePurchases() {
+                                            self.presentationMode.wrappedValue.dismiss()
+//                                            subscribeCover.toggle()
+                                        }
+                                    }
+//                                    paywallModel.restorePurchases()
                                     
                                 }, label: {
                                     

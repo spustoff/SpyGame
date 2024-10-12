@@ -13,6 +13,8 @@ struct MainDesign: View {
     @EnvironmentObject var viewModel: MainViewModel
     @EnvironmentObject var setsModel: MainSetsViewModel
     
+    @State private var counterVibro: Int = 0
+    
     var body: some View {
         
         VStack {
@@ -41,6 +43,7 @@ struct MainDesign: View {
                 }
             }
 //            .frame(height: UIScreen.main.bounds.height / 2)
+            .sensoryFeedbackMod(trigger: $counterVibro)
             
             NavigationLink(destination: {
                 MainSets()
@@ -89,7 +92,7 @@ struct MainDesign: View {
             HStack(spacing: 8) {
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.playersCount, minLimit: 3, maxLimit: 10, isPlayerCount: true, buttonType: .minus)
                     
                 }, label: {
@@ -107,7 +110,7 @@ struct MainDesign: View {
                     .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.playersCount, minLimit: 3, maxLimit: 10, isPlayerCount: true, buttonType: .plus)
                     
                 }, label: {
@@ -138,7 +141,7 @@ struct MainDesign: View {
             HStack(spacing: 8) {
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.spiesCount, minLimit: 1, maxLimit: viewModel.playersCount - 1, buttonType: .minus)
                     
                 }, label: {
@@ -157,7 +160,7 @@ struct MainDesign: View {
                     .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.spiesCount, minLimit: 1, maxLimit: viewModel.playersCount - 1, buttonType: .plus)
                     
                 }, label: {
@@ -189,7 +192,7 @@ struct MainDesign: View {
             HStack(spacing: 8) {
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.timerCount, minLimit: 1, maxLimit: 15, buttonType: .minus)
                     
                 }, label: {
@@ -207,7 +210,7 @@ struct MainDesign: View {
                     .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.timerCount, minLimit: 3, maxLimit: 10, buttonType: .plus)
                     
                 }, label: {
@@ -446,7 +449,7 @@ struct MainDesign: View {
             HStack(spacing: 8) {
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.roundsCount, minLimit: 1, maxLimit: 15, buttonType: .minus)
                     
                 }, label: {
@@ -464,7 +467,7 @@ struct MainDesign: View {
                     .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.PlusMinusManage(number: $viewModel.roundsCount, minLimit: 3, maxLimit: 10, buttonType: .plus)
                     
                 }, label: {

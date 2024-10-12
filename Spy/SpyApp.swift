@@ -22,7 +22,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         
         Amplitude.instance().initializeApiKey("b42b8943c8c678134c1eb8c3260354a6")
-        Apphud.start(apiKey: "app_HWhWMTWeF1Xx4UTGxVtyquJzUHZUJo")
+        Apphud.start(apiKey: "app_oeoqxQrKdjrCqPu3tdMVhF9QAnS8fk")
         
         MySecureTransformer.register()
         
@@ -30,8 +30,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-        is_paidSubscription = paywallModel.isSubscribed()
+        Task {
+            await is_paidSubscription = paywallModel.isSubscribed()
+        }
     }
 }
 

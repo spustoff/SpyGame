@@ -52,7 +52,7 @@ struct OnBoardView: View {
                     }
                 }
             } label: {
-                PrimeButton(text: "Continue")
+                PrimeButton(text: NSLocalizedString("Continue", comment: ""))
             }
         }
         .padding(.horizontal)

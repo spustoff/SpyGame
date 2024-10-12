@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PaywallView: View {
+    @Environment(\.presentationMode) var presentationMode
     
     @StateObject var viewModel = PaywallViewModel()
     
@@ -40,8 +41,13 @@ struct PaywallView: View {
                     Spacer()
                     
                     Button(action: {
-                        
-                        viewModel.restorePurchases()
+                        Task {
+                            await viewModel.restorePurchases() {
+                                self.presentationMode.wrappedValue.dismiss()
+//                                subscribeCover.toggle()
+                            }
+                        }
+//                        viewModel.restorePurchases()
                         
                     }, label: {
                         
@@ -66,6 +72,14 @@ struct PaywallView: View {
                     .padding(.top, 18)
                 
                 VStack(alignment: .center, spacing: 15, content: {
+                    
+                    HStack {
+                        Image(systemName: "lock")
+                        Text(NSLocalizedString("Cancel anytime", comment: ""))
+                    }
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundColor(.textWhite60)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     
                     Text("Premium Full Access")
                         .foregroundColor(.textWhite)
@@ -131,6 +145,15 @@ struct PaywallView: View {
                                                 .font(.system(size: 11, weight: .regular))
                                                 .multilineTextAlignment(.center)
                                         }
+                                        .padding(.top, 15)
+                                        
+                                        if let trial = viewModel.getTrialPeriod(for: skProduct) {
+                                            Text(trial)
+                                                .foregroundColor(.prime)
+                                                .font(.system(size: 13, weight: .medium))
+                                                .multilineTextAlignment(.center)
+                                                .frame(maxHeight: .infinity, alignment: .bottom)
+                                        }
                                         
                                     } else {
                                         
@@ -150,7 +173,7 @@ struct PaywallView: View {
                                 }
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 16)
-                                .frame(height: 135)
+                                .frame(height: 130)
                                 .frame(maxWidth: .infinity)
                                 .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                 .overlay(
@@ -186,7 +209,13 @@ struct PaywallView: View {
                     
                     Button(action: {
                         
-                        viewModel.purchaseProduct()
+                        Task {
+                            await viewModel.purchaseProduct() {
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                        
+//                        viewModel.purchaseProduct()
                         
                     }, label: {
                         
@@ -229,17 +258,9 @@ struct PaywallView: View {
                                 .multilineTextAlignment(.leading)
                                 .minimumScaleFactor(0.8)
                                 .lineLimit(2)
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         })
                         .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        HStack {
-                            Image(systemName: "lock")
-                            Text(NSLocalizedString("Cancel anytime", comment: ""))
-                        }
-                        .font(.system(size: 13, weight: .medium))
-                        .foregroundColor(.textWhite60)
-                        .frame(maxWidth: .infinity, alignment: .center)
                         
                         Button(action: {
                             
@@ -253,7 +274,7 @@ struct PaywallView: View {
                                 .foregroundColor(.textWhite60)
                                 .font(.system(size: 11, weight: .regular))
                                 .multilineTextAlignment(.trailing)
-                                .frame(maxWidth: .infinity)
+//                                .frame(maxWidth: .infinity, alignment: .trailing)
                         })
                         .buttonStyle(ScaledButton(scaling: 0.9))
                     }
@@ -262,8 +283,11 @@ struct PaywallView: View {
             }
         }
         .onAppear {
-            
-            viewModel.getPaywalls()
+            Task {
+                
+                await viewModel.getPlacements()
+            }
+//            viewModel.getPaywalls()
         }
     }
 }

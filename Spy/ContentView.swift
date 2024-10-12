@@ -26,7 +26,7 @@ struct ContentView: View {
                 
             } else if status == false {
                 
-                SplashView()
+                OnBoardView(onBoardEnd: $status)
             }
         }
     }
