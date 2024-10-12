@@ -54,6 +54,17 @@ final class MainViewModel: ObservableObject {
         }
     }
     
+    @Published var isRoles: Bool = true
+    @Published var roundsCount: Int = 1 {
+        didSet {
+            if roundsCount < 1 {
+                roundsCount = 1
+            } else if roundsCount > 10 {
+                roundsCount = 10
+            }
+        }
+    }
+    
     @Published var isHints: Bool = false
     @Published var isRandomSet: Bool = false
     
@@ -662,7 +673,7 @@ final class MainViewModel: ObservableObject {
         }
 
         var allRoles = selectedSet.compactMap { $0.roles }.flatMap { $0 }.shuffled()
-        if allRoles.isEmpty {
+        if allRoles.isEmpty || !isRoles {
             // Обработка ситуации, когда нет доступных ролей
             // Например, можно присвоить дефолтную роль или вывести сообщение об ошибке
             allRoles = ["Citizen"]
@@ -868,7 +879,7 @@ final class MainViewModel: ObservableObject {
         }
 
         var allRoles = selectedSet.compactMap { $0.roles }.flatMap { $0 }.shuffled()
-        if allRoles.isEmpty {
+        if allRoles.isEmpty || !isRoles {
             // Обработка ситуации, когда нет доступных ролей
             // Например, можно присвоить дефолтную роль или вывести сообщение об ошибке
             allRoles = ["Citizen"]

@@ -33,6 +33,10 @@ struct MainDesign: View {
                     
 //                    setsDesign()
                     
+                    rolesDesign()
+                    
+                    roundsCountDesign()
+                    
                     hintDesign()
                 }
             }
@@ -404,6 +408,76 @@ struct MainDesign: View {
 //            setsModel.fetchSets()
 //        }
 //    }
+    
+    @ViewBuilder
+    func rolesDesign() -> some View {
+        
+        HStack {
+            
+            Icon(image: "person.crop.circle.badge.questionmark")
+            
+            Text(NSLocalizedString("Roles", comment: ""))
+                .foregroundColor(.white)
+                .font(.system(size: 17, weight: .regular))
+            
+            Spacer()
+            
+            Toggle(isOn: $viewModel.isRoles, label: {})
+                .toggleStyle(SwitchToggleStyle(tint: Color.prime))
+        }
+        .padding(.horizontal, 12)
+        .frame(height: 60)
+        .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+    }
+    
+    @ViewBuilder
+    func roundsCountDesign() -> some View {
+        
+        HStack {
+            
+            Icon(image: "repeat")
+            
+            Text(NSLocalizedString("Rounds", comment: ""))
+                .foregroundColor(.white)
+                .font(.system(size: 17, weight: .regular))
+            
+            Spacer()
+            
+            HStack(spacing: 8) {
+                
+                Button(action: {
+                    
+                    viewModel.PlusMinusManage(number: $viewModel.roundsCount, minLimit: 1, maxLimit: 15, buttonType: .minus)
+                    
+                }, label: {
+                    Icon(image: "minus")
+                })
+                .opacity(viewModel.roundsCount == 1 ? 0.3 : 1)
+                .disabled(viewModel.roundsCount == 1)
+                
+                TextField("", value: $viewModel.roundsCount, formatter: amountFormatter)
+                    .keyboardType(.numberPad)
+                    .foregroundColor(.white)
+                    .font(.system(size: 15, weight: .regular))
+                    .multilineTextAlignment(.center)
+                    .frame(width: 40, height: 32, alignment: .center)
+                    .background(RoundedRectangle(cornerRadius: 6).fill(Color.bgCell))
+                
+                Button(action: {
+                    
+                    viewModel.PlusMinusManage(number: $viewModel.roundsCount, minLimit: 3, maxLimit: 10, buttonType: .plus)
+                    
+                }, label: {
+                    Icon(image: "plus")
+                })
+                .opacity(viewModel.roundsCount == 10 ? 0.3 : 1)
+                .disabled(viewModel.roundsCount == 10)
+            }
+        }
+        .padding(.horizontal, 12)
+        .frame(height: 60)
+        .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+    }
     
     @ViewBuilder
     func hintDesign() -> some View {

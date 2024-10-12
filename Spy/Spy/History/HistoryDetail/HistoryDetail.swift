@@ -27,7 +27,7 @@ struct HistoryDetail: View {
                 
                 ZStack {
                     
-                    Text("Game #\(item.gameID)")
+                    Text("\(NSLocalizedString("Game", comment: "")) #\(item.gameID)")
                         .foregroundColor(.textWhite)
                         .font(.system(size: 19, weight: .semibold))
                     

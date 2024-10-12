@@ -122,6 +122,8 @@ struct CardsView: View {
 //                        .padding()
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
+                .padding(.horizontal)
+                .padding(.bottom, 32)
                 
             } else {
                 
