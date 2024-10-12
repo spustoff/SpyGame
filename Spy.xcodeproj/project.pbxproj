@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BF4DC552CB715A900E05F61 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC542CB715A900E05F61 /* Extensions.swift */; };
+		3BF4DC5D2CB715D100E05F61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF4DC5A2CB715D100E05F61 /* LaunchScreen.storyboard */; };
+		3BF4DC5E2CB715D100E05F61 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC572CB715D100E05F61 /* Icon.swift */; };
+		3BF4DC5F2CB715D100E05F61 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC5B2CB715D100E05F61 /* OnBoardView.swift */; };
+		3BF4DC602CB715D100E05F61 /* EmbedInCornRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC562CB715D100E05F61 /* EmbedInCornRadius.swift */; };
+		3BF4DC612CB715D100E05F61 /* PrimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC582CB715D100E05F61 /* PrimeButton.swift */; };
 		84EF0F012CB7086C00DC8508 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F002CB7086C00DC8508 /* Alamofire */; };
 		84EF0F062CB7087F00DC8508 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F052CB7087F00DC8508 /* Amplitude */; };
 		84EF0F092CB7088C00DC8508 /* ApphudSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 84EF0F082CB7088C00DC8508 /* ApphudSDK */; };
@@ -92,6 +98,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BF4DC542CB715A900E05F61 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3BF4DC562CB715D100E05F61 /* EmbedInCornRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedInCornRadius.swift; sourceTree = "<group>"; };
+		3BF4DC572CB715D100E05F61 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		3BF4DC582CB715D100E05F61 /* PrimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeButton.swift; sourceTree = "<group>"; };
+		3BF4DC5A2CB715D100E05F61 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3BF4DC5B2CB715D100E05F61 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		4406552C44B222251E063ACE /* Pods_Spy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91C548C2B13521F002E28E3 /* Ext+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UserDefaults.swift"; sourceTree = "<group>"; };
 		F91C548E2B135F6F002E28E3 /* Ext+TimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+TimeString.swift"; sourceTree = "<group>"; };
@@ -205,6 +217,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3BF4DC592CB715D100E05F61 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				3BF4DC562CB715D100E05F61 /* EmbedInCornRadius.swift */,
+				3BF4DC572CB715D100E05F61 /* Icon.swift */,
+				3BF4DC582CB715D100E05F61 /* PrimeButton.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		3BF4DC5C2CB715D100E05F61 /* OnBoard */ = {
+			isa = PBXGroup;
+			children = (
+				3BF4DC5A2CB715D100E05F61 /* LaunchScreen.storyboard */,
+				3BF4DC5B2CB715D100E05F61 /* OnBoardView.swift */,
+			);
+			path = OnBoard;
+			sourceTree = "<group>";
+		};
 		F91C54902B13A45F002E28E3 /* AvatarPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +293,7 @@
 				F9E1A9832B4082C80062F96D /* GoogleService-Info.plist */,
 				F928AF8D2AFEA6E0004102ED /* SpyApp.swift */,
 				F928AF8F2AFEA6E0004102ED /* ContentView.swift */,
+				3BF4DC542CB715A900E05F61 /* Extensions.swift */,
 				F928AF9D2AFEA7B6004102ED /* Spy */,
 				F928AF912AFEA6E1004102ED /* Assets.xcassets */,
 				F928AF932AFEA6E1004102ED /* Preview Content */,
@@ -281,6 +313,8 @@
 		F928AF9D2AFEA7B6004102ED /* Spy */ = {
 			isa = PBXGroup;
 			children = (
+				3BF4DC592CB715D100E05F61 /* CustomViews */,
+				3BF4DC5C2CB715D100E05F61 /* OnBoard */,
 				F926C5912B3DF88E00FFF41D /* KeyChain */,
 				F923D5D12B2F430900466F63 /* Localizations */,
 				F928AFA12AFEA7CF004102ED /* Ext */,
@@ -693,6 +727,7 @@
 				F928AF9C2AFEA784004102ED /* Launch Screen.storyboard in Resources */,
 				F923D5D42B2F431C00466F63 /* Localizable.strings in Resources */,
 				F9E1A9842B4082C80062F96D /* GoogleService-Info.plist in Resources */,
+				3BF4DC5D2CB715D100E05F61 /* LaunchScreen.storyboard in Resources */,
 				F928AF952AFEA6E1004102ED /* Preview Assets.xcassets in Resources */,
 				F928AF922AFEA6E1004102ED /* Assets.xcassets in Resources */,
 			);
@@ -717,6 +752,10 @@
 				F9604FAF2B0E698D000DE317 /* TotalResultVoting.swift in Sources */,
 				F928AFB72AFEAC2B004102ED /* MainView.swift in Sources */,
 				F926C5952B3DF8FC00FFF41D /* KeychainDataStore.swift in Sources */,
+				3BF4DC5E2CB715D100E05F61 /* Icon.swift in Sources */,
+				3BF4DC5F2CB715D100E05F61 /* OnBoardView.swift in Sources */,
+				3BF4DC602CB715D100E05F61 /* EmbedInCornRadius.swift in Sources */,
+				3BF4DC612CB715D100E05F61 /* PrimeButton.swift in Sources */,
 				F9CC2DB92B1A2D9D00902B38 /* Ext+ShareSheet.swift in Sources */,
 				F928AFA62AFEA80A004102ED /* SplashViewModel.swift in Sources */,
 				F928AFBF2AFEBB00004102ED /* MainNames.swift in Sources */,
@@ -724,6 +763,7 @@
 				F95AB9B62B03F779006FEB13 /* Ext+CoredataStack.swift in Sources */,
 				F97343F02B015D7700FC8626 /* RulesModel.swift in Sources */,
 				F928AFBC2AFEB84D004102ED /* MainDesign.swift in Sources */,
+				3BF4DC552CB715A900E05F61 /* Extensions.swift in Sources */,
 				F91C548F2B135F6F002E28E3 /* Ext+TimeString.swift in Sources */,
 				F9315FB82B45E1C700F7AC6C /* ReviewView.swift in Sources */,
 				F9B9ED812B0547AC0022CB27 /* Ext+CustomProgressViewStyle.swift in Sources */,
@@ -859,6 +899,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -916,6 +957,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -926,9 +968,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Spy/Preview Content\"";
-				DEVELOPMENT_TEAM = QM2S5274M5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spy/Info.plist;
@@ -936,15 +978,15 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.spier23.pustof32fspy;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = core.spy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -962,9 +1004,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Spy/Preview Content\"";
-				DEVELOPMENT_TEAM = QM2S5274M5;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spy/Info.plist;
@@ -972,15 +1014,15 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.spier23.pustof32fspy;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = core.spy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

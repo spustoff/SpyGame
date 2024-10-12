@@ -20,8 +20,7 @@ struct MainGame: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
             VStack {
                 
@@ -40,15 +39,12 @@ struct MainGame: View {
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "xmark")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                         
                         Spacer()
                         
-                        if viewModel.gameTypes == .timer || viewModel.gameTypes == .cards {
+                        if (viewModel.gameTypes == .timer || viewModel.gameTypes == .cards) {
                             
                             HStack {
                                 

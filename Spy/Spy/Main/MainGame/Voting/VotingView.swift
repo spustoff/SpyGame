@@ -30,14 +30,14 @@ struct VotingView: View {
                 VStack {
                     
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(.gray.opacity(0.4))
+                        .fill(.textWhite40)
                         .frame(width: 50, height: 5)
                     
                     viewModel.getVotingSteps()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Rectangle().fill(Color("bg")).cornerRadius(radius: 25, corners: [.topLeft, .topRight]).ignoresSafeArea())
+                .background(Rectangle().fill(Color.bgPrime).cornerRadius(radius: 16, corners: [.topLeft, .topRight]).ignoresSafeArea())
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .offset(y: viewModel.isVoting ? 0 : UIScreen.main.bounds.height)
                 .animation(.spring(), value: viewModel.currentVotingStep)
@@ -47,5 +47,8 @@ struct VotingView: View {
 }
 
 #Preview {
-    VotingView(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        VotingView(viewModel: MainViewModel())
+    }
 }

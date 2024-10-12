@@ -26,7 +26,7 @@ struct QuestionVoting: View {
                         
                         Text(viewModel.PlayerWithMostVotes?.playerName ?? "nil")
                             .foregroundColor(.white)
-                            .font(.system(size: 21, weight: .semibold))
+                            .font(.system(size: 19, weight: .bold))
                         
                         Text("What location are we in?")
                             .foregroundColor(.white.opacity(0.6))
@@ -40,10 +40,7 @@ struct QuestionVoting: View {
                             viewModel.currentVotingStep = .result
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                         
                         Spacer()
@@ -51,7 +48,7 @@ struct QuestionVoting: View {
                         Image(viewModel.PlayerWithMostVotes?.playerPhoto ?? "avatar_name")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 32, height: 32)
                     }
                 }
                 .padding()
@@ -70,41 +67,43 @@ struct QuestionVoting: View {
                                 
                                 HStack {
                                     
-                                    Circle()
-                                        .fill(Color.gray.opacity(0.1))
-                                        .frame(width: 40, height: 40)
-                                        .overlay (
-                                        
-                                            Image(systemName: "person")
-                                                .foregroundColor(.gray)
-                                                .font(.system(size: 13, weight: .regular))
-                                        )
+//                                    Circle()
+//                                        .fill(Color.gray.opacity(0.1))
+//                                        .frame(width: 40, height: 40)
+//                                        .overlay (
+//                                        
+//                                            Image(systemName: "person")
+//                                                .foregroundColor(.gray)
+//                                                .font(.system(size: 13, weight: .regular))
+//                                        )
                                     
                                     Text(index.location ?? "nil")
                                         .foregroundColor(.white)
-                                        .font(.system(size: 15, weight: .medium))
+                                        .font(.system(size: 17, weight: .medium))
                                     
                                     Spacer()
                                     
-                                    Circle()
-                                        .stroke(viewModel.selectedLocationByPlayer == index ? Color("primary") : Color.gray.opacity(0.4), lineWidth: 2)
-                                        .frame(width: 18, height: 18)
-                                        .overlay (
-                                        
-                                            Circle()
-                                                .fill(Color("primary"))
-                                                .frame(width: 14, height: 14)
-                                                .opacity(viewModel.selectedLocationByPlayer == index ? 1 : 0)
-                                        )
+                                    Icon(image: viewModel.selectedLocationByPlayer == index ? "button.programmable" : "circle")
+                                    
+//                                    Circle()
+//                                        .stroke(viewModel.selectedLocationByPlayer == index ? Color("primary") : Color.gray.opacity(0.4), lineWidth: 2)
+//                                        .frame(width: 18, height: 18)
+//                                        .overlay (
+//                                        
+//                                            Circle()
+//                                                .fill(Color("primary"))
+//                                                .frame(width: 14, height: 14)
+//                                                .opacity(viewModel.selectedLocationByPlayer == index ? 1 : 0)
+//                                        )
                                 }
-                                .padding(.horizontal)
-                                .frame(height: 65)
-                                .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
+                                .padding(.horizontal, 12)
+                                .frame(height: 60)
+                                .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                 .overlay (
                                 
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .stroke(Color("primary"), lineWidth: 2)
-                                        .opacity(viewModel.selectedLocationByPlayer == index ? 1 : 0)
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.prime, lineWidth: 2)
+                                        .opacity(viewModel.selectedLocationByPlayer == index ? 2 : 0)
                                 )
                             })
                             .buttonStyle(ScaledButton(scaling: 0.9))
@@ -122,11 +121,11 @@ struct QuestionVoting: View {
                     }, label: {
                         
                         Text("SURRENDER")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(Color.prime)
+                            .font(.system(size: 17, weight: .bold))
                             .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 16).fill(Color.bgCell))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     
@@ -136,12 +135,7 @@ struct QuestionVoting: View {
                         
                     }, label: {
                         
-                        Text("SELECT")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .medium))
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                        PrimeButton(text: NSLocalizedString("SELECT", comment: ""))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     .opacity(viewModel.selectedLocationByPlayer == nil ? 0.5 : 1)
@@ -165,5 +159,8 @@ struct QuestionVoting: View {
 }
 
 #Preview {
-    QuestionVoting(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        QuestionVoting(viewModel: MainViewModel())
+    }
 }

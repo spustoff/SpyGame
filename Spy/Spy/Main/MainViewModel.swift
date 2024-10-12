@@ -26,9 +26,44 @@ final class MainViewModel: ObservableObject {
     @Published var selectedNameForFavorite: Int = 0
     @Published var selectedPlayerForPicker: PlayersModel? = nil
     
-    @Published var playersCount: Int = 3
-    @Published var spiesCount: Int = 1
-    @Published var timerCount: Int = 5
+    @Published var playersCount: Int = 3 {
+        didSet {
+            if playersCount < 3 {
+                playersCount = 3
+            } else if playersCount > 10 {
+                playersCount = 10
+            }
+        }
+    }
+    @Published var spiesCount: Int = 1 {
+        didSet {
+            if spiesCount < 1 {
+                spiesCount = 1
+            } else if spiesCount > playersCount - 1 {
+                spiesCount = playersCount - 1
+            }
+        }
+    }
+    @Published var timerCount: Int = 5 {
+        didSet {
+            if timerCount < 1 {
+                timerCount = 1
+            } else if timerCount > 10 {
+                timerCount = 10
+            }
+        }
+    }
+    
+    @Published var isRoles: Bool = true
+    @Published var roundsCount: Int = 1 {
+        didSet {
+            if roundsCount < 1 {
+                roundsCount = 1
+            } else if roundsCount > 10 {
+                roundsCount = 10
+            }
+        }
+    }
     
     @Published var isHints: Bool = false
     @Published var isRandomSet: Bool = false
@@ -594,7 +629,7 @@ final class MainViewModel: ObservableObject {
         
         let gamesPlayed = KCManager.loadNumber(forKey: "subscriptionAvailableGames2")
         
-        if !is_paidSubscription {
+        if is_paidSubscription {
             
             guard gamesPlayed < KCManager.availableGames else {
                 
@@ -638,7 +673,7 @@ final class MainViewModel: ObservableObject {
         }
 
         var allRoles = selectedSet.compactMap { $0.roles }.flatMap { $0 }.shuffled()
-        if allRoles.isEmpty {
+        if allRoles.isEmpty || !isRoles {
             // Обработка ситуации, когда нет доступных ролей
             // Например, можно присвоить дефолтную роль или вывести сообщение об ошибке
             allRoles = ["Citizen"]
@@ -763,27 +798,180 @@ final class MainViewModel: ObservableObject {
         }
     }
     
+    func setupHistory(historyModel: HistoryModel) {
+        
+        if let coreDataPlayersSet = historyModel.playersModel as? Set<PlayersCoreModel> {
+            
+            let sortedPlayersArray = coreDataPlayersSet
+                .sorted(by: { $0.playerID < $1.playerID })
+                .map { corePlayer in
+                    
+                    PlayersModel(id: Int(corePlayer.playerID), playerName: corePlayer.playerName ?? "", playerPhoto: corePlayer.playerPhoto ?? "", playerRole: corePlayer.playerRole ?? "")
+                }
+            
+            playerNames = sortedPlayersArray
+            playersCount = playerNames.count
+//            spiesCount = sortedPlayersArray.count(where: { $0.playerRole == "Spy" })
+        }
+        spiesCount = Int(historyModel.spyCount)
+        timerCount = Int(historyModel.time ?? "5") ?? 5
+        isHints = historyModel.isHints
+        // Round and roles
+        
+//        if let setModels = historyModel.setModel as? Set<HistorySet> {
+        if let setModels = historyModel.setModel as? Set<SetModel> {
+//            setsModel = setModels
+            for setModel in setModels {
+                selectedSet.append(setModel)
+            }
+        }
+        
+        if let setModels = historyModel.setModel as? Set<HistorySet> {
+            
+            let allLocations = setModels.compactMap { getLocationsArray(from: $0) }.flatMap { $0 }
+            
+//            all21321
+        }
+        
+        let gamesPlayed = KCManager.loadNumber(forKey: "subscriptionAvailableGames2")
+        
+        if is_paidSubscription {
+            
+            guard gamesPlayed < KCManager.availableGames else {
+                
+                isPaywall = true
+                
+                return
+            }
+        }
+        
+        let intForSave = (gamesPlayed + 1)
+        
+        KCManager.saveNumber(intForSave, forKey: "subscriptionAvailableGames2")
+                
+        isGame = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            
+            self.currentStep = .main
+        }
+
+        if !is_rules {
+            
+            gameTypes = .cards
+            
+        } else if is_rules {
+            
+            gameTypes = .rules
+        }
+        
+        let actualSpiesCount = min(spiesCount, playersCount)
+        var indices = Array(0..<playersCount)
+
+        var spyIndices = Set<Int>()
+        while spyIndices.count < actualSpiesCount {
+            
+            if let randomIndex = indices.randomElement() {
+                
+                spyIndices.insert(randomIndex)
+                indices.removeAll(where: { $0 == randomIndex })
+            }
+        }
+
+        var allRoles = selectedSet.compactMap { $0.roles }.flatMap { $0 }.shuffled()
+        if allRoles.isEmpty || !isRoles {
+            // Обработка ситуации, когда нет доступных ролей
+            // Например, можно присвоить дефолтную роль или вывести сообщение об ошибке
+            allRoles = ["Citizen"]
+        }
+
+        let remainingRoles = allRoles
+        var roleIndex = 0
+
+        for i in 0..<playersCount {
+            
+            var playerName: String
+            var playerPhoto: String
+            var playerRole: String
+
+            if i < playerNames.count {
+                
+                playerName = playerNames[i].playerName
+                playerPhoto = playerNames[i].playerPhoto
+                
+            } else {
+                
+                playerName = "Player \(i+1)"
+                playerPhoto = "avatar_name"
+            }
+
+            if spyIndices.contains(i) {
+                
+                playerRole = "Spy"
+                
+            } else {
+                
+                if !remainingRoles.isEmpty {
+                    playerRole = remainingRoles[roleIndex % remainingRoles.count]
+                    roleIndex += 1
+                } else {
+                    // Обработка ситуации, когда нет доступных ролей
+                    // Например, можно присвоить дефолтную роль или вывести сообщение об ошибке
+                    playerRole = "Citizen" // Или любая другая логика обработки
+                }
+            }
+
+            let newPlayer = PlayersModel(id: i + 1, playerName: playerName, playerPhoto: playerPhoto, playerRole: playerRole)
+            
+            if i < playerNames.count {
+                
+                playerNames[i] = newPlayer
+                
+            } else {
+                
+                playerNames.append(newPlayer)
+            }
+        }
+
+        getRandomLocation()
+        
+        isGame = true
+    }
+    
     @ViewBuilder
     func manageViews() -> some View {
         
         switch currentStep {
         case .main:
-            MainDesign(viewModel: self, setsModel: self.setsModel)
+            MainDesign()
+                    .environmentObject(self)
+                    .environmentObject(self.setsModel)
                 .modifier(AnimatedScale())
         case .names:
-            MainNames(viewModel: self, dataManager: self.dataManager)
+                MainNames()
+                    .environmentObject(self)
+                    .environmentObject(self.dataManager)
+                
+//            MainNames(viewModel: self, dataManager: self.dataManager)
                 .modifier(AnimatedScale())
         case .sets:
-            MainSets(viewModel: self, setsModel: self.setsModel)
+                MainSets()
+                    .environmentObject(self)
+                    .environmentObject(self.setsModel)
+//            MainSets(viewModel: self, setsModel: self.setsModel)
                 .modifier(AnimatedScale())
         case .newSet:
             NewSet(viewModel: self, setsModel: self.setsModel)
                 .modifier(AnimatedScale())
         case .nameFavorites:
-            NamesFavorites(viewModel: self, dataManager: self.dataManager)
+                NamesFavorites()
+                    .environmentObject(self)
+//            NamesFavorites(viewModel: self, dataManager: self.dataManager)
                 .modifier(AnimatedScale())
         case .pickAvatar:
-            AvatarPicker(viewModel: self)
+                AvatarPicker()
+                    .environmentObject(self)
+//            AvatarPicker(viewModel: self)
                 .modifier(AnimatedScale())
         }
     }
@@ -903,5 +1091,30 @@ enum GameTypes: CaseIterable {
         case .ad:
             return NSLocalizedString("Ad", comment: "")
         }
+    }
+}
+
+func getLocationsArray(from setModel: HistorySet) -> [Location]? {
+    
+    guard let locationsData = setModel.locations as? Data else {
+        
+        print("No locations data found")
+        
+        return []
+    }
+
+    let decoder = JSONDecoder()
+    
+    do {
+        
+        let locationsArray = try decoder.decode([Location].self, from: locationsData)
+        
+        return locationsArray
+        
+    } catch {
+        
+        print("Error decoding locations: \(error)")
+        
+        return []
     }
 }

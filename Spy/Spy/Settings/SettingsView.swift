@@ -23,16 +23,15 @@ struct SettingsView: View {
         
         ZStack {
             
-            Color("bg")
-                .ignoresSafeArea()
+            Color.bgPrime.ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 0) {
                 
                 ZStack {
                     
                     Text("Settings")
-                        .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 19, weight: .bold))
                     
                     HStack {
                         
@@ -41,10 +40,7 @@ struct SettingsView: View {
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "chevron.left")
                         })
                         
                         Spacer()
@@ -54,345 +50,212 @@ struct SettingsView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
-                    LazyVStack {
+                    LazyVStack(spacing: 24) {
                         
                         if !viewModel.is_paidSubscription {
-                            
-                            Button(action: {
-                                
-                                viewModel.isPaywall = true
-                                
-                            }, label: {
-                                
-                                VStack(alignment: .leading, spacing: -40, content: {
+                            VStack(spacing: 8) {
+                                Button(action: {
                                     
-                                    VStack(alignment: .leading, spacing: 5, content: {
-                                        
-                                        Text("Premium Full Access")
-                                            .foregroundColor(Color("primary"))
-                                            .font(.system(size: 12, weight: .medium))
-                                        
-                                        Text("Premium")
-                                            .foregroundColor(Color("bezhev"))
-                                            .font(.system(size: 23, weight: .semibold))
-                                        
-                                        Text("Choose your plan")
-                                            .foregroundColor(.gray)
-                                            .font(.system(size: 14, weight: .regular))
-                                    })
-                                    .padding([.horizontal, .top])
+                                    viewModel.isPaywall = true
                                     
-                                    HStack(alignment: .bottom) {
+                                }, label: {
+                                    
+                                    VStack(alignment: .leading, spacing: -40, content: {
                                         
-                                        Text("TRY IT")
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 16, weight: .medium))
-                                            .padding(.horizontal, 20)
-                                            .frame(height: 45)
-                                            .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
-                                            .padding([.leading, .bottom])
+                                        VStack(alignment: .leading, spacing: 0, content: {
+                                            
+                                            Text("Premium Full Access")
+                                                .foregroundColor(Color.prime)
+                                                .font(.system(size: 13, weight: .medium))
+                                            
+                                            Text("Get Premium")
+                                                .foregroundColor(Color.second)
+                                                .font(.system(size: 24, weight: .bold))
+                                            
+                                            Text("Choose your plan")
+                                                .foregroundColor(.textWhite60)
+                                                .font(.system(size: 15, weight: .regular))
+                                        })
+                                        .padding([.horizontal, .top])
                                         
                                         Spacer()
                                         
-                                        Image("gift")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 135, height: 135)
-                                            .cornerRadius(radius: 15, corners: .allCorners)
+                                        HStack(alignment: .bottom) {
+                                            
+                                            Text("TRY IT")
+                                                .foregroundColor(.textWhite)
+                                                .font(.system(size: 14, weight: .bold))
+                                                .padding(.horizontal, 18)
+                                                .frame(height: 48)
+                                                .background(RoundedRectangle(cornerRadius: 16).fill(LinearGradient(colors: [Color.primeTopTrailGrad, Color.primeBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading)))
+                                                .padding([.leading, .bottom])
+                                            
+                                            Spacer()
+                                            
+                                            Image("gift")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: 150, height: 130)
+                                                .cornerRadius(radius: 15, corners: .allCorners)
+                                        }
+                                    })
+                                    .frame(height: 190)
+                                    .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+                                })
+                                .buttonStyle(ScaledButton(scaling: 0.9))
+                                
+                                Button(action: {
+                                    
+                                    paywallModel.restorePurchases()
+                                    
+                                }, label: {
+                                    
+                                    HStack {
+                                        SettingsButton(icon: "crown", text: "Restore Purchases")
                                     }
                                 })
-                                .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
+                                .buttonStyle(ScaledButton(scaling: 0.9))
+                            }
+                        }
+                        
+                        VStack(spacing: 8) {
+                            HStack {
+                                Image("info.bubble")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                
+                                Text("Show Rules")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 17, weight: .regular))
+                                
+                                Spacer()
+                                
+                                Toggle(isOn: $viewModel.is_rules, label: {})
+                                    .toggleStyle(SwitchToggleStyle(tint: Color.prime))
+                                    .labelsHidden()
+                            }
+                            .padding(.horizontal, 12)
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+                            
+                            HStack {
+                                
+                                Image("speaker.wave.2")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                
+                                Text(NSLocalizedString("Sound", comment: ""))
+                                    .foregroundColor(.textWhite)
+                                    .font(.system(size: 17, weight: .regular))
+                                
+                                Spacer()
+                                
+                                Toggle(isOn: $viewModel.is_sound, label: {})
+                                    .toggleStyle(SwitchToggleStyle(tint: Color.prime))
+                                    .labelsHidden()
+                            }
+                            .padding(.horizontal, 12)
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+                            
+                            HStack {
+                                
+                                Image("iphone.radiowaves.left.and.right.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                
+                                Text("Vibration")
+                                    .foregroundColor(.textWhite)
+                                    .font(.system(size: 17, weight: .regular))
+                                
+                                Spacer()
+                                
+                                Toggle(isOn: $viewModel.is_vibration, label: {})
+                                    .toggleStyle(SwitchToggleStyle(tint: Color.prime))
+                                    .labelsHidden()
+                            }
+                            .padding(.horizontal, 12)
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
+                            
+                            Button(action: {
+                                
+                                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                                    
+                                    UIApplication.shared.open(settingsURL)
+                                }
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    SettingsButton(icon: "globe", text: "Language")
+                                }
                             })
                             .buttonStyle(ScaledButton(scaling: 0.9))
                         }
                         
-                        Button(action: {
-                            
-                            paywallModel.restorePurchases()
-                            
-                        }, label: {
-                            
-                            HStack {
+                        VStack(spacing: 8) {
+                            NavigationLink(destination: {
                                 
-                                Image("restore_purchases.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
+                                WriteUs(isPaddingTop: false)
+                                    .navigationBarBackButtonHidden()
                                 
-                                Text("Restore Purchases")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
+                            }, label: {
                                 
-                                Spacer()
+                                HStack {
+                                    SettingsButton(icon: "envelope", text: "Write to us")
+                                }
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.9))
+                            
+                            Button(action: {
                                 
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                            .padding(.bottom)
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        HStack {
+                                SKStoreReviewController.requestReview()
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    SettingsButton(icon: "star.square", text: "Rate our app")
+                                }
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.9))
                             
-                            Image("rules.icon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 26, height: 26)
+                            Button(action: {
+                                
+                                viewModel.isShare = true
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    SettingsButton(icon: "square.and.arrow.up", text: "Share with friends")
+                                }
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.9))
                             
-                            Text("Show Rules")
-                                .foregroundColor(.white)
-                                .font(.system(size: 15, weight: .medium))
+                            Button(action: {
+                                
+                                guard let url = URL(string: "https://docs.google.com/document/d/1BvuGHqC5LIK7SjwiQvnHEyEtuaXFmF_4POkhj-km1zU/edit#heading=h.fi8181mpja0") else { return }
+                                
+                                UIApplication.shared.open(url)
+                                
+                            }, label: {
+                                
+                                HStack {
+                                    SettingsButton(icon: "doc.text", text: NSLocalizedString("Usage policy", comment: ""))
+                                }
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.9))
                             
-                            Spacer()
-                            
-                            Toggle(isOn: $viewModel.is_rules, label: {})
-                                .toggleStyle(SwitchToggleStyle(tint: Color("primary")))
                         }
-                        .padding(.horizontal)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        
-                        HStack {
-                            
-                            Image("vibration.icon")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 26, height: 26)
-                            
-                            Text("Vibration")
-                                .foregroundColor(.white)
-                                .font(.system(size: 15, weight: .medium))
-                            
-                            Spacer()
-                            
-                            Toggle(isOn: $viewModel.is_vibration, label: {})
-                                .toggleStyle(SwitchToggleStyle(tint: Color("primary")))
-                        }
-                        .padding(.horizontal)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        
-                        Button(action: {
-                            
-                            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                                
-                                UIApplication.shared.open(settingsURL)
-                            }
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("language.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Language")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                            .padding(.bottom)
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        NavigationLink(destination: {
-                            
-                            WriteUs(isPaddingTop: false)
-                                .navigationBarBackButtonHidden()
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image(systemName: "envelope.fill")
-                                    .foregroundColor(Color("bezhev"))
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Write to us")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        Button(action: {
-                            
-                            SKStoreReviewController.requestReview()
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("rate.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Rate our app")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        Button(action: {
-                            
-                            viewModel.isShare = true
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("share.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Share with friends")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        Button(action: {
-                            
-                            guard let url = URL(string: "https://docs.google.com/document/d/1aY0TdyCzRU_0PNgs889y5-iezZdbvuE74nWyneg6PPM/edit?usp=sharing") else { return }
-                            
-                            UIApplication.shared.open(url)
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("usage_policy.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Privacy Policy")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        Button(action: {
-                            
-                            guard let url = URL(string: "https://docs.google.com/document/d/1BvuGHqC5LIK7SjwiQvnHEyEtuaXFmF_4POkhj-km1zU/edit#heading=h.fi8181mpja0") else { return }
-                            
-                            UIApplication.shared.open(url)
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("usage_policy.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Terms of Use")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
-                        
-                        Button(action: {
-                            
-                            viewModel.isResetSets = true
-                            
-                        }, label: {
-                            
-                            HStack {
-                                
-                                Image("reset.icon")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 26, height: 26)
-                                
-                                Text("Reset Default Sets")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15, weight: .medium))
-                                
-                                Spacer()
-                                
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color("bezhev").opacity(0.7))
-                                    .font(.system(size: 14, weight: .regular))
-                            }
-                            .padding(.horizontal)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
-                        })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
                         
                         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                             
                             Text("App Version: \(version)")
                                 .foregroundColor(.gray)
-                                .font(.system(size: 13, weight: .regular))
-                                .padding(.top, 20)
+                                .font(.system(size: 15, weight: .regular))
                                 .onTapGesture() {
                                     
                                     if versionClicked >= 5 {
@@ -412,19 +275,6 @@ struct SettingsView: View {
                 }
             }
         }
-        .alert(isPresented: $viewModel.isResetSets) {
-            
-            Alert(
-                title: Text("Reset the default sets?"),
-                message: Text("Only your sets will be reset, our sets will be saved. You'll have to re-enter the game"),
-                primaryButton: .destructive(Text("Reset")) {
-                    
-                    CoreDataStack.shared.deleteAllSets()
-                    setsModel.fetchSets()
-                },
-                secondaryButton: .cancel()
-            )
-        }
         .sheet(isPresented: $viewModel.isPaywall, content: {
             
             PaywallView()
@@ -441,4 +291,36 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+}
+
+
+struct SettingsButton: View {
+    var icon: String
+    var text: String
+    
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(icon)
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 32, height: 32)
+                .foregroundColor(.second)
+            Text(NSLocalizedString(text, comment: ""))
+                .font(.system(size: 17, weight: .medium))
+                .foregroundColor(.textWhite)
+            Spacer()
+            Image("chevron.right")
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 32, height: 32)
+                .foregroundColor(.second)
+                .colorScheme(.dark)
+        }
+        .padding(.horizontal, 12)
+        .frame(height: 60)
+        .background(Color.bgCell)
+        .embedInCornRadius(cornradius: 12)
+    }
 }

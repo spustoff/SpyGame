@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "3.4_rule_fr.png",
+      "filename" : "3.4_rule_fr@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "3.4_rule_fr@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "3.4_rule_fr@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

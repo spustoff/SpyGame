@@ -22,36 +22,38 @@ struct TotalResultVoting: View {
                 
                 Text("Result")
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .semibold))
+                    .font(.system(size: 19, weight: .semibold))
                     .padding()
+                    .padding(.bottom, 8)
                 
-                VStack(alignment: .center, spacing: 10, content: {
+                VStack(alignment: .center, spacing: 8, content: {
                     
                     Image(viewModel.PlayerWithMostVotes?.playerPhoto ?? "avatar_name")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 133, height: 133)
+                        .frame(width: 96, height: 96)
+                        .padding(.bottom, 8)
                     
                     Text("A spy is exposed!")
-                        .foregroundColor(Color("primary"))
-                        .font(.system(size: 16, weight: .regular))
+                        .foregroundColor(Color.prime)
+                        .font(.system(size: 17, weight: .medium))
                         .multilineTextAlignment(.center)
                     
                     VStack(alignment: .center, spacing: 2, content: {
                         
                         Text("\(viewModel.PlayerWithMostVotes?.playerName ?? "Eduardo") ")
-                            .foregroundColor(Color("bezhev"))
+                            .foregroundColor(Color.second)
                             .font(.system(size: 34, weight: .semibold)) +
                         
                         Text("is out of the game!")
-                            .foregroundColor(.white)
+                            .foregroundColor(.textWhite)
                             .font(.system(size: 34, weight: .semibold))
                     })
                     .multilineTextAlignment(.center)
                     
                     Text("He didn't know what location you were in. Identify the other spies.")
-                        .foregroundColor(.white.opacity(0.6))
-                        .font(.system(size: 15, weight: .regular))
+                        .foregroundColor(.textWhite60)
+                        .font(.system(size: 17, weight: .regular))
                         .multilineTextAlignment(.center)
                 })
                 
@@ -60,13 +62,7 @@ struct TotalResultVoting: View {
                     viewModel.closeVotingModal()
                     
                 }, label: {
-                    
-                    Text("CONTINUE PLAYING")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                    PrimeButton(text: NSLocalizedString("CONTINUE PLAYING", comment: ""))
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
                 .padding(.top, 45)
@@ -76,5 +72,8 @@ struct TotalResultVoting: View {
 }
 
 #Preview {
-    TotalResultVoting(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        TotalResultVoting(viewModel: MainViewModel())
+    }
 }

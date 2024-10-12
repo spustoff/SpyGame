@@ -13,25 +13,25 @@ struct HistoryRow: View {
     
     var body: some View {
         
-        HStack {
+        HStack(spacing: 12) {
             
-            Image("\(item.isSpyWon ? "spies" : "persons").icon")
+            Image("\(item.isSpyWon ? "sunglasses.fill" : "figure.arms.open")")
                 .resizable()
                 .renderingMode(.template)
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(item.isSpyWon ? Color("primary") : Color("bezhev"))
-                .frame(width: 31, height: 31)
+                .foregroundColor(item.isSpyWon ? Color.prime : Color.second)
+                .frame(width: 32, height: 32)
             
-            VStack(alignment: .leading, spacing: 1, content: {
+            VStack(alignment: .leading, spacing: 0, content: {
                 
                 Text(item.isSpyWon ? "Spy won" : "The Peacefuls won")
-                    .foregroundColor(item.isSpyWon ? Color("primary") : .white)
-                    .font(.system(size: 15, weight: .medium))
+                    .foregroundColor(item.isSpyWon ? Color.prime : .textWhite)
+                    .font(.system(size: 17, weight: .medium))
                     .multilineTextAlignment(.leading)
                 
-                Text((item.gameDate ?? Date()).convertDate(format: "MMM d HH:mm"))
-                    .foregroundColor(.white.opacity(0.6))
-                    .font(.system(size: 12, weight: .regular))
+                Text((item.gameDate ?? Date()).convertDate(format: "dd MMM, HH:mm"))
+                    .foregroundColor(.textWhite60)
+                    .font(.system(size: 13, weight: .medium))
             })
             
             Spacer()
@@ -49,25 +49,34 @@ struct HistoryRow: View {
                         ? sortedPlayersArray.filter { $0.playerRole == "Spy" }
                         : sortedPlayersArray.filter { $0.playerRole != "Spy" }
                 
-                HStack(spacing: -20) {
+                HStack(spacing: -18) {
                     
                     ForEach(filteredPlayersArray.prefix(3), id: \.id) { player in
                         
                         Image(player.playerPhoto.isEmpty ? "avatar_name" : player.playerPhoto)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 32, height: 32)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.bgPrime, lineWidth: 2)
+                            )
                     }
                 }
             }
             
-            Image(systemName: "chevron.right")
-                .foregroundColor(Color("bezhev"))
-                .font(.system(size: 15, weight: .regular))
+            Image("chevron.right")
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 32, height: 32)
+                .foregroundColor(Color.second)
+                .padding(.leading, -12)
+                .colorScheme(.dark)
         }
-        .padding(.horizontal)
-        .frame(height: 65)
-        .background(RoundedRectangle(cornerRadius: 15).fill(.gray.opacity(0.1)))
+        .padding(.horizontal, 12)
+        .frame(height: 64)
+        .background(RoundedRectangle(cornerRadius: 12).fill(.bgCell))
         .padding(.horizontal)
     }
 }

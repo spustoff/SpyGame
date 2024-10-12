@@ -9,8 +9,9 @@ import SwiftUI
 
 final class SettingsViewModel: ObservableObject {
     
-    @AppStorage("is_rules") var is_rules: Bool = false
-    @AppStorage("is_vibration") var is_vibration: Bool = false
+    @AppStorage("is_rules") var is_rules: Bool = true
+    @AppStorage("is_sound") var is_sound: Bool = true
+    @AppStorage("is_vibration") var is_vibration: Bool = true
     @AppStorage("is_paidSubscription") var is_paidSubscription: Bool = false
     
     @Published var isResetSets: Bool = false

@@ -23,8 +23,7 @@ struct RulesView: View {
             
             if isTopBar {
                 
-                Color("bg")
-                    .ignoresSafeArea()
+                Color.bgPrime.ignoresSafeArea()
             }
             
             VStack {
@@ -35,7 +34,7 @@ struct RulesView: View {
                         
                         Text("Rules")
                             .foregroundColor(.white)
-                            .font(.system(size: 21, weight: .semibold))
+                            .font(.system(size: 19, weight: .bold))
                         
                         HStack {
                             
@@ -44,10 +43,15 @@ struct RulesView: View {
                                 router.wrappedValue.dismiss()
                                 
                             }, label: {
-                                
-                                Image(systemName: isForGame ? "xmark" : "chevron.left")
-                                    .foregroundColor(Color(isForGame ? "primary" : "bezhev"))
-                                    .font(.system(size: 21, weight: .semibold))
+                                Image("chevron.left")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.second)
+//                                Image(systemName: isForGame ? "xmark" : "chevron.left")
+//                                    .foregroundColor(Color(isForGame ? "primary" : "bezhev"))
+//                                    .font(.system(size: 21, weight: .semibold))
                             })
                             
                             Spacer()
@@ -59,15 +63,15 @@ struct RulesView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
-                    LazyVStack {
+                    LazyVStack(spacing: 24) {
                         
                         ForEach(viewModel.rule_screens, id: \.id) { indexer in
                             
-                            VStack(alignment: .leading, spacing: 15, content: {
+                            VStack(alignment: .leading, spacing: 8, content: {
                                 
                                 Text(NSLocalizedString(indexer.mainPoint, comment: ""))
                                     .foregroundColor(.white)
-                                    .font(.system(size: 21, weight: .semibold))
+                                    .font(.system(size: 19, weight: .bold))
                                     .multilineTextAlignment(.leading)
                                     .padding(.horizontal)
                                 
@@ -85,25 +89,38 @@ struct RulesView: View {
                                             VStack(alignment: .leading, spacing: 1, content: {
                                                 
                                                 Text("\(index.id) \(NSLocalizedString(index.title, comment: ""))")
-                                                    .foregroundColor(.white)
-                                                    .font(.system(size: 14, weight: .medium))
-                                                    .padding()
+                                                    .foregroundColor(.textWhite)
+                                                    .font(.system(size: 17, weight: .medium))
+                                                    .padding(.top, 16)
+                                                    .padding(.leading, 12)
+                                                    .lineLimit(2)
+                                                    .multilineTextAlignment(.leading)
                                                 
                                                 Spacer()
                                                 
-                                                HStack {
+                                                HStack(alignment: .bottom) {
                                                     
                                                     Image("\(index.id)")
                                                         .resizable()
                                                         .aspectRatio(contentMode: .fill)
-                                                        .frame(width: 111, height: 111)
+                                                        .frame(width: 112, height: 112)
                                                         .cornerRadius(10)
                                                     
                                                     Spacer()
+                                                    
+                                                    Image("chevron.right")
+                                                        .resizable()
+                                                        .renderingMode(.template)
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: 32, height: 32)
+                                                        .foregroundColor(.second)
+                                                        .colorScheme(.dark)
+                                                        .padding(.bottom, 16)
+                                                        .padding(.trailing, 12)
                                                 }
                                             })
                                             .frame(maxWidth: .infinity, alignment: .leading)
-                                            .background(RoundedRectangle(cornerRadius: 10).fill(Color("bgGray")))
+                                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                         })
                                         .buttonStyle(ScaledButton(scaling: 0.9))
                                     }
@@ -113,13 +130,14 @@ struct RulesView: View {
                         }
                     }
                 }
+                .edgesIgnoringSafeArea(.bottom)
                 
-                Spacer()
+//                Spacer()
                 
-                bottomTab()
+//                bottomTab()
             }
         }
-        .background(Color("bg"))
+        .background(Color.bgPrime)
         .sheet(isPresented: $viewModel.isDetail, content: {
             
             RulesDetail(viewModel: viewModel)
@@ -139,15 +157,9 @@ struct RulesView: View {
                 }
                 
             }, label: {
-                
-                Text("START THE GAME")
-                    .foregroundColor(.white)
-                    .font(.system(size: 16, weight: .medium))
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
-                    .padding()
+                PrimeButton(text: NSLocalizedString("START THE GAME", comment: ""))
             })
+            .padding()
             .buttonStyle(ScaledButton(scaling: 0.9))
             
         } else {
@@ -157,15 +169,9 @@ struct RulesView: View {
                 router.wrappedValue.dismiss()
                 
             }, label: {
-                
-                Text("IT'S ALL CLEAR!")
-                    .foregroundColor(Color("primary"))
-                    .font(.system(size: 16, weight: .medium))
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
-                    .padding()
+                PrimeButton(text: NSLocalizedString("IT'S ALL CLEAR!", comment: ""))
             })
+            .padding()
             .buttonStyle(ScaledButton(scaling: 0.9))
         }
     }

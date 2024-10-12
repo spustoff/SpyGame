@@ -8,78 +8,94 @@
 import SwiftUI
 
 struct AvatarPicker: View {
+    @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var viewModel: MainViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     
     var body: some View {
         
-        VStack {
+        ZStack(alignment: .bottom) {
+            Color.bgPrime.ignoresSafeArea()
             
-            ZStack {
+            VStack {
                 
-                Text(viewModel.currentStep.text)
-                    .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .bold))
-                
-                HStack {
+                ZStack {
                     
-                    Button(action: {
-                        
-                        viewModel.currentStep = viewModel.toPickerFromScreen
-                        
-                    }, label: {
-                        
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 17, weight: .semibold))
-                    })
+                    Text(NSLocalizedString("Pick an Avatar", comment: ""))
+                        .foregroundColor(.white)
+                        .font(.system(size: 19, weight: .bold))
                     
-                    Spacer()
-                }
-                .padding(.horizontal)
-            }
-            
-            let avatarNames: [String] = (1...29).map { "avatar_\($0)" }
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], content: {
-
-                    ForEach(avatarNames, id: \.self) { avatar in
+                    HStack {
+                        
+                        Spacer()
                         
                         Button(action: {
                             
-                            guard let selectedPlayer = viewModel.selectedPlayerForPicker else { return }
-                            
-                            if viewModel.toPickerFromScreen == .names {
-                                
-                                viewModel.playerNames = viewModel.updatePlayerPhoto(in: viewModel.playerNames, for: selectedPlayer, with: avatar)
-                                
-                            } else if viewModel.toPickerFromScreen == .nameFavorites {
-                                
-                                viewModel.dataManager.saved_users = viewModel.updatePlayerPhoto(in: viewModel.dataManager.saved_users, for: selectedPlayer, with: avatar)
-                            }
-                            
-                            viewModel.currentStep = viewModel.toPickerFromScreen
-                            viewModel.selectedPlayerForPicker = nil
-                            
+//                            viewModel.currentStep = viewModel.toPickerFromScreen
+                            self.presentationMode.wrappedValue.dismiss()
                         }, label: {
                             
-                            Image(avatar)
+                            Image("xmark")
                                 .resizable()
+                                .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 80, height: 80)
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(.second)
                         })
-                        .buttonStyle(ScaledButton(scaling: 0.9))
                     }
-                })
-                .padding(.bottom)
+                    .padding(.horizontal)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+                
+                let avatarNames: [String] = (1...29).map { "avatar_\($0)" }
+                
+                ScrollView(.vertical, showsIndicators: false) {
+                    
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], content: {
+                        
+                        ForEach(avatarNames, id: \.self) { avatar in
+                            
+                            Button(action: {
+                                
+                                guard let selectedPlayer = viewModel.selectedPlayerForPicker else { return }
+                                
+                                if viewModel.toPickerFromScreen == .names {
+                                    
+                                    viewModel.playerNames = viewModel.updatePlayerPhoto(in: viewModel.playerNames, for: selectedPlayer, with: avatar)
+                                    
+                                } else if viewModel.toPickerFromScreen == .nameFavorites {
+                                    
+                                    viewModel.dataManager.saved_users = viewModel.updatePlayerPhoto(in: viewModel.dataManager.saved_users, for: selectedPlayer, with: avatar)
+                                }
+                                
+//                                viewModel.currentStep = viewModel.toPickerFromScreen
+                                viewModel.selectedPlayerForPicker = nil
+                                self.presentationMode.wrappedValue.dismiss()
+                            }, label: {
+                                
+                                Image(avatar)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 83, height: 83)
+                            })
+                            .buttonStyle(ScaledButton(scaling: 0.9))
+                        }
+                    })
+                    .padding(.bottom)
+                }
+                .frame(maxHeight: .infinity)
+//                .frame(height: UIScreen.main.bounds.height / 2)
             }
-            .frame(height: UIScreen.main.bounds.height / 2)
         }
     }
 }
 
 #Preview {
-    AvatarPicker(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+//        AvatarPicker(viewModel: MainViewModel())
+        AvatarPicker()
+            .environmentObject(MainViewModel())
+    }
 }

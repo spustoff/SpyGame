@@ -17,7 +17,8 @@ struct TimerView: View {
         
         ZStack {
             
-            Color("bg")
+//            Color.bgPrime
+            LinearGradient(colors: [Color.bgGameTopTrailGrad, Color.bgGameBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading)
                 .ignoresSafeArea()
             
             VStack {
@@ -47,13 +48,13 @@ struct TimerView: View {
                         } else {
                             
                             Text("Question time")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 34, weight: .semibold))
+                                .foregroundColor(Color.second)
+                                .font(.system(size: 40, weight: .semibold))
                         }
                         
                         Text(viewModel.timeRemaining == viewModel.totalTime ? "Press play when all players are ready to start the timer" : "Press pause at any time to arrange a vote or for a spy to choose a location")
                             .foregroundColor(.white)
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.system(size: 17, weight: .medium))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                     }
@@ -63,24 +64,24 @@ struct TimerView: View {
                         
                         Circle()
                             .trim(from: 0, to: 0.75)
-                            .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                            .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
                             .rotationEffect(Angle(degrees: 135))
-                            .foregroundColor(Color("bgGray").opacity(0.3))
+                            .foregroundColor(Color.bgButton)
                         
                         Circle()
                             .trim(from: 0, to: CGFloat(viewModel.timeRemaining) / CGFloat(viewModel.totalTime) * 0.75)
-                            .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round))
-                            .foregroundColor(Color("primary"))
+                            .stroke(style: StrokeStyle(lineWidth: 12, lineCap: .round))
+                            .foregroundColor(Color.prime)
                             .rotationEffect(Angle(degrees: 135))
                             .animation(.linear(duration: 0.2), value: viewModel.timeRemaining)
                         
                         Text(timeString(time: viewModel.timeRemaining))
-                            .foregroundColor(viewModel.timeRemaining > 10 ? Color.white : (viewModel.timeRemaining > 5 ? Color.yellow : Color.red))
-                            .font(.system(size: 65, weight: .bold))
+                            .foregroundColor(viewModel.timeRemaining > 10 ? Color.textWhite : (viewModel.timeRemaining > 5 ? Color.timerYellow : Color.timerRed))
+                            .font(.system(size: 72, weight: .bold))
                     }
                     .padding(20)
-                    .background(Circle().fill(Color("timerBg")))
-                    .shadow(color: Color("timerShadow"), radius: 20, x: 0, y: 0)
+                    .background(Circle().fill(LinearGradient(colors: [Color.timerTopTrailGrad, Color.timerBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading)))
+                    .shadow(color: Color.timerShadow, radius: 32, x: 0, y: 0)
                     .overlay (
                         
                         VStack {
@@ -104,8 +105,8 @@ struct TimerView: View {
                                 Image(systemName: viewModel.isActiveTimer ? "pause.fill" : "play.fill")
                                     .foregroundColor(.white)
                                     .font(.system(size: 40, weight: .bold))
-                                    .frame(width: 122, height: 122)
-                                    .background(Circle().fill(Color("timerButtonColor")))
+                                    .frame(width: 104, height: 104)
+                                    .background(Circle().fill(Color.timerPlayPause))
                             })
                             .buttonStyle(ScaledButton(scaling: 0.9))
                         }
@@ -142,16 +143,16 @@ struct TimerView: View {
                     
                     HStack(alignment: .center) {
                         
-                        Image("hints.icon")
+                        Image("info.circle")
                             .resizable()
                             .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
-                            .foregroundColor(Color("primary"))
-                            .frame(width: 35, height: 35)
+                            .foregroundColor(Color.prime)
+                            .frame(width: 32, height: 32)
                         
                         Text("SHOW HINT")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundColor(Color.prime)
+                            .font(.system(size: 17, weight: .bold))
                     }
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
@@ -208,12 +209,12 @@ struct TimerView: View {
                 
                 Text(viewModel.hint)
                     .foregroundColor(.black)
-                    .font(.system(size: 15, weight: .regular))
-                    .padding(15)
+                    .font(.system(size: 17, weight: .regular))
+                    .padding(12)
                     .background(
                         
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(Color.white)
+                        RoundedRectangle(cornerRadius: 13)
+                            .fill(Color.textWhite)
                     )
                     .overlay (
                         
@@ -232,12 +233,8 @@ struct TimerView: View {
                                         viewModel.hint = randomHint
                                         
                                     }, label: {
-                                        
-                                        Image(systemName: "arrow.clockwise")
-                                            .foregroundColor(Color("primary"))
-                                            .font(.system(size: 14, weight: .medium))
-                                            .frame(width: 28, height: 28)
-                                            .background(Circle().fill(.white).shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 0))
+                                        Icon(image: "arrow.clockwise")
+                                            .background(Circle().fill(.textWhite).shadow(color: .bgButton, radius: 12, x: 0, y: 2))
                                     })
                                     .offset(x: 10, y: -10)
                                 }

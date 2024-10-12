@@ -30,7 +30,7 @@ struct VoteVoting: View {
                             
                             Text(viewModel.getActivePlayers()[viewModel.currentPlayerIndex].playerName)
                                 .foregroundColor(.white)
-                                .font(.system(size: 21, weight: .semibold))
+                                .font(.system(size: 19, weight: .bold))
                         }
                         
                         Text("Who do you think is a spy?")
@@ -49,10 +49,7 @@ struct VoteVoting: View {
                             viewModel.currentVotingStep = .main
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                         
                         Spacer()
@@ -60,7 +57,7 @@ struct VoteVoting: View {
                         Image(viewModel.getActivePlayers()[viewModel.currentPlayerIndex].playerPhoto)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 32, height: 32)
                     }
                 }
                 .padding(.top)
@@ -97,29 +94,21 @@ struct VoteVoting: View {
                                                     .frame(width: 40, height: 40)
                                                 
                                                 Text(otherPlayer.playerName)
-                                                    .foregroundColor(.white)
-                                                    .font(.system(size: 15, weight: .medium))
+                                                    .foregroundColor(.textWhite)
+                                                    .font(.system(size: 17, weight: .medium))
                                                 
                                                 Spacer()
                                                 
-                                                Circle()
-                                                    .stroke(viewModel.selectedForPlayer == otherPlayer.id ? Color("primary") : Color.gray.opacity(0.4), lineWidth: 2)
-                                                    .frame(width: 18, height: 18)
-                                                    .overlay (
-                                                    
-                                                        Circle()
-                                                            .fill(Color("primary"))
-                                                            .frame(width: 14, height: 14)
-                                                            .opacity(viewModel.selectedForPlayer == otherPlayer.id ? 1 : 0)
-                                                    )
+                                                Icon(image: viewModel.selectedForPlayer == otherPlayer.id ? "button.programmable" : "circle")
+                                                
                                             }
-                                            .padding(.horizontal)
-                                            .frame(height: 65)
-                                            .background(RoundedRectangle(cornerRadius: 15).fill(Color("bgGray")))
+                                            .padding(.horizontal, 12)
+                                            .frame(height: 60)
+                                            .background(RoundedRectangle(cornerRadius: 12).fill(Color.bgCell))
                                             .overlay (
                                             
-                                                RoundedRectangle(cornerRadius: 15)
-                                                    .stroke(Color("primary"), lineWidth: 2)
+                                                RoundedRectangle(cornerRadius: 12)
+                                                    .stroke(Color.prime, lineWidth: 2)
                                                     .opacity(viewModel.selectedForPlayer == otherPlayer.id ? 1 : 0)
                                             )
                                         }
@@ -148,7 +137,7 @@ struct VoteVoting: View {
                     ForEach(0..<viewModel.getActivePlayers().count, id: \.self) { index in
                         
                         Circle()
-                            .fill(viewModel.currentPlayerIndex >= index ? Color("primary") : .gray.opacity(0.5))
+                            .fill(viewModel.currentPlayerIndex >= index ? Color.prime : .textWhite40)
                             .frame(width: 8, height: 8)
                     }
                 }
@@ -169,23 +158,21 @@ struct VoteVoting: View {
                     }, label: {
                         
                         HStack {
-                            
                             Image(systemName: "arrow.left")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 16, weight: .medium))
                             
                             Text("PREVIOUS")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 16, weight: .medium))
                         }
+                        .foregroundColor(Color.prime)
+                        .font(.system(size: 17, weight: .bold))
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
+                        .frame(height: 60)
+                        .background(RoundedRectangle(cornerRadius: 16).fill(Color.bgCell))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     .opacity(viewModel.currentPlayerIndex <= 0 ? 0.5 : 1)
                     .disabled(viewModel.currentPlayerIndex <= 0 ? true : false)
                     
+                    let isDis = viewModel.selectedForPlayer == 0
                     Button(action: {
                         
                         withAnimation(.spring()) {
@@ -196,22 +183,25 @@ struct VoteVoting: View {
                     }, label: {
                         
                         Text("SELECT")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .medium))
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundColor(isDis ? .textWhite40 : .textWhite)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 26).fill(LinearGradient(colors: [isDis ? Color.bgButtonDisabled : Color.primeTopTrailGrad, isDis ? Color.bgButtonDisabled : Color.primeBotLeadGrad], startPoint: .topTrailing, endPoint: .bottomLeading)))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
-                    .opacity(viewModel.selectedForPlayer == 0 ? 0.5 : 1)
-                    .disabled(viewModel.selectedForPlayer == 0 ? true : false)
+                    .opacity(isDis ? 0.5 : 1)
+                    .disabled(isDis ? true : false)
                 }
-                .padding(.top, 20)
+                .padding(.top, 8)
             }
         }
     }
 }
 
 #Preview {
-    VoteVoting(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        VoteVoting(viewModel: MainViewModel())
+    }
 }

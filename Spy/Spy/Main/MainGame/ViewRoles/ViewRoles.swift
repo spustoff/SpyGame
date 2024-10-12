@@ -17,16 +17,20 @@ struct ViewRoles: View {
         
         ZStack {
             
-            Color("bg")
+            Color.bgPrime
                 .ignoresSafeArea()
             
             VStack {
                 
                 ZStack {
                     
+//                    Text(NSLocalizedString("Handing out", comment: ""))
+//                        .foregroundColor(.textWhite)
+//                        .font(.system(size: 19, weight: .bold))
+
                     Text("View Roles")
                         .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .font(.system(size: 19, weight: .bold))
                     
                     HStack {
                         
@@ -35,10 +39,7 @@ struct ViewRoles: View {
                             router.wrappedValue.dismiss()
                             
                         }, label: {
-                            
-                            Image(systemName: "xmark")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                         
                         Spacer()

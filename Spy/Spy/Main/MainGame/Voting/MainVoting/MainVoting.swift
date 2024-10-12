@@ -13,13 +13,13 @@ struct MainVoting: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 6) {
             
             ZStack {
                 
                 Text("Voting")
                     .foregroundColor(.white)
-                    .font(.system(size: 21, weight: .semibold))
+                    .font(.system(size: 19, weight: .bold))
                 
                 HStack {
                     
@@ -30,36 +30,33 @@ struct MainVoting: View {
                             viewModel.closeVotingModal()
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                     }
                     
                     Spacer()
                 }
             }
-            .padding()
+            .padding([.top, .horizontal])
             
-            Image("spy")
+            Image("spy img")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 222, height: 222)
+                .frame(width: 208, height: 208)
             
-            VStack(alignment: .center, spacing: 10, content: {
+            VStack(alignment: .center, spacing: 8, content: {
                 
                 Text("Who's a spy?")
-                    .foregroundColor(Color("bezhev"))
+                    .foregroundColor(Color.second)
                     .font(.system(size: 34, weight: .semibold))
                     .multilineTextAlignment(.center)
                 
                 Text(NSLocalizedString("Take turns voting for the person you think is a spy and find out the result of your choice", comment: ""))
                     .foregroundColor(.white)
-                    .font(.system(size: 14, weight: .regular))
+                    .font(.system(size: 17, weight: .medium))
                     .multilineTextAlignment(.center)
             })
-            .padding()
+            .padding(.horizontal)
             
             HStack {
                 
@@ -74,16 +71,15 @@ struct MainVoting: View {
                         HStack {
                             
                             Image(systemName: "play.fill")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 16, weight: .medium))
                             
-                            Text("PLAY")
-                                .foregroundColor(Color("primary"))
-                                .font(.system(size: 16, weight: .medium))
+                            Text("CANCEL")
+//                            Text("PLAY")
                         }
+                        .foregroundColor(Color.prime)
+                        .font(.system(size: 17, weight: .bold))
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
+                        .frame(height: 60)
+                        .background(RoundedRectangle(cornerRadius: 16).fill(Color.bgCell))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                 }
@@ -93,13 +89,7 @@ struct MainVoting: View {
                     viewModel.currentVotingStep = .voting
                     
                 }, label: {
-                    
-                    Text("VOTE")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                    PrimeButton(text: NSLocalizedString("VOTE", comment: ""))
                 })
                 .buttonStyle(ScaledButton(scaling: 0.9))
             }
@@ -109,5 +99,8 @@ struct MainVoting: View {
 }
 
 #Preview {
-    MainVoting(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        MainVoting(viewModel: MainViewModel())
+    }
 }

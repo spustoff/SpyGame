@@ -23,8 +23,8 @@ struct ResultVoting: View {
                 ZStack {
                     
                     Text("Voting Result")
-                        .foregroundColor(.white)
-                        .font(.system(size: 21, weight: .semibold))
+                        .foregroundColor(.textWhite)
+                        .font(.system(size: 19, weight: .bold))
                     
                     HStack {
                         
@@ -33,10 +33,7 @@ struct ResultVoting: View {
                             viewModel.currentVotingStep = .main
                             
                         }, label: {
-                            
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(Color("bezhev"))
-                                .font(.system(size: 21, weight: .semibold))
+                            Icon(image: "xmark")
                         })
                         
                         Spacer()
@@ -44,28 +41,29 @@ struct ResultVoting: View {
                 }
                 .padding()
                 
-                VStack(alignment: .center, spacing: 20, content: {
+                VStack(alignment: .center, spacing: 8, content: {
                     
                     Image(viewModel.PlayerWithMostVotes?.playerPhoto ?? "avatar_name")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 133, height: 133)
+                        .frame(width: 96, height: 96)
+                        .padding(.bottom, 8)
                     
                     VStack(alignment: .center, spacing: 2, content: {
                         
-                        Text("\(viewModel.PlayerWithMostVotes?.playerName ?? "")")
-                            .foregroundColor(Color("bezhev"))
-                            .font(.system(size: 34, weight: .semibold))
+                        Text("\(viewModel.PlayerWithMostVotes?.playerName ?? "Eduardo") ")
+                            .foregroundColor(Color.second)
+                            .font(.system(size: 34, weight: .semibold)) +
                         
                         Text("is supposedly a spy")
-                            .foregroundColor(.white)
+                            .foregroundColor(.textWhite)
                             .font(.system(size: 34, weight: .semibold))
-                            .multilineTextAlignment(.center)
                     })
+                    .multilineTextAlignment(.center)
                     
                     Text("You have a chance to prove you're not a spy, pick a location that has players in it")
-                        .foregroundColor(.white.opacity(0.6))
-                        .font(.system(size: 15, weight: .regular))
+                        .foregroundColor(.textWhite60)
+                        .font(.system(size: 17, weight: .regular))
                         .multilineTextAlignment(.center)
                 })
                 
@@ -78,11 +76,11 @@ struct ResultVoting: View {
                     }, label: {
                         
                         Text("SURRENDER")
-                            .foregroundColor(Color("primary"))
-                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(Color.prime)
+                            .font(.system(size: 17, weight: .bold))
                             .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(Color("bgGray")))
+                            .frame(height: 60)
+                            .background(RoundedRectangle(cornerRadius: 16).fill(Color.bgCell))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     
@@ -91,13 +89,7 @@ struct ResultVoting: View {
                         viewModel.currentVotingStep = .question
                         
                     }, label: {
-                        
-                        Text("CARDS")
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .medium))
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(LinearGradient(colors: [Color("bgRed"), Color("primary")], startPoint: .leading, endPoint: .trailing)))
+                        PrimeButton(text: NSLocalizedString("CARDS", comment: ""))
                     })
                     .buttonStyle(ScaledButton(scaling: 0.9))
                 }
@@ -108,5 +100,8 @@ struct ResultVoting: View {
 }
 
 #Preview {
-    ResultVoting(viewModel: MainViewModel())
+    ZStack {
+        Color.bgPrime.ignoresSafeArea()
+        ResultVoting(viewModel: MainViewModel())
+    }
 }

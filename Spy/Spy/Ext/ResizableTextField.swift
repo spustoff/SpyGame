@@ -26,7 +26,7 @@ struct ResizableTextView: UIViewRepresentable {
         textView.textColor = UIColor.white
         textView.backgroundColor = .clear
         
-        textView.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        textView.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         
         return textView
     }
