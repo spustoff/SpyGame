@@ -229,3 +229,7 @@
 "GAME" = "GAME";
 "CONTINUE" = "CONTINUE";
 "Continue" = "Continue";
+"You haven't played a game yet, start playing!" = "You haven't played a game yet, start playing!";
+"A spy is exposed!" = "A spy is exposed!";
+"is out of the game!" = "is out of the game!";
+"He didn't know what location you were in. Identify the other spies." = "He didn't know what location you were in. Identify the other spies.";

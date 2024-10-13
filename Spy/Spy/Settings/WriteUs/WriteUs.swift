@@ -15,6 +15,8 @@ struct WriteUs: View {
     
     @StateObject var viewModel = WriteUsViewModel()
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -42,13 +44,14 @@ struct WriteUs: View {
                         Spacer()
                     }
                 }
-                .padding()
+                .padding([.horizontal, .top])
+                .padding(.bottom, 2)
                 .if(isPaddingTop, content: { view in
                 
                     view
                         .padding(.top)
                 })
-                .padding(.bottom, 9)
+//                .padding(.bottom, 9)
                 
 //                Text(NSLocalizedString("Share your opinion, what you would like to improve, it is very important for us", comment: ""))
 //                    .font(.system(size: 17))
@@ -134,7 +137,7 @@ struct WriteUs: View {
                 
                 let isDis = !viewModel.email.contains("@") || viewModel.subject.isEmpty || viewModel.message.isEmpty
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.sendEmail {
                         
                         router.wrappedValue.dismiss()
@@ -167,6 +170,7 @@ struct WriteUs: View {
                 .opacity(isDis ? 0.5 : 1)
                 .disabled(isDis ? true : false)
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
         }
     }
 }

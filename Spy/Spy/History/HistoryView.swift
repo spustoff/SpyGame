@@ -43,7 +43,8 @@ struct HistoryView: View {
                         Spacer()
                     }
                 }
-                .padding()
+                .padding([.horizontal, .top])
+                .padding(.bottom, 2)
                 
                 if viewModel.history.isEmpty {
                     
@@ -63,7 +64,7 @@ struct HistoryView: View {
                                 .font(.system(size: 19, weight: .bold))
                                 .multilineTextAlignment(.center)
                             
-                            Text("You haven't played a game yet, start playing!")
+                            Text(NSLocalizedString("You haven't played a game yet, start playing!", comment: ""))
                                 .foregroundColor(.textWhite60)
                                 .font(.system(size: 17, weight: .regular))
                                 .multilineTextAlignment(.center)
@@ -114,6 +115,7 @@ struct HistoryView: View {
 //                                })
 //                            }
                         }
+                        .padding(.top, 14)
                     }
                 }
             }

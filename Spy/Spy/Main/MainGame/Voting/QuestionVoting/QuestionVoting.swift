@@ -11,6 +11,8 @@ struct QuestionVoting: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -36,7 +38,6 @@ struct QuestionVoting: View {
                     HStack {
                         
                         Button(action: {
-                            
                             viewModel.currentVotingStep = .result
                             
                         }, label: {
@@ -60,7 +61,7 @@ struct QuestionVoting: View {
                         ForEach(viewModel.shuffledLocations, id: \.self) { index in
                             
                             Button(action: {
-                                
+                                counterVibro += 1
                                 viewModel.selectedLocationByPlayer = index
                                 
                             }, label: {
@@ -115,7 +116,7 @@ struct QuestionVoting: View {
                 HStack {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.getResultOfGame(isByLocationFound: false)
                         
                     }, label: {
@@ -130,7 +131,7 @@ struct QuestionVoting: View {
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.getResultOfGame(isByLocationFound: true)
                         
                     }, label: {
@@ -155,6 +156,7 @@ struct QuestionVoting: View {
                 Location(id: 4, location: "spain", hints: [])
             ].shuffled() : allLocations
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
 }
 

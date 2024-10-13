@@ -47,7 +47,8 @@ struct SettingsView: View {
                         Spacer()
                     }
                 }
-                .padding()
+                .padding([.horizontal, .top])
+                .padding(.bottom, 2)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -198,7 +199,7 @@ struct SettingsView: View {
                             }, label: {
                                 
                                 HStack {
-                                    SettingsButton(icon: "globe", text: "Language")
+                                    SettingsButton(icon: "globeSet", text: "Language")
                                 }
                             })
                             .buttonStyle(ScaledButton(scaling: 0.9))
@@ -279,6 +280,7 @@ struct SettingsView: View {
                         }
                     }
                     .padding([.horizontal, .bottom])
+                    .padding(.top, 14)
                 }
             }
         }

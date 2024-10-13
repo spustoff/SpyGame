@@ -225,3 +225,7 @@
 "GAME" = "SPEL";
 "CONTINUE" = "DOORGAAN";
 "Continue" = "Doorgaan";
+"You haven't played a game yet, start playing!" = "Je hebt nog geen spel gespeeld, begin nu te spelen!";
+"A spy is exposed!" = "Een spion is ontmaskerd!";
+"is out of the game!" = "is uit het spel!";
+"He didn't know what location you were in. Identify the other spies." = "Hij wist niet op welke locatie je was. Identificeer de andere spionnen.";

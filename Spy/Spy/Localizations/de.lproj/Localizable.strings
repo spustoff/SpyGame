@@ -228,3 +228,7 @@
 "GAME" = "SPIEL";
 "CONTINUE" = "FORTSETZEN";
 "Continue" = "Fortsetzen";
+"You haven't played a game yet, start playing!" = "Du hast noch kein Spiel gespielt, fang an zu spielen!";
+"A spy is exposed!" = "Ein Spion wurde enttarnt!";
+"is out of the game!" = "ist aus dem Spiel!";
+"He didn't know what location you were in. Identify the other spies." = "Er wusste nicht, an welchem Ort du warst. Finde die anderen Spione.";

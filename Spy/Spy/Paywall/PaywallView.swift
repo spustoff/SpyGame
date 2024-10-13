@@ -14,6 +14,8 @@ struct PaywallView: View {
     
     @Environment(\.presentationMode) var router
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -116,7 +118,7 @@ struct PaywallView: View {
                         ForEach(viewModel.products, id: \.self) { index in
                             
                             Button(action: {
-                                
+                                counterVibro += 1
                                 withAnimation(.spring()) {
                                     
                                     viewModel.selected_product = index
@@ -208,7 +210,7 @@ struct PaywallView: View {
                 VStack(alignment: .center, spacing: 20, content: {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         Task {
                             await viewModel.purchaseProduct() {
                                 self.presentationMode.wrappedValue.dismiss()
@@ -281,6 +283,7 @@ struct PaywallView: View {
                     .padding(.horizontal, 25)
                 })
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
         }
         .onAppear {
             Task {
