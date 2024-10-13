@@ -11,7 +11,7 @@ class KeychainDataStore: ObservableObject {
     
     @Published var savedNumber: Int = 0
     
-    @Published var availableGames: Int = 1
+    @Published var availableGames: Int = 3
 
     func saveNumber(_ number: Int, forKey key: String) {
         

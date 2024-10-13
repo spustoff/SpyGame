@@ -11,6 +11,8 @@ struct VoteVoting: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -77,7 +79,7 @@ struct VoteVoting: View {
                                     ForEach(viewModel.getActivePlayers().filter { $0.id != currentPlayer.id }, id: \.id) { otherPlayer in
                                         
                                         Button(action: {
-                                            
+                                            counterVibro += 1
                                             withAnimation(.spring()) {
                                                 
                                                 viewModel.selectedForPlayer = otherPlayer.id
@@ -145,7 +147,7 @@ struct VoteVoting: View {
                 HStack {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         guard viewModel.currentPlayerIndex >= 0 else { return }
                         
                         viewModel.selectedForPlayer = 0
@@ -174,7 +176,7 @@ struct VoteVoting: View {
                     
                     let isDis = viewModel.selectedForPlayer == 0
                     Button(action: {
-                        
+                        counterVibro += 1
                         withAnimation(.spring()) {
                             
                             viewModel.vote(for: viewModel.selectedForPlayer, by: viewModel.selectedByPlayer)
@@ -196,6 +198,7 @@ struct VoteVoting: View {
                 .padding(.top, 8)
             }
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
 }
 

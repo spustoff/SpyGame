@@ -42,6 +42,7 @@ struct MainNames: View {
                     }
                     .padding(.horizontal)
                 }
+                .padding(.bottom, -4)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -142,6 +143,7 @@ struct MainNames: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.top, 12)
                 }
                 .frame(maxHeight: UIScreen.main.bounds.height - 205)
                 

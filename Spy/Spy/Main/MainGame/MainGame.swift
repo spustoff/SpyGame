@@ -79,7 +79,9 @@ struct MainGame: View {
                         }
                     }
                 }
-                .padding()
+//                .padding(.top, 6)
+                .padding(.horizontal)
+                .padding(.bottom, 2)
                 .frame(height: 50)
                 
                 viewModel.getGameSteps()

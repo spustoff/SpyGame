@@ -13,6 +13,8 @@ struct TimerView: View {
     
     private let generator = UIImpactFeedbackGenerator(style: .medium)
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -90,7 +92,7 @@ struct TimerView: View {
                             Spacer()
                             
                             Button(action: {
-                                
+                                counterVibro += 1
                                 viewModel.isActiveTimer.toggle()
                                 
                                 if viewModel.isActiveTimer == false {
@@ -122,6 +124,7 @@ struct TimerView: View {
                         .opacity(0)
                 }
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
             
             VStack(alignment: .center, spacing: 10, content: {
                 
@@ -134,7 +137,7 @@ struct TimerView: View {
                 }
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     withAnimation(.spring()) {
                         
                         viewModel.isShowHint.toggle()

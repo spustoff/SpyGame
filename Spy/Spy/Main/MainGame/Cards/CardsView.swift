@@ -15,6 +15,8 @@ struct CardsView: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         VStack {
@@ -49,7 +51,7 @@ struct CardsView: View {
                             if index.playerRole != "Spy" {
                                 
                                 Button(action: {
-                                    
+                                    counterVibro += 1
                                     viewModel.isShowCard = false
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -70,7 +72,7 @@ struct CardsView: View {
                             } else if index.playerRole == "Spy" {
                                 
                                 Button(action: {
-                                    
+                                    counterVibro += 1
                                     viewModel.isShowCard = false
                                     
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -89,7 +91,7 @@ struct CardsView: View {
                         } else {
                             
                             Button(action: {
-                                
+                                counterVibro += 1
                                 viewModel.isShowCard = true
                                 
                             }, label: {
@@ -107,7 +109,7 @@ struct CardsView: View {
             if viewModel.currentCard == viewModel.playerNames.count && isPlayButton && viewModel.isShowCard == false && viewModel.isLastCard {
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.gameTypes = .timer
                     
                 }, label: {
@@ -130,7 +132,7 @@ struct CardsView: View {
                 HStack {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.manageControlGame(buttonType: .minus)
                         
                     }, label: {
@@ -152,7 +154,7 @@ struct CardsView: View {
                                 ForEach(viewModel.playerNames, id: \.id) { index in
                                 
                                     Button(action: {
-                                        
+                                        counterVibro += 1
                                         viewModel.currentCard = index.id
                                         
                                     }, label: {
@@ -193,7 +195,7 @@ struct CardsView: View {
                     .animation(.easeInOut, value: viewModel.currentCard)
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.manageControlGame(buttonType: .plus)
                         
                     }, label: {
@@ -214,6 +216,7 @@ struct CardsView: View {
                 
             viewModel.isShowCard = false
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
 }
 

@@ -11,6 +11,8 @@ struct TotalResultVoting: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
        
         ZStack {
@@ -34,7 +36,7 @@ struct TotalResultVoting: View {
                         .frame(width: 96, height: 96)
                         .padding(.bottom, 8)
                     
-                    Text("A spy is exposed!")
+                    Text(NSLocalizedString("A spy is exposed!", comment: ""))
                         .foregroundColor(Color.prime)
                         .font(.system(size: 17, weight: .medium))
                         .multilineTextAlignment(.center)
@@ -45,20 +47,20 @@ struct TotalResultVoting: View {
                             .foregroundColor(Color.second)
                             .font(.system(size: 34, weight: .semibold)) +
                         
-                        Text("is out of the game!")
+                        Text(NSLocalizedString("is out of the game!", comment: ""))
                             .foregroundColor(.textWhite)
                             .font(.system(size: 34, weight: .semibold))
                     })
                     .multilineTextAlignment(.center)
                     
-                    Text("He didn't know what location you were in. Identify the other spies.")
+                    Text(NSLocalizedString("He didn't know what location you were in. Identify the other spies.", comment: ""))
                         .foregroundColor(.textWhite60)
                         .font(.system(size: 17, weight: .regular))
                         .multilineTextAlignment(.center)
                 })
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.closeVotingModal()
                     
                 }, label: {
@@ -67,6 +69,7 @@ struct TotalResultVoting: View {
                 .buttonStyle(ScaledButton(scaling: 0.9))
                 .padding(.top, 45)
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
         }
     }
 }

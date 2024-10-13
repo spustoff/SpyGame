@@ -68,7 +68,8 @@ struct NamesFavorites: View {
                     .padding(.horizontal)
                 }
                 .padding(.horizontal)
-                .padding(.vertical, 8)
+                .padding(.top, 8)
+                .padding(.bottom, -6)
                 
                 let data = dataManager.saved_users.indices.filter { index in
                     !viewModel.playerNames.contains(where: { $0.playerName == dataManager.saved_users[index].playerName })
@@ -218,6 +219,7 @@ struct NamesFavorites: View {
                         }
                         .padding(1)
                         .padding(.horizontal)
+                        .padding(.top, 12)
                     }
                     .frame(maxHeight: UIScreen.main.bounds.height - 200)
 //                    .frame(height: UIScreen.main.bounds.height / 2.5)

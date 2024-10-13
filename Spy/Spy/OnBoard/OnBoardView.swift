@@ -11,6 +11,9 @@ import StoreKit
 struct OnBoardView: View {
     @State private var currentPage = 0
     @Binding var onBoardEnd: Bool
+    
+    @State private var counterVibro = 0
+    
     var body: some View {
         ZStack {
             Color.bgPrime.ignoresSafeArea()
@@ -28,6 +31,7 @@ struct OnBoardView: View {
             
             button
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
     
     var button: some View {
@@ -43,6 +47,7 @@ struct OnBoardView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 40)
             Button {
+                counterVibro += 1
                 withAnimation {
                     if currentPage < 3 {
                         currentPage += 1

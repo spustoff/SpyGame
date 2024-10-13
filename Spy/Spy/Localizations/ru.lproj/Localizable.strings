@@ -230,3 +230,7 @@
 "GAME" = "ИГРА";
 "CONTINUE" = "ПРОДОЛЖИТЬ";
 "Continue" = "Продолжить";
+"You haven't played a game yet, start playing!" = "Ты ещё не играл в игру, начни играть!";
+"A spy is exposed!" = "Шпион разоблачён!";
+"is out of the game!" = "выбыл из игры!";
+"He didn't know what location you were in. Identify the other spies." = "Он не знал, на какой локации вы были. Найдите остальных шпионов.";
