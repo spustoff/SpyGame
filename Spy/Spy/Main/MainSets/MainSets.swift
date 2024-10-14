@@ -114,10 +114,12 @@ struct MainSets: View {
                                                     setsModel.selectedSetForEdit = index
                                                     setsModel.setupEditScreenForEdit()
                                                     
+                                                    newSet.toggle()
                                                 }, label: {
                                                     
                                                     Icon(image: "edit circle")
                                                 })
+//                                                .opacity(0)
                                             }
                                             
                                             Spacer()
@@ -142,7 +144,7 @@ struct MainSets: View {
                         .padding(.vertical, 4)
                         
                         .padding(.top, 8)
-                        .padding(.top, 34)
+                        .padding(.top, isSe ? 0 : 34)
                         .padding(.bottom, 100)
                     }
                                                 .frame(maxHeight: UIScreen.main.bounds.height - 150)

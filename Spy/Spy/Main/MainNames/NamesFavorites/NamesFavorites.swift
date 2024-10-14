@@ -99,6 +99,7 @@ struct NamesFavorites: View {
                     })
 //                    .frame(height: UIScreen.main.bounds.height / 2.5)
                     .frame(maxHeight: .infinity)
+                    .padding(.horizontal)
                     
                 } else {
                     

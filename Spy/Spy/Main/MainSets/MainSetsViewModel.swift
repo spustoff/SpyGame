@@ -218,7 +218,7 @@ final class MainSetsViewModel: ObservableObject {
             "lang": Locale.current.languageCode ?? "en"
         ]
         
-        AF.request("https://spyappbackend1.site/api/fetch/sets", method: .get, parameters: parameters, encoding: URLEncoding.default).responseDecodable(of: ResponseData.self) { [weak self] response in
+        AF.request("https://spapppro.site/api/fetch/sets", method: .get, parameters: parameters, encoding: URLEncoding.default).responseDecodable(of: ResponseData.self) { [weak self] response in
             switch response.result {
             case .success(let success):
                 guard let newSets = success.data else { return }

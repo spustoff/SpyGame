@@ -79,7 +79,7 @@ struct SettingsView: View {
                                                 .foregroundColor(.textWhite60)
                                                 .font(.system(size: 15, weight: .regular))
                                         })
-//                                        .padding(.top, 6)
+                                        .padding(.top, 6)
                                         .padding(.horizontal)
                                         
                                         Spacer()
