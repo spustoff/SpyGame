@@ -11,6 +11,8 @@ struct ResultVoting: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -70,7 +72,7 @@ struct ResultVoting: View {
                 HStack {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.getResultOfGame(isByLocationFound: false)
                         
                     }, label: {
@@ -85,7 +87,7 @@ struct ResultVoting: View {
                     .buttonStyle(ScaledButton(scaling: 0.9))
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.currentVotingStep = .question
                         
                     }, label: {
@@ -96,6 +98,7 @@ struct ResultVoting: View {
                 .padding(.top, 45)
             }
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
 }
 

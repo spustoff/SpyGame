@@ -13,6 +13,8 @@ struct ReviewView: View {
     
     @StateObject var viewModel = ReviewViewModel()
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -58,12 +60,12 @@ struct ReviewView: View {
                 VStack(spacing: 12) {
                     Button {
                         // MARK: -- WRITE REVIEW ON APP STORE
-                        
+                        counterVibro += 1
                         router.wrappedValue.dismiss()
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             
-                            let appID = "6474504507"
+                            let appID = "6736861551"
                             guard let url = URL(string: "https://itunes.apple.com/app/id\(appID)?action=write-review") else { return }
                             
                             UIApplication.shared.open(url)
@@ -82,7 +84,7 @@ struct ReviewView: View {
                     
                     Button {
                         // MARK: -- WRITE E-MAIL
-                        
+                        counterVibro += 1
                         viewModel.isOpenEmail = true
                     } label: {
                         Text("NO, I DON'T")
@@ -121,9 +123,9 @@ struct ReviewView: View {
                 if viewModel.isShowButton {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         if viewModel.isGoodRate() {
-                            
+
                             // MARK: -- WRITE REVIEW ON APP STORE
                             
                             router.wrappedValue.dismiss()
@@ -157,6 +159,7 @@ struct ReviewView: View {
                     .modifier(AnimatedScale())
                 }
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
             
             VStack {
                 HStack {

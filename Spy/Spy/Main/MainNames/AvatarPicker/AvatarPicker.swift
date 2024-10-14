@@ -12,6 +12,8 @@ struct AvatarPicker: View {
     
     @EnvironmentObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -46,7 +48,8 @@ struct AvatarPicker: View {
                     .padding(.horizontal)
                 }
                 .padding(.horizontal)
-                .padding(.vertical, 8)
+                .padding(.top, 8)
+                .padding(.bottom, -6)
                 
                 let avatarNames: [String] = (1...29).map { "avatar_\($0)" }
                 
@@ -57,7 +60,7 @@ struct AvatarPicker: View {
                         ForEach(avatarNames, id: \.self) { avatar in
                             
                             Button(action: {
-                                
+                                counterVibro += 1
                                 guard let selectedPlayer = viewModel.selectedPlayerForPicker else { return }
                                 
                                 if viewModel.toPickerFromScreen == .names {
@@ -83,8 +86,10 @@ struct AvatarPicker: View {
                         }
                     })
                     .padding(.bottom)
+                    .padding(.top, 12)
                 }
                 .frame(maxHeight: .infinity)
+                .sensoryFeedbackMod(trigger: $counterVibro)
 //                .frame(height: UIScreen.main.bounds.height / 2)
             }
         }

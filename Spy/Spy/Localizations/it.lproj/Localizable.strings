@@ -226,3 +226,9 @@
 "Rounds" = "Round";
 "PLAY IT AGAIN" = "GIOCA DI NUOVO";
 "GAME" = "GIOCO";
+"CONTINUE" = "CONTINUA";
+"Continue" = "Continua";
+"You haven't played a game yet, start playing!" = "Non hai ancora giocato una partita, inizia a giocare!";
+"A spy is exposed!" = "Una spia è stata smascherata!";
+"is out of the game!" = "è fuori dal gioco!";
+"He didn't know what location you were in. Identify the other spies." = "Non sapeva in quale luogo ti trovavi. Identifica le altre spie.";

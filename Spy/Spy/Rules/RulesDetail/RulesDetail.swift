@@ -34,7 +34,9 @@ struct RulesDetail: View {
                                 .aspectRatio(contentMode: .fit)
                         }
                         .padding(.top)
+                        .padding(.top, 2)
                     }
+//                    .padding(.top, 12)
                 }
             })
             .edgesIgnoringSafeArea(.bottom)
@@ -65,7 +67,9 @@ struct RulesDetail: View {
                         })
                     }
                 }
-                .padding()
+//                .padding(.top, 6)
+                .padding(.horizontal)
+                .padding(.bottom, 6)
                 .padding(.top)
                 .background(Color.bgPrime.ignoresSafeArea())
                 

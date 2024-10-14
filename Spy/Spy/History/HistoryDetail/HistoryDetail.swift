@@ -17,6 +17,8 @@ struct HistoryDetail: View {
     @EnvironmentObject var viewModel: MainViewModel
     @StateObject var historyModel = HistoryViewModel()
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -51,7 +53,8 @@ struct HistoryDetail: View {
                         Spacer()
                     }
                 }
-                .padding([.horizontal, .top])
+//                .padding(.top, 6)
+                .padding(.horizontal)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -477,7 +480,7 @@ struct HistoryDetail: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     if historyModel.isReviewedAlready {
                         
 //                        router.wrappedValue.dismiss()
@@ -504,6 +507,7 @@ struct HistoryDetail: View {
                 .padding(.horizontal)
                 .padding(.bottom, 32)
             }
+            .sensoryFeedbackMod(trigger: $counterVibro)
         }
         .sheet(isPresented: $historyModel.isReviewView, content: {
             

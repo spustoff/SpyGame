@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2594962CBD51E50015AAFC /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B2594952CBD51E50015AAFC /* FirebaseAnalyticsSwift */; };
+		3B2594982CBD53510015AAFC /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3B2594972CBD53510015AAFC /* FirebaseAnalyticsOnDeviceConversion */; };
+		3B25949A2CBD53510015AAFC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 3B2594992CBD53510015AAFC /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		3B25949C2CBD546C0015AAFC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B25949B2CBD546C0015AAFC /* GoogleService-Info.plist */; };
+		3B61ED182CBAC6E1007A2A68 /* SensoryFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B61ED172CBAC6E1007A2A68 /* SensoryFeedback.swift */; };
 		3BF4DC552CB715A900E05F61 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC542CB715A900E05F61 /* Extensions.swift */; };
 		3BF4DC5D2CB715D100E05F61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BF4DC5A2CB715D100E05F61 /* LaunchScreen.storyboard */; };
 		3BF4DC5E2CB715D100E05F61 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4DC572CB715D100E05F61 /* Icon.swift */; };
@@ -84,9 +89,8 @@
 		F9D807DC2B1A167B00E7843A /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D807DB2B1A167B00E7843A /* PaywallView.swift */; };
 		F9D807DE2B1A168100E7843A /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D807DD2B1A168100E7843A /* PaywallViewModel.swift */; };
 		F9D9E46E2B1A1F4100466EE0 /* Ext+Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D9E46D2B1A1F4100466EE0 /* Ext+Loader.swift */; };
-		F9E1A94E2B40823C0062F96D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F9E1A94D2B40823C0062F96D /* FirebaseAnalytics */; };
+		F9E1A94E2B40823C0062F96D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F9E1A94D2B40823C0062F96D /* FirebaseAnalytics */; settings = {ATTRIBUTES = (Required, ); }; };
 		F9E1A95E2B40823C0062F96D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F9E1A95D2B40823C0062F96D /* FirebaseCrashlytics */; };
-		F9E1A9842B4082C80062F96D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9E1A9832B4082C80062F96D /* GoogleService-Info.plist */; };
 		F9E1A9892B4086F10062F96D /* WriteUsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1A9882B4086F10062F96D /* WriteUsViewModel.swift */; };
 		F9E1A98B2B4088040062F96D /* ResizableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1A98A2B4088040062F96D /* ResizableTextField.swift */; };
 		F9E1A98F2B4089460062F96D /* WriteUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1A98E2B4089460062F96D /* WriteUs.swift */; };
@@ -98,6 +102,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B25949B2CBD546C0015AAFC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3B61ED172CBAC6E1007A2A68 /* SensoryFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensoryFeedback.swift; sourceTree = "<group>"; };
 		3BF4DC542CB715A900E05F61 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BF4DC562CB715D100E05F61 /* EmbedInCornRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedInCornRadius.swift; sourceTree = "<group>"; };
 		3BF4DC572CB715D100E05F61 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
@@ -181,7 +187,6 @@
 		F9D807DB2B1A167B00E7843A /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		F9D807DD2B1A168100E7843A /* PaywallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallViewModel.swift; sourceTree = "<group>"; };
 		F9D9E46D2B1A1F4100466EE0 /* Ext+Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Loader.swift"; sourceTree = "<group>"; };
-		F9E1A9832B4082C80062F96D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F9E1A9882B4086F10062F96D /* WriteUsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteUsViewModel.swift; sourceTree = "<group>"; };
 		F9E1A98A2B4088040062F96D /* ResizableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableTextField.swift; sourceTree = "<group>"; };
 		F9E1A98E2B4089460062F96D /* WriteUs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteUs.swift; sourceTree = "<group>"; };
@@ -201,8 +206,11 @@
 				84EF0F092CB7088C00DC8508 /* ApphudSDK in Frameworks */,
 				F9E1A94E2B40823C0062F96D /* FirebaseAnalytics in Frameworks */,
 				84EF0F012CB7086C00DC8508 /* Alamofire in Frameworks */,
+				3B2594962CBD51E50015AAFC /* FirebaseAnalyticsSwift in Frameworks */,
 				84EF0F0C2CB7089800DC8508 /* Kingfisher in Frameworks */,
 				F9E1A95E2B40823C0062F96D /* FirebaseCrashlytics in Frameworks */,
+				3B25949A2CBD53510015AAFC /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				3B2594982CBD53510015AAFC /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +231,7 @@
 				3BF4DC562CB715D100E05F61 /* EmbedInCornRadius.swift */,
 				3BF4DC572CB715D100E05F61 /* Icon.swift */,
 				3BF4DC582CB715D100E05F61 /* PrimeButton.swift */,
+				3B61ED172CBAC6E1007A2A68 /* SensoryFeedback.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -290,8 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				F941F8692B0221B5009EF491 /* Info.plist */,
-				F9E1A9832B4082C80062F96D /* GoogleService-Info.plist */,
 				F928AF8D2AFEA6E0004102ED /* SpyApp.swift */,
+				3B25949B2CBD546C0015AAFC /* GoogleService-Info.plist */,
 				F928AF8F2AFEA6E0004102ED /* ContentView.swift */,
 				3BF4DC542CB715A900E05F61 /* Extensions.swift */,
 				F928AF9D2AFEA7B6004102ED /* Spy */,
@@ -654,6 +663,7 @@
 				F928AF862AFEA6E0004102ED /* Sources */,
 				F928AF872AFEA6E0004102ED /* Frameworks */,
 				F928AF882AFEA6E0004102ED /* Resources */,
+				3B25949D2CBD59140015AAFC /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -667,6 +677,9 @@
 				84EF0F052CB7087F00DC8508 /* Amplitude */,
 				84EF0F082CB7088C00DC8508 /* ApphudSDK */,
 				84EF0F0B2CB7089800DC8508 /* Kingfisher */,
+				3B2594952CBD51E50015AAFC /* FirebaseAnalyticsSwift */,
+				3B2594972CBD53510015AAFC /* FirebaseAnalyticsOnDeviceConversion */,
+				3B2594992CBD53510015AAFC /* FirebaseAnalyticsWithoutAdIdSupport */,
 			);
 			productName = Spy;
 			productReference = F928AF8A2AFEA6E0004102ED /* Spy.app */;
@@ -724,9 +737,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B25949C2CBD546C0015AAFC /* GoogleService-Info.plist in Resources */,
 				F928AF9C2AFEA784004102ED /* Launch Screen.storyboard in Resources */,
 				F923D5D42B2F431C00466F63 /* Localizable.strings in Resources */,
-				F9E1A9842B4082C80062F96D /* GoogleService-Info.plist in Resources */,
 				3BF4DC5D2CB715D100E05F61 /* LaunchScreen.storyboard in Resources */,
 				F928AF952AFEA6E1004102ED /* Preview Assets.xcassets in Resources */,
 				F928AF922AFEA6E1004102ED /* Assets.xcassets in Resources */,
@@ -734,6 +747,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B25949D2CBD59140015AAFC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F928AF862AFEA6E0004102ED /* Sources */ = {
@@ -752,6 +791,7 @@
 				F9604FAF2B0E698D000DE317 /* TotalResultVoting.swift in Sources */,
 				F928AFB72AFEAC2B004102ED /* MainView.swift in Sources */,
 				F926C5952B3DF8FC00FFF41D /* KeychainDataStore.swift in Sources */,
+				3B61ED182CBAC6E1007A2A68 /* SensoryFeedback.swift in Sources */,
 				3BF4DC5E2CB715D100E05F61 /* Icon.swift in Sources */,
 				3BF4DC5F2CB715D100E05F61 /* OnBoardView.swift in Sources */,
 				3BF4DC602CB715D100E05F61 /* EmbedInCornRadius.swift in Sources */,
@@ -968,9 +1008,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				"DEBUG_INFORMATION_FORMAT[sdk=*]" = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Spy/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K9VY956CAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spy/Info.plist;
@@ -986,7 +1028,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = core.spy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fat.spygame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1004,9 +1046,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Spy/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = K9VY956CAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spy/Info.plist;
@@ -1022,7 +1064,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = core.spy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fat.spygame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1101,6 +1143,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3B2594952CBD51E50015AAFC /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		3B2594972CBD53510015AAFC /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		3B2594992CBD53510015AAFC /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9E1A94C2B40823C0062F96D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
 		84EF0F002CB7086C00DC8508 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 84EF0EFF2CB7086C00DC8508 /* XCRemoteSwiftPackageReference "Alamofire" */;

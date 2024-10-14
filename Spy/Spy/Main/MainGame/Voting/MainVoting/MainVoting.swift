@@ -11,6 +11,8 @@ struct MainVoting: View {
     
     @StateObject var viewModel: MainViewModel
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         VStack(spacing: 6) {
@@ -63,7 +65,7 @@ struct MainVoting: View {
                 if viewModel.timeRemaining > 1 {
                     
                     Button(action: {
-                        
+                        counterVibro += 1
                         viewModel.closeVotingModal()
                         
                     }, label: {
@@ -85,7 +87,7 @@ struct MainVoting: View {
                 }
                 
                 Button(action: {
-                    
+                    counterVibro += 1
                     viewModel.currentVotingStep = .voting
                     
                 }, label: {
@@ -95,6 +97,7 @@ struct MainVoting: View {
             }
             .padding(.top, 45)
         }
+        .sensoryFeedbackMod(trigger: $counterVibro)
     }
 }
 

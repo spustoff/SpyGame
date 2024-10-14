@@ -17,6 +17,8 @@ struct RulesView: View {
     
     @StateObject var viewModel = RulesViewModel()
     
+    @State private var counterVibro = 0
+    
     var body: some View {
         
         ZStack {
@@ -57,7 +59,9 @@ struct RulesView: View {
                             Spacer()
                         }
                     }
-                    .padding()
+//                    .padding(.top, 6)
+                    .padding(.horizontal)
+                    .padding(.bottom, 2)
                     .padding(.top, isForGame ? 16 : 0)
                 }
                 
@@ -80,7 +84,7 @@ struct RulesView: View {
                                     ForEach(indexer.subPoints, id: \.id) { index in
                                         
                                         Button(action: {
-                                            
+                                            counterVibro += 1
                                             viewModel.current_rule = index.identifier
                                             viewModel.isDetail = true
                                             
@@ -129,8 +133,10 @@ struct RulesView: View {
                             })
                         }
                     }
+                    .padding(.top, 14)
                 }
                 .edgesIgnoringSafeArea(.bottom)
+                .sensoryFeedbackMod(trigger: $counterVibro)
                 
 //                Spacer()
                 

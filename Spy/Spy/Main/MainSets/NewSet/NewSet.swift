@@ -63,9 +63,10 @@ struct NewSet: View {
                         })
                     }
                     .padding(.horizontal)
-                    .padding(.vertical, 8)
+                    .padding(.top, 8)
                 }
-                .padding(.vertical, 8)
+                .padding(.top, 8)
+                .padding(.bottom, -6)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -363,6 +364,7 @@ struct NewSet: View {
                         })
                     }
                     .padding(.horizontal)
+                    .padding(.top, 12)
                 }
 //                .frame(height: UIScreen.main.bounds.height / 1.7)
                 

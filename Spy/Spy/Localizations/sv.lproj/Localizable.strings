@@ -225,3 +225,9 @@
 "Rounds" = "Omgångar";
 "PLAY IT AGAIN" = "SPELA IGEN";
 "GAME" = "SPEL";
+"CONTINUE" = "FORTSÄTT";
+"Continue" = "Fortsätt";
+"You haven't played a game yet, start playing!" = "Aún no has jugado un juego, ¡empieza a jugar!";
+"A spy is exposed!" = "En spion har avslöjats!";
+"is out of the game!" = "är ute ur spelet!";
+"He didn't know what location you were in. Identify the other spies." = "Han visste inte var du befann dig. Identifiera de andra spionerna.";

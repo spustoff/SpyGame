@@ -9,6 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct SettingsView: View {
+    @Environment(\.presentationMode) var presentationMode
     
     @StateObject var viewModel = SettingsViewModel()
     @StateObject var paywallModel = PaywallViewModel()
@@ -46,7 +47,9 @@ struct SettingsView: View {
                         Spacer()
                     }
                 }
-                .padding()
+//                .padding(.top, 6)
+                .padding(.horizontal)
+                .padding(.bottom, 2)
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -76,7 +79,8 @@ struct SettingsView: View {
                                                 .foregroundColor(.textWhite60)
                                                 .font(.system(size: 15, weight: .regular))
                                         })
-                                        .padding([.horizontal, .top])
+                                        .padding(.top, 6)
+                                        .padding(.horizontal)
                                         
                                         Spacer()
                                         
@@ -106,7 +110,13 @@ struct SettingsView: View {
                                 
                                 Button(action: {
                                     
-                                    paywallModel.restorePurchases()
+                                    Task {
+                                        await paywallModel.restorePurchases() {
+                                            self.presentationMode.wrappedValue.dismiss()
+//                                            subscribeCover.toggle()
+                                        }
+                                    }
+//                                    paywallModel.restorePurchases()
                                     
                                 }, label: {
                                     
@@ -191,7 +201,7 @@ struct SettingsView: View {
                             }, label: {
                                 
                                 HStack {
-                                    SettingsButton(icon: "globe", text: "Language")
+                                    SettingsButton(icon: "globeSet", text: "Language")
                                 }
                             })
                             .buttonStyle(ScaledButton(scaling: 0.9))
@@ -272,6 +282,7 @@ struct SettingsView: View {
                         }
                     }
                     .padding([.horizontal, .bottom])
+                    .padding(.top, 14)
                 }
             }
         }

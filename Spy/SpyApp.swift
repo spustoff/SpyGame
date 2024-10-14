@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import FirebaseCore
+import FirebaseAnalytics
 import ApphudSDK
 import Amplitude
 
@@ -20,9 +22,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        Analytics.setAnalyticsCollectionEnabled(true)
         
         Amplitude.instance().initializeApiKey("b42b8943c8c678134c1eb8c3260354a6")
-        Apphud.start(apiKey: "app_HWhWMTWeF1Xx4UTGxVtyquJzUHZUJo")
+        Apphud.start(apiKey: "app_oeoqxQrKdjrCqPu3tdMVhF9QAnS8fk")
         
         MySecureTransformer.register()
         
@@ -30,8 +33,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        
-        is_paidSubscription = paywallModel.isSubscribed()
+        Task {
+            await is_paidSubscription = paywallModel.isSubscribed()
+        }
     }
 }
 
